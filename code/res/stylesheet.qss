@@ -1,0 +1,53 @@
+.mainWindow
+{
+    background:#FFF;
+}
+.topBar
+{
+    border-radius:0px 0px 4px 4px;
+}
+.libraryMenu
+{
+    background:#DDD;
+    border:1px solid #AAA;
+    border-radius:4px;
+    margin-left:2px;
+    margin-bottom:2px;
+}
+.inspectorMenu
+{
+    background:#DDD;
+    border:1px solid #AAA;
+    border-radius:4px;
+    margin-bottom:2px;
+}
+.tracksMenu
+{
+    background:#DDD;
+    border:1px solid #AAA;
+    border-radius:4px;
+    margin-right:2px;
+    margin-bottom:2px;
+}
+.toggleButton.off
+{
+    background-color: #EEE;
+    border-bottom:1px solid #AAA;
+    border-radius:4px;
+}
+.toggleButton.pressing
+{
+    background-color: #AAA;
+    border-bottom:1px solid #AAA;
+    border-radius:4px;
+}
+.toggleButton.on
+{
+    background-color: #CCC;
+    border-bottom:1px solid #AAA;
+    border-radius:4px;
+}
+QSplitter::handle
+{
+    background-color: none;
+}

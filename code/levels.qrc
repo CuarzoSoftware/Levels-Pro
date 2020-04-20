@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/Info.plist</file>
+        <file>res/levels.icns</file>
+        <file>res/stylesheet.qss</file>
+        <file>res/svg/open-box.svg</file>
+    </qresource>
+</RCC>
