@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/Gtymxm0.png" style="width:100px"></img><br>
+<img src="https://i.imgur.com/Gtymxm0.png" width="100"></img><br>
 # Levels Pro
 A free, open source and multi-platform DAW, targeted to Logic Pro and Pro Tools users.<br>
 
