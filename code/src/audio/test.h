@@ -1,8 +1,8 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "../global/Global.h"
-#include "../audio/AudioImporter.h"
+#include "../Global/Global.h"
+#include "../Audio/AudioImporter.h"
 #include <ApplicationServices/ApplicationServices.h>
 #include <QtMath>
 
@@ -131,7 +131,8 @@ void auCallback(void *inUserData, AudioQueueRef queue, AudioQueueBufferRef buffe
     // 100hz se encuentran cada
 
     float percentDone = 0.0f;
-    for (int x = 0; x < framesToGen; ++x)
+    Q_UNUSED(percentDone);
+    for (uint32_t x = 0; x < framesToGen; ++x)
     {
 
         float smile = -qAbs(qSin((float)soundState->index*M_PI/455.f)) + 1.0f;

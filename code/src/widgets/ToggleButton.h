@@ -1,13 +1,14 @@
 #ifndef TOGGLEBUTTON_H
 #define TOGGLEBUTTON_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
+#include "../Global/Utils.h"
 
 class ToggleButton : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ToggleButton(QString icon);
+    ToggleButton(const QString &iconUrl, uint layoutMargin=11, const QColor &iconColor=QColor("#FFFFFF"));
     void setIconColor(QColor color);
     void setActive(bool mode);
     bool isActive();

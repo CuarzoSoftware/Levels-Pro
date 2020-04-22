@@ -6,7 +6,7 @@ InspectorMenu::InspectorMenu()
     setAttribute(Qt::WA_StyledBackground, true);
 
     // Asigna la clase para los estilos
-    setProperty("class","inspectorMenu");
+    setProperty("class","menu inspectorMenu");
 
     // Asigna un ancho fijo
     setFixedWidth(200);

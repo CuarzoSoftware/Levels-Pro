@@ -1,7 +1,7 @@
 #ifndef TRACKSMENU_H
 #define TRACKSMENU_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 class TracksMenu : public QWidget
 {

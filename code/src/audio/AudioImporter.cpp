@@ -1,5 +1,5 @@
 #include "AudioImporter.h"
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 AudioImporter::AudioImporter(const QString &url)
 {

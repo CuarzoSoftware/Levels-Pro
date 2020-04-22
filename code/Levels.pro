@@ -7,28 +7,6 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 
-SOURCES += \
-    src/audio/AudioImporter.cpp \
-    src/main.cpp \
-    src/ui/InspectorMenu.cpp \
-    src/ui/LibraryMenu.cpp \
-    src/ui/MainWindow.cpp \
-    src/ui/TopBar.cpp \
-    src/ui/TracksMenu.cpp \
-    src/widgets/ToggleButton.cpp
-
-
-HEADERS += \
-    src/audio/AudioImporter.h \
-    src/audio/test.h \
-    src/global/Global.h \
-    src/ui/InspectorMenu.h \
-    src/ui/LibraryMenu.h \
-    src/ui/MainWindow.h \
-    src/ui/TopBar.h \
-    src/ui/TracksMenu.h \
-    src/widgets/ToggleButton.h
-
 
 # Mac OS X
 unix:!macx
@@ -66,7 +44,35 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     levels.qrc
 
-DISTFILES += \
-    res/Info.plist \
-    res/icon.icns \
-    res/stylesheet.qss
+
+
+HEADERS += \
+    src/Audio/AudioImporter.h \
+    src/Audio/Test.h \
+    src/Global/Color.h \
+    src/Global/Global.h \
+    src/Global/Utils.h \
+    src/UI/InspectorMenu.h \
+    src/UI/LibraryMenu.h \
+    src/UI/MainWindow.h \
+    src/UI/TopBar.h \
+    src/UI/TracksMenu.h \
+    src/Widgets/CompactContainer.h \
+    src/Widgets/ToggleButton.h
+
+SOURCES += \
+    src/Audio/AudioImporter.cpp \
+    src/Global/Utils.cpp \
+    src/UI/InspectorMenu.cpp \
+    src/UI/LibraryMenu.cpp \
+    src/UI/MainWindow.cpp \
+    src/UI/TopBar.cpp \
+    src/UI/TracksMenu.cpp \
+    src/Widgets/CompactContainer.cpp \
+    src/Widgets/ToggleButton.cpp \
+    src/main.cpp
+
+
+
+
+

@@ -1,7 +1,7 @@
 #ifndef LIBRARYMENU_H
 #define LIBRARYMENU_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 class LibraryMenu : public QWidget
 {

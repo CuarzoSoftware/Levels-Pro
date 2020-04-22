@@ -1,51 +1,68 @@
 .mainWindow
 {
-    background:#FFF;
+    background:#8F8F8F;
 }
 .topBar
 {
+    background:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #BCBCBC,stop:1 #8F8F8F);
     border-radius:0px 0px 4px 4px;
+}
+.menu
+{
+    background:#2E2E2E;
+    border:1px solid #888;
+    border-radius:4px;
 }
 .libraryMenu
 {
-    background:#DDD;
-    border:1px solid #AAA;
-    border-radius:4px;
     margin-left:2px;
     margin-bottom:2px;
 }
 .inspectorMenu
 {
-    background:#DDD;
-    border:1px solid #AAA;
-    border-radius:4px;
     margin-bottom:2px;
 }
 .tracksMenu
 {
-    background:#DDD;
-    border:1px solid #AAA;
-    border-radius:4px;
     margin-right:2px;
     margin-bottom:2px;
 }
-.toggleButton.off
+.toggleButton
 {
-    background-color: #EEE;
-    border-bottom:1px solid #AAA;
     border-radius:4px;
+    border-bottom:1px solid #585858;
+    margin-bottom:2px;
+    background:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #8B8B8B,stop:1 #7F7F7F);
+
 }
 .toggleButton.pressing
 {
-    background-color: #AAA;
-    border-bottom:1px solid #AAA;
-    border-radius:4px;
+
+    background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #767676,stop:1 #686868);
 }
-.toggleButton.on
+.toggleButton.active
 {
-    background-color: #CCC;
-    border-bottom:1px solid #AAA;
-    border-radius:4px;
+    background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #5F5F5F,stop:1 #555555);
+}
+.toggleButton.CompactContainerBegin
+{
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:4px;
+    border-top-left-radius:4px;
+    border-right:1px solid #777777;
+}
+.toggleButton.CompactContainerMiddle
+{
+    border-radius:0px;
+    border-right:1px solid #777777;
+}
+.toggleButton.CompactContainerLast
+{
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:0px;
+    border-top-left-radius:0px;
 }
 QSplitter::handle
 {

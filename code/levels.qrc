@@ -4,5 +4,62 @@
         <file>res/levels.icns</file>
         <file>res/stylesheet.qss</file>
         <file>res/svg/open-box.svg</file>
+        <file>res/svg/inspector.svg</file>
+        <file>res/svg/tools.svg</file>
+        <file>res/svg/back.svg</file>
+        <file>res/svg/binoculars.svg</file>
+        <file>res/svg/broken-link.svg</file>
+        <file>res/svg/cloud-computing.svg</file>
+        <file>res/svg/compact-disc-1.svg</file>
+        <file>res/svg/compact-disc.svg</file>
+        <file>res/svg/controls-3.svg</file>
+        <file>res/svg/controls-9.svg</file>
+        <file>res/svg/edit.svg</file>
+        <file>res/svg/error.svg</file>
+        <file>res/svg/eyeglasses.svg</file>
+        <file>res/svg/fast-forward.svg</file>
+        <file>res/svg/flag-3.svg</file>
+        <file>res/svg/flag.svg</file>
+        <file>res/svg/infinity.svg</file>
+        <file>res/svg/library.svg</file>
+        <file>res/svg/link.svg</file>
+        <file>res/svg/locked-4.svg</file>
+        <file>res/svg/microphone.svg</file>
+        <file>res/svg/music-player-1.svg</file>
+        <file>res/svg/next.svg</file>
+        <file>res/svg/notebook.svg</file>
+        <file>res/svg/pause.svg</file>
+        <file>res/svg/perspective.svg</file>
+        <file>res/svg/play-button.svg</file>
+        <file>res/svg/plus.svg</file>
+        <file>res/svg/push-pin.svg</file>
+        <file>res/svg/repeat.svg</file>
+        <file>res/svg/rewind.svg</file>
+        <file>res/svg/search.svg</file>
+        <file>res/svg/settings-4.svg</file>
+        <file>res/svg/share-1.svg</file>
+        <file>res/svg/speaker-4.svg</file>
+        <file>res/svg/speaker-5.svg</file>
+        <file>res/svg/speaker-6.svg</file>
+        <file>res/svg/speaker-7.svg</file>
+        <file>res/svg/speaker-8.svg</file>
+        <file>res/svg/star-1.svg</file>
+        <file>res/svg/stop.svg</file>
+        <file>res/svg/stopwatch-3.svg</file>
+        <file>res/svg/success.svg</file>
+        <file>res/svg/unlink.svg</file>
+        <file>res/svg/unlocked-1.svg</file>
+        <file>res/svg/volume-control-1.svg</file>
+        <file>res/svg/volume-control.svg</file>
+        <file>res/svg/warning.svg</file>
+        <file>res/icon.icns</file>
+        <file>res/svg/scissors.svg</file>
+        <file>res/svg/circle.svg</file>
+        <file>res/svg/list.svg</file>
+        <file>res/svg/metronome.svg</file>
+        <file>res/svg/solo.svg</file>
+        <file>res/svg/speed.svg</file>
+        <file>res/svg/timer.svg</file>
+        <file>res/svg/tuner.svg</file>
     </qresource>
 </RCC>

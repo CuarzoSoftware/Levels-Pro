@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 #include "TopBar.h"
 #include "LibraryMenu.h"

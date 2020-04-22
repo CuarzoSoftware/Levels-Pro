@@ -28,5 +28,14 @@
 #include <AudioToolbox/AudioToolbox.h>
 
 
+class UTILS
+{
+public:
+
+
+};
+
+
+
 
 #endif // GLOBAL_H

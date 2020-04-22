@@ -1,7 +1,7 @@
 #ifndef INSPECTORMENU_H
 #define INSPECTORMENU_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 class InspectorMenu : public QWidget
 {

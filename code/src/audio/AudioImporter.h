@@ -1,7 +1,7 @@
 #ifndef AUDIOIMPORTER_H
 #define AUDIOIMPORTER_H
 
-#include "../global/Global.h"
+#include "../Global/Global.h"
 
 class AudioImporter
 {

@@ -1,19 +1,19 @@
 #include "ToggleButton.h"
-#include "../audio/test.h"
+#include "../Audio/Test.h"
 
-ToggleButton::ToggleButton(QString icon)
+ToggleButton::ToggleButton(const QString &iconUrl, uint layoutMargin, const QColor &iconColor)
 {
     // Permite aplicar color de fondo
     setAttribute(Qt::WA_StyledBackground, true);
 
     // Asigna la clase para los estilos
-    setProperty("class","toggleButton off");
+    setProperty("class","toggleButton");
 
     // Asigna una altura fija
     setFixedSize(38,38);
 
     // Ajusta el layout
-    layout->setMargin(6);
+    layout->setMargin(layoutMargin);
 
     // Asigna el layout
     setLayout(layout);
@@ -23,17 +23,18 @@ ToggleButton::ToggleButton(QString icon)
     _icon->setMouseTracking(true);
 
     // Crea el pixmap
-    _pixmap = QIcon(icon).pixmap(64,64);
+    _pixmap = QIcon(iconUrl).pixmap(64,64);
 
     // Ajusta el tamaño de la imagen
     _icon->setScaledContents(true);
 
     // Le asigna el color
-    setIconColor(QColor(32,32,32));
+    setIconColor(iconColor);
 
     // Asigna el icono al layout
     layout->addWidget(_icon);
 }
+
 
 
 void ToggleButton::setIconColor(QColor color)
@@ -58,14 +59,9 @@ void ToggleButton::setActive(bool mode)
     _active = mode;
 
     if(mode)
-        setProperty("class","toggleButton on");
+        Utils::addWidgetClass(this,"active");
     else
-        setProperty("class","toggleButton off");
-
-    style()->unpolish(this);
-    style()->polish(this);
-    update();
-
+        Utils::removeWidgetClass(this,"active");
 }
 
 bool ToggleButton::isActive()
@@ -77,15 +73,13 @@ bool ToggleButton::isActive()
 void ToggleButton::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
-    setProperty("class","toggleButton pressing");
-    style()->unpolish(this);
-    style()->polish(this);
-    update();
+    Utils::removeWidgetClass(this,"active");
+    Utils::addWidgetClass(this,"pressing");
 }
 
 void ToggleButton::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
     setActive(!_active);
-    setup();
+    Utils::removeWidgetClass(this,"pressing");
 }

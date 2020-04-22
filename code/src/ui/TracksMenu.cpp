@@ -6,6 +6,6 @@ TracksMenu::TracksMenu()
     setAttribute(Qt::WA_StyledBackground, true);
 
     // Asigna la clase para los estilos
-    setProperty("class","tracksMenu");
+    setProperty("class","menu tracksMenu");
 
 }
