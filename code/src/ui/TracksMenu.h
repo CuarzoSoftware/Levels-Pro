@@ -1,9 +1,9 @@
 #ifndef TRACKSMENU_H
 #define TRACKSMENU_H
 
-#include "../Global/Global.h"
+#include "../Widgets/MainMenu.h"
 
-class TracksMenu : public QWidget
+class TracksMenu : public MainMenu
 {
     Q_OBJECT
 public:

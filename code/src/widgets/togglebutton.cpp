@@ -62,6 +62,8 @@ void ToggleButton::setActive(bool mode)
         Utils::addWidgetClass(this,"active");
     else
         Utils::removeWidgetClass(this,"active");
+
+    changed(mode);
 }
 
 bool ToggleButton::isActive()

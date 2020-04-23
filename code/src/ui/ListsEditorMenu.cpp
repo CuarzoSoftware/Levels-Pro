@@ -1,9 +1,9 @@
-#include "InspectorMenu.h"
+#include "ListsEditorMenu.h"
 
-InspectorMenu::InspectorMenu()
+ListsEditorMenu::ListsEditorMenu()
 {
     // Asigna un ancho fijo
-    setFixedWidth(200);
+    setMinimumWidth(200);
 
     // Asigna el ancho máximo
     setMaximumWidth(600);

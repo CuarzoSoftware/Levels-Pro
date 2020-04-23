@@ -1,9 +1,9 @@
 #ifndef INSPECTORMENU_H
 #define INSPECTORMENU_H
 
-#include "../Global/Global.h"
+#include "../Widgets/MainMenu.h"
 
-class InspectorMenu : public QWidget
+class InspectorMenu : public MainMenu
 {
     Q_OBJECT
 public:

@@ -12,6 +12,9 @@ public:
     void setIconColor(QColor color);
     void setActive(bool mode);
     bool isActive();
+signals:
+    void changed(bool state);
+
 
 private:
     QHBoxLayout *layout = new QHBoxLayout();

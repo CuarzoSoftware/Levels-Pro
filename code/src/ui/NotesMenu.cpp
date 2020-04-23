@@ -1,6 +1,6 @@
-#include "LibraryMenu.h"
+#include "NotesMenu.h"
 
-LibraryMenu::LibraryMenu()
+NotesMenu::NotesMenu()
 {
     // Asigna un ancho mínimo
     setMinimumWidth(200);
@@ -10,5 +10,4 @@ LibraryMenu::LibraryMenu()
 
     // Lo esconde inicialmente
     hide();
-
 }

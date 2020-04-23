@@ -42,7 +42,7 @@ TopBar::TopBar()
     tempoContainer->addWidget(metronomeBtn);
 
     // Añade los botones al container derecho
-    rightContainer->addWidget(marksBtn);
+    rightContainer->addWidget(listsEditorBtn);
     rightContainer->addWidget(notesBtn);
     rightContainer->addWidget(loopsBtn);
     rightContainer->addWidget(mediaBtn);
@@ -69,3 +69,4 @@ TopBar::TopBar()
 
 
 }
+

@@ -1,6 +1,6 @@
-#include "LibraryMenu.h"
+#include "MediaMenu.h"
 
-LibraryMenu::LibraryMenu()
+MediaMenu::MediaMenu()
 {
     // Asigna un ancho mínimo
     setMinimumWidth(200);
@@ -10,5 +10,4 @@ LibraryMenu::LibraryMenu()
 
     // Lo esconde inicialmente
     hide();
-
 }

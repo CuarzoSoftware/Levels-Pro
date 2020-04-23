@@ -1,6 +1,6 @@
-#include "LibraryMenu.h"
+#include "LoopsMenu.h"
 
-LibraryMenu::LibraryMenu()
+LoopsMenu::LoopsMenu()
 {
     // Asigna un ancho mínimo
     setMinimumWidth(200);
@@ -10,5 +10,4 @@ LibraryMenu::LibraryMenu()
 
     // Lo esconde inicialmente
     hide();
-
 }

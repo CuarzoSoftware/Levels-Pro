@@ -1,9 +1,9 @@
 #ifndef LIBRARYMENU_H
 #define LIBRARYMENU_H
 
-#include "../Global/Global.h"
+#include "../Widgets/MainMenu.h"
 
-class LibraryMenu : public QWidget
+class LibraryMenu : public MainMenu
 {
     Q_OBJECT
 public:

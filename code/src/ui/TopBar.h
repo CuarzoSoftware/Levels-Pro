@@ -50,7 +50,7 @@ public:
     ToggleButton *metronomeBtn = new ToggleButton(":/res/svg/metronome.svg",8);
 
     // Right Buttons
-    ToggleButton *marksBtn = new ToggleButton(":/res/svg/list.svg");
+    ToggleButton *listsEditorBtn = new ToggleButton(":/res/svg/list.svg");
     ToggleButton *notesBtn = new ToggleButton(":/res/svg/edit.svg",9);
     ToggleButton *loopsBtn = new ToggleButton(":/res/svg/infinity.svg");
     ToggleButton *mediaBtn = new ToggleButton(":/res/svg/music-player-1.svg");
