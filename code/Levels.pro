@@ -28,6 +28,9 @@ unix:!macx
     HEADERS += \
     src/Audio/AudioImporter.h \
     src/Audio/Test.h \
+
+SOURCES += \
+    src/Audio/AudioImporter.cpp \
 }
 
 # Linux
@@ -73,7 +76,6 @@ HEADERS += \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
-    src/Audio/AudioImporter.cpp \
     src/Global/Utils.cpp \
     src/UI/Editor/EditorMenu.cpp \
     src/UI/Inspector/InspectorMenu.cpp \
