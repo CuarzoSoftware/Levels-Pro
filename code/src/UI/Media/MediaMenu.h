@@ -1,7 +1,8 @@
 #ifndef MEDIAMENU_H
 #define MEDIAMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Global/Includes.h>
+#include <Widgets/MainMenu.h>
 
 class MediaMenu : public MainMenu
 {

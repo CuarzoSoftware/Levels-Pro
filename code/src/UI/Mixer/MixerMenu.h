@@ -1,8 +1,7 @@
 #ifndef MIXERMENU_H
 #define MIXERMENU_H
 
-#include "../Widgets/MainMenu.h"
-#include "../Global/Utils.h"
+#include <Widgets/MainMenu.h>
 
 class MixerMenu : public MainMenu
 {

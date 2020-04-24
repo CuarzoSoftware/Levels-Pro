@@ -1,7 +1,7 @@
 #ifndef COLOR_H
 #define COLOR_H
 
-#include <QColor>
+#include <Global/Includes.h>
 
 class Color
 {

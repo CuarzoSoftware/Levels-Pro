@@ -1,7 +1,7 @@
 #ifndef NOTESMENU_H
 #define NOTESMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class NotesMenu : public MainMenu
 {

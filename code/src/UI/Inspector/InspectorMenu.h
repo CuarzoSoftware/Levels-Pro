@@ -1,7 +1,7 @@
 #ifndef INSPECTORMENU_H
 #define INSPECTORMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class InspectorMenu : public MainMenu
 {

@@ -1,6 +1,4 @@
-#include "Global/Global.h"
-#include "UI/MainWindow.h"
-
+#include <UI/MainWindow/MainWindow.h>
 
 int main(int argc, char *argv[])
 {

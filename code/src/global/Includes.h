@@ -1,5 +1,5 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#ifndef INCLUDES_H
+#define INCLUDES_H
 
 // QT
 #include <QApplication>
@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QDebug>
 #include <QFile>
+#include <QFrame>
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QLabel>
@@ -14,6 +15,7 @@
 #include <QScreen>
 #include <QSplitter>
 #include <QStyle>
+#include <QtMath>
 #include <QVariant>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -24,8 +26,15 @@
 #include <cstring>
 #include <cmath>
 
+// Global
+#include "Color.h"
+#include "Utils.h"
+
 // Mac OS X
-#include <AudioToolbox/AudioToolbox.h>
+#ifdef __APPLE__
+    #include <AudioToolbox/AudioToolbox.h>
+    #include <ApplicationServices/ApplicationServices.h>
+#endif
 
 
 class UTILS
@@ -38,4 +47,4 @@ public:
 
 
 
-#endif // GLOBAL_H
+#endif // INCLUDES_H

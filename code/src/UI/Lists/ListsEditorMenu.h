@@ -1,7 +1,7 @@
 #ifndef LISTSEDITORMENU_H
 #define LISTSEDITORMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class ListsEditorMenu : public MainMenu
 {

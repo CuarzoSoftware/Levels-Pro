@@ -1,23 +1,21 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "../Global/Global.h"
+#include <Global/Includes.h>
 
-#include "TopBar.h"
-#include "MainToolBar.h"
+#include <Widgets/MenuSplitter.h>
 
-#include "LibraryMenu.h"
-#include "InspectorMenu.h"
-#include "MixerMenu.h"
-#include "EditorMenu.h"
-#include "TracksMenu.h"
-#include "ListsEditorMenu.h"
-#include "NotesMenu.h"
-#include "LoopsMenu.h"
-#include "MediaMenu.h"
-
-#include "../Widgets/MenuSplitter.h"
-
+#include <UI/MainWindow/TopBar.h>
+#include <UI/MainWindow/MainToolBar.h>
+#include <UI/Library/LibraryMenu.h>
+#include <UI/Inspector/InspectorMenu.h>
+#include <UI/Mixer/MixerMenu.h>
+#include <UI/Editor/EditorMenu.h>
+#include <UI/Tracks/TracksMenu.h>
+#include <UI/Lists/ListsEditorMenu.h>
+#include <UI/Notes/NotesMenu.h>
+#include <UI/Loops/LoopsMenu.h>
+#include <UI/Media/MediaMenu.h>
 
 class MainWindow : public QMainWindow
 {

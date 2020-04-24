@@ -1,7 +1,7 @@
 #ifndef LIBRARYMENU_H
 #define LIBRARYMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class LibraryMenu : public MainMenu
 {

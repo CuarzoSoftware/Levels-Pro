@@ -1,11 +1,8 @@
 #ifndef TOPBAR_H
 #define TOPBAR_H
 
-#include "../Global/Global.h"
-
-#include "../Widgets/CompactContainer.h"
-#include "../Widgets/ToggleButton.h"
-#include "../Global/Color.h"
+#include <Widgets/CompactContainer.h>
+#include <Widgets/ToggleButton.h>
 
 class TopBar : public QWidget
 {

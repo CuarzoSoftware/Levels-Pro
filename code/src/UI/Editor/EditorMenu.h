@@ -1,8 +1,7 @@
 #ifndef EDITORMENU_H
 #define EDITORMENU_H
 
-#include "../Widgets/MainMenu.h"
-#include "../Global/Utils.h"
+#include <Widgets/MainMenu.h>
 
 class EditorMenu : public MainMenu
 {

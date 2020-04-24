@@ -6,7 +6,8 @@ CONFIG += c++11
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-
+# Inccludes in project
+INCLUDEPATH += $$PWD/src
 
 # Mac OS X
 unix:!macx
@@ -18,10 +19,15 @@ unix:!macx
     QMAKE_LFLAGS += -F /System/Library/Frameworks/CoreAudio.framework/
     QMAKE_LFLAGS += -F /System/Library/Frameworks/AudioToolBox.framework/
     QMAKE_LFLAGS += -F /System/Library/Frameworks/AudioUnit.framework/
+
     LIBS += -framework CoreFoundation
     LIBS += -framework CoreAudio
     LIBS += -framework AudioToolbox
     LIBS += -framework AudioUnit
+
+    HEADERS += \
+    src/Audio/AudioImporter.h \
+    src/Audio/Test.h \
 }
 
 # Linux
@@ -44,51 +50,52 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     levels.qrc
 
-
-
 HEADERS += \
-    src/Audio/AudioImporter.h \
-    src/Audio/Test.h \
     src/Global/Color.h \
-    src/Global/Global.h \
+    src/Global/Includes.h \
     src/Global/Utils.h \
-    src/UI/EditorMenu.h \
-    src/UI/InspectorMenu.h \
-    src/UI/LibraryMenu.h \
-    src/UI/ListsEditorMenu.h \
-    src/UI/LoopsMenu.h \
-    src/UI/MainToolBar.h \
-    src/UI/MainWindow.h \
-    src/UI/MediaMenu.h \
-    src/UI/MixerMenu.h \
-    src/UI/NotesMenu.h \
-    src/UI/TopBar.h \
-    src/UI/TracksMenu.h \
+    src/UI/Editor/EditorMenu.h \
+    src/UI/Inspector/InspectorMenu.h \
+    src/UI/Library/LibraryMenu.h \
+    src/UI/Lists/ListsEditorMenu.h \
+    src/UI/Loops/LoopsMenu.h \
+    src/UI/MainWindow/MainToolBar.h \
+    src/UI/MainWindow/MainWindow.h \
+    src/UI/MainWindow/TopBar.h \
+    src/UI/Media/MediaMenu.h \
+    src/UI/Mixer/MixerMenu.h \
+    src/UI/Notes/NotesMenu.h \
+    src/UI/Tracks/TracksMenu.h \
     src/Widgets/CompactContainer.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
+    src/Widgets/MenuTopBar.h \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
     src/Audio/AudioImporter.cpp \
     src/Global/Utils.cpp \
-    src/UI/EditorMenu.cpp \
-    src/UI/InspectorMenu.cpp \
-    src/UI/LibraryMenu.cpp \
-    src/UI/ListsEditorMenu.cpp \
-    src/UI/LoopsMenu.cpp \
-    src/UI/MainToolBar.cpp \
-    src/UI/MainWindow.cpp \
-    src/UI/MediaMenu.cpp \
-    src/UI/MixerMenu.cpp \
-    src/UI/NotesMenu.cpp \
-    src/UI/TopBar.cpp \
-    src/UI/TracksMenu.cpp \
+    src/UI/Editor/EditorMenu.cpp \
+    src/UI/Inspector/InspectorMenu.cpp \
+    src/UI/Library/LibraryMenu.cpp \
+    src/UI/Lists/ListsEditorMenu.cpp \
+    src/UI/Loops/LoopsMenu.cpp \
+    src/UI/MainWindow/MainToolBar.cpp \
+    src/UI/MainWindow/MainWindow.cpp \
+    src/UI/MainWindow/TopBar.cpp \
+    src/UI/Media/MediaMenu.cpp \
+    src/UI/Mixer/MixerMenu.cpp \
+    src/UI/Notes/NotesMenu.cpp \
+    src/UI/Tracks/TracksMenu.cpp \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
+    src/Widgets/MenuTopBar.cpp \
     src/Widgets/ToggleButton.cpp \
     src/main.cpp
+
+
+
 
 
 

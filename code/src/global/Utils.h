@@ -1,7 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "Global.h"
+#include <Global/Includes.h>
 
 class Utils
 {

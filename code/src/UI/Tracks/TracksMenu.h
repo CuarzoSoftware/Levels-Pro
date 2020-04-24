@@ -1,7 +1,7 @@
 #ifndef TRACKSMENU_H
 #define TRACKSMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class TracksMenu : public MainMenu
 {

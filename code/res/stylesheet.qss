@@ -14,12 +14,19 @@
 .menu
 {
     background:#2E2E2E;
-    border:1px solid #888;
+    border:1px solid #000;
     border-radius:4px;
 }
 .menuSplitter
 {
     margin:2px;
+}
+.menuTopBar
+{
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    background-color:#474747;
+    border-bottom:1px solid #000;
 }
 .verticalMenuSplitter
 {

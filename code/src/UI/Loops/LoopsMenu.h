@@ -1,7 +1,7 @@
 #ifndef LOOPSMENU_H
 #define LOOPSMENU_H
 
-#include "../Widgets/MainMenu.h"
+#include <Widgets/MainMenu.h>
 
 class LoopsMenu : public MainMenu
 {

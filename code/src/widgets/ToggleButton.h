@@ -1,8 +1,7 @@
 #ifndef TOGGLEBUTTON_H
 #define TOGGLEBUTTON_H
 
-#include "../Global/Global.h"
-#include "../Global/Utils.h"
+#include <Global/Includes.h>
 
 class ToggleButton : public QWidget
 {
