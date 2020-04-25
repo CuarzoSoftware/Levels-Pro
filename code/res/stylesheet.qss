@@ -1,3 +1,8 @@
+QLabel
+{
+    color:white;
+    font-size:13px;
+}
 .mainWindow
 {
     background:#8F8F8F;
@@ -42,16 +47,31 @@
     border-bottom:1px solid #585858;
     margin-bottom:2px;
     background:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #8B8B8B,stop:1 #7F7F7F);
-
+}
+.toggleButton.dark
+{
+    background:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #444444,stop:1 #353535);
+    border:1px solid qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #263243,stop:1 #2A2000);
 }
 .toggleButton.pressing
 {
-
     background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #767676,stop:1 #686868);
+}
+.toggleButton.dark.pressing
+{
+    background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #2F302F,stop:1 #2B2B2B);
 }
 .toggleButton.active
 {
     background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #5F5F5F,stop:1 #555555);
+}
+.toggleButton.blue.active
+{
+    background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #4478AE,stop:0.1 #336AA3,stop:1 #2E629B);
+}
+.toggleButton.yellow.active
+{
+    background-color:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #AD8E16,stop:1 #9E8107);
 }
 .toggleButton.CompactContainerBegin
 {
@@ -63,11 +83,52 @@
 }
 .toggleButton.CompactContainerMiddle
 {
+    border-left:none;
     border-radius:0px;
     border-right:1px solid #777777;
 }
 .toggleButton.CompactContainerLast
 {
+    border-left:none;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:0px;
+    border-top-left-radius:0px;
+}
+.toggleButton.dark.CompactContainerBegin
+{
+    border-right:1px solid #222222;
+}
+.toggleButton.dark.CompactContainerMiddle
+{
+    border-right:1px solid #222222;
+}
+
+
+
+.select
+{
+    border-radius:4px;
+    border:1px solid qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #263243,stop:1 #2A2000);
+    background:qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 #444444,stop:1 #353535);
+}
+.select.CompactContainerBegin
+{
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:4px;
+    border-top-left-radius:4px;
+    border-right:1px solid #222222;
+}
+.select.CompactContainerMiddle
+{
+    border-radius:0px;
+    border-left:none;
+    border-right:1px solid #222222;
+}
+.select.CompactContainerLast
+{
+    border-left:none;
     border-top-right-radius:4px;
     border-bottom-right-radius:4px;
     border-bottom-left-radius:0px;

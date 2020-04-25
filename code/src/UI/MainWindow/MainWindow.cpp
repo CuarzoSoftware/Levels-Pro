@@ -38,7 +38,7 @@ MainWindow::MainWindow(QApplication *app)
     verticalLayout->addWidget(horizontalSplitter);
 
     // Configura el splitter vertical
-    verticalSplitter->setProperty("class","verticalMenuSplitter");
+    Utils::addWidgetClass(verticalSplitter,"verticalMenuSplitter");
 
     // Añade los menus al splitter vertical
     verticalSplitter->addWidget(tracksMenu);

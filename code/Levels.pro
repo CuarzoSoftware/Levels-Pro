@@ -10,8 +10,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 INCLUDEPATH += $$PWD/src
 
 # Mac OS X
-unix:!macx
-{
+macx {
     ICON = res/icon.icns
     QMAKE_INFO_PLIST = res/Info.plist
 
@@ -29,19 +28,17 @@ unix:!macx
     src/Audio/AudioImporter.h \
     src/Audio/Test.h \
 
-SOURCES += \
-    src/Audio/AudioImporter.cpp \
+    SOURCES += \
+        src/Audio/AudioImporter.cpp \
 }
 
 # Linux
-unix:!macx
-{
+unix:!macx {
 
 }
 
 # Window
-win32
-{
+win32 {
 
 }
 
@@ -70,9 +67,11 @@ HEADERS += \
     src/UI/Notes/NotesMenu.h \
     src/UI/Tracks/TracksMenu.h \
     src/Widgets/CompactContainer.h \
+    src/Widgets/Icon.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
+    src/Widgets/Select.h \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
@@ -90,11 +89,17 @@ SOURCES += \
     src/UI/Notes/NotesMenu.cpp \
     src/UI/Tracks/TracksMenu.cpp \
     src/Widgets/CompactContainer.cpp \
+    src/Widgets/Icon.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
+    src/Widgets/Select.cpp \
     src/Widgets/ToggleButton.cpp \
     src/main.cpp
+
+DISTFILES += \
+    res/svg/cursor.svg \
+    res/svg/pencil.svg
 
 
 

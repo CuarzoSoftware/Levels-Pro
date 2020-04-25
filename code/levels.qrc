@@ -61,5 +61,14 @@
         <file>res/svg/speed.svg</file>
         <file>res/svg/timer.svg</file>
         <file>res/svg/tuner.svg</file>
+        <file>res/svg/down-arrow.svg</file>
+        <file>res/svg/nodes.svg</file>
+        <file>res/svg/stretch.svg</file>
+        <file>res/svg/head.svg</file>
+        <file>res/svg/waves-peak.svg</file>
+        <file>res/svg/cursor.svg</file>
+        <file>res/svg/pencil.svg</file>
+        <file>res/svg/zoom-horizontal.svg</file>
+        <file>res/svg/zoom-vertical.svg</file>
     </qresource>
 </RCC>

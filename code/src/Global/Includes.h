@@ -31,7 +31,7 @@
 #include "Utils.h"
 
 // Mac OS X
-#ifdef __APPLE__
+#ifdef Q_OS_MAC
     #include <AudioToolbox/AudioToolbox.h>
     #include <ApplicationServices/ApplicationServices.h>
 #endif

@@ -2,13 +2,14 @@
 #define TOGGLEBUTTON_H
 
 #include <Global/Includes.h>
+#include <Widgets/Icon.h>
 
 class ToggleButton : public QWidget
 {
     Q_OBJECT
 public:
-    ToggleButton(const QString &iconUrl, uint layoutMargin=11, const QColor &iconColor=QColor("#FFFFFF"));
-    void setIconColor(QColor color);
+    ToggleButton(Icon *icon, unsigned int layoutMargin=11, const QSize &fixedSize = QSize(38,38));
+    ToggleButton(unsigned int verticalMargin,Icon *icon, const QString &extraClass="dark blue");
     void setActive(bool mode);
     bool isActive();
 signals:
@@ -16,9 +17,8 @@ signals:
 
 
 private:
-    QHBoxLayout *layout = new QHBoxLayout();
-    QLabel *_icon = new QLabel();
-    QPixmap _pixmap;
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    Icon *_icon;
     bool _active = false;
 
     void mousePressEvent(QMouseEvent *event) override;

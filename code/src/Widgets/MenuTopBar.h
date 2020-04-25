@@ -8,6 +8,7 @@ class MenuTopBar : public QWidget
     Q_OBJECT
 public:
     explicit MenuTopBar();
+    QHBoxLayout *horizontalLayout = new QHBoxLayout(this);
 
 signals:
 

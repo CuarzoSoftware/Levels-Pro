@@ -1,7 +1,8 @@
 #include "ToggleButton.h"
 #include "../Audio/Test.h"
 
-ToggleButton::ToggleButton(const QString &iconUrl, uint layoutMargin, const QColor &iconColor)
+// Constructor I
+ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &fixedSize)
 {
     // Permite aplicar color de fondo
     setAttribute(Qt::WA_StyledBackground, true);
@@ -10,49 +11,44 @@ ToggleButton::ToggleButton(const QString &iconUrl, uint layoutMargin, const QCol
     setProperty("class","toggleButton");
 
     // Asigna una altura fija
-    setFixedSize(38,38);
+    setFixedSize(fixedSize);
 
     // Ajusta el layout
     layout->setMargin(layoutMargin);
 
-    // Asigna el layout
-    setLayout(layout);
-
     // Eventos del mouse
     setMouseTracking(true);
-    _icon->setMouseTracking(true);
 
     // Crea el pixmap
-    _pixmap = QIcon(iconUrl).pixmap(64,64);
-
-    // Ajusta el tamaño de la imagen
-    _icon->setScaledContents(true);
-
-    // Le asigna el color
-    setIconColor(iconColor);
+    _icon = icon;
 
     // Asigna el icono al layout
     layout->addWidget(_icon);
 }
 
-
-
-void ToggleButton::setIconColor(QColor color)
+// Constructor II
+ToggleButton::ToggleButton(unsigned int verticalMargin, Icon *icon, const QString &extraClass)
 {
+    // Permite aplicar color de fondo
+    setAttribute(Qt::WA_StyledBackground, true);
 
-    QImage tmp = _pixmap.toImage();
+    // Asigna la clase para los estilos
+    setProperty("class","toggleButton "+extraClass);
 
-    for(int y = 0; y < tmp.height(); y++)
-    {
-        for(int x= 0; x < tmp.width(); x++)
-        {
-            color.setAlpha(tmp.pixelColor(x,y).alpha());
-            tmp.setPixelColor(x,y,color);
-        }
-    }
-    _icon->setPixmap(QPixmap::fromImage(tmp));
+    // Ajusta el layout
+    layout->setContentsMargins(8,verticalMargin,8,verticalMargin);
+    layout->setSizeConstraint(QLayout::SetFixedSize);
 
+    // Eventos del mouse
+    setMouseTracking(true);
+
+    // Crea el pixmap
+    _icon = icon;
+
+    // Asigna el icono al layout
+    layout->addWidget(_icon);
 }
+
 
 void ToggleButton::setActive(bool mode)
 {

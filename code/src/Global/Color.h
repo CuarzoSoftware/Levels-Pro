@@ -90,6 +90,7 @@ public:
     static QColor EDWARD(){return QColor("#ABB7B7");};
     static QColor LYNCH(){return QColor("#6C7A89");};
     static QColor CASCADE(){return QColor("#95A5A6");};
+    static QColor WHITE(){return QColor("#FFFFFF");};
 };
 
 #endif // COLOR_H
