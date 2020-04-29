@@ -4,6 +4,7 @@
 #include <Global/Includes.h>
 #include <Widgets/Icon.h>
 
+
 class ToggleButton : public QWidget
 {
     Q_OBJECT

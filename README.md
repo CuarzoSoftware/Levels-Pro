@@ -18,3 +18,8 @@ Levels Pro uses the best audio libraries avaliable for each platform, in order t
 The QT framework was choosen to deliver a standar graphical user interface for each platform release.
 
 
+## Learn
+
+[https://manual.audacityteam.org/man/sample_format_bit_depth.html](https://manual.audacityteam.org/man/sample_format_bit_depth.html)<br>
+[https://es.wikipedia.org/wiki/Endianness](https://es.wikipedia.org/wiki/Endianness)<br>
+[https://forum.juce.com/t/opencl-gpu-acceleration/19583](https://forum.juce.com/t/opencl-gpu-acceleration/19583)

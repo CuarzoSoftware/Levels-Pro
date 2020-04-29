@@ -18,11 +18,13 @@ macx {
     QMAKE_LFLAGS += -F /System/Library/Frameworks/CoreAudio.framework/
     QMAKE_LFLAGS += -F /System/Library/Frameworks/AudioToolBox.framework/
     QMAKE_LFLAGS += -F /System/Library/Frameworks/AudioUnit.framework/
+    QMAKE_LFLAGS += -F /System/Library/Frameworks/AppKit.framework/
 
     LIBS += -framework CoreFoundation
     LIBS += -framework CoreAudio
     LIBS += -framework AudioToolbox
     LIBS += -framework AudioUnit
+    LIBS += -framework AppKit
 
     HEADERS += \
     src/Audio/AudioImporter.h \
@@ -30,6 +32,8 @@ macx {
 
     SOURCES += \
         src/Audio/AudioImporter.cpp \
+
+    OBJECTIVE_SOURCES += src/Audio/Test.mm \
 }
 
 # Linux
@@ -51,6 +55,7 @@ RESOURCES += \
     levels.qrc
 
 HEADERS += \
+    src/Audio/AUPluginUI.h \
     src/Global/Color.h \
     src/Global/Includes.h \
     src/Global/Utils.h \
@@ -66,6 +71,7 @@ HEADERS += \
     src/UI/Mixer/MixerMenu.h \
     src/UI/Notes/NotesMenu.h \
     src/UI/Tracks/TracksMenu.h \
+    src/UI/Tracks/TracksMenuTopBar.h \
     src/Widgets/CompactContainer.h \
     src/Widgets/Icon.h \
     src/Widgets/MainMenu.h \
@@ -75,6 +81,7 @@ HEADERS += \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
+    src/Audio/AUPluginUI.mm \
     src/Global/Utils.cpp \
     src/UI/Editor/EditorMenu.cpp \
     src/UI/Inspector/InspectorMenu.cpp \
@@ -88,6 +95,7 @@ SOURCES += \
     src/UI/Mixer/MixerMenu.cpp \
     src/UI/Notes/NotesMenu.cpp \
     src/UI/Tracks/TracksMenu.cpp \
+    src/UI/Tracks/TracksMenuTopBar.cpp \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/MainMenu.cpp \

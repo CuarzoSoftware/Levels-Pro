@@ -70,5 +70,6 @@
         <file>res/svg/pencil.svg</file>
         <file>res/svg/zoom-horizontal.svg</file>
         <file>res/svg/zoom-vertical.svg</file>
+        <file>res/fonts/HelveticaNeue.ttc</file>
     </qresource>
 </RCC>
