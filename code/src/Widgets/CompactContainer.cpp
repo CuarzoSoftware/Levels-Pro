@@ -1,4 +1,5 @@
 #include "CompactContainer.h"
+#include <Global/Utils.h>
 
 // Constructor
 CompactContainer::CompactContainer(QWidget *parent)

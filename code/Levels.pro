@@ -11,8 +11,8 @@ INCLUDEPATH += $$PWD/src
 
 # Mac OS X
 macx {
-    ICON = res/icon.icns
-    QMAKE_INFO_PLIST = res/Info.plist
+    ICON = res/icons/icon.icns
+    QMAKE_INFO_PLIST = res/mac/Info.plist
 
     QMAKE_LFLAGS += -F /System/Library/Frameworks/CoreFoundation.framework/
     QMAKE_LFLAGS += -F /System/Library/Frameworks/CoreAudio.framework/
@@ -56,8 +56,8 @@ RESOURCES += \
 
 HEADERS += \
     src/Audio/AUPluginUI.h \
+    src/Audio/Core.h \
     src/Global/Color.h \
-    src/Global/Includes.h \
     src/Global/Utils.h \
     src/UI/Editor/EditorMenu.h \
     src/UI/Inspector/InspectorMenu.h \
@@ -70,8 +70,11 @@ HEADERS += \
     src/UI/Media/MediaMenu.h \
     src/UI/Mixer/MixerMenu.h \
     src/UI/Notes/NotesMenu.h \
+    src/UI/Tracks/TrackController.h \
+    src/UI/Tracks/TracksLeftMenu.h \
     src/UI/Tracks/TracksMenu.h \
     src/UI/Tracks/TracksMenuTopBar.h \
+    src/UI/Tracks/TracksRightMenu.h \
     src/Widgets/CompactContainer.h \
     src/Widgets/Icon.h \
     src/Widgets/MainMenu.h \
@@ -82,6 +85,7 @@ HEADERS += \
 
 SOURCES += \
     src/Audio/AUPluginUI.mm \
+    src/Audio/Core.cpp \
     src/Global/Utils.cpp \
     src/UI/Editor/EditorMenu.cpp \
     src/UI/Inspector/InspectorMenu.cpp \
@@ -94,8 +98,11 @@ SOURCES += \
     src/UI/Media/MediaMenu.cpp \
     src/UI/Mixer/MixerMenu.cpp \
     src/UI/Notes/NotesMenu.cpp \
+    src/UI/Tracks/TrackController.cpp \
+    src/UI/Tracks/TracksLeftMenu.cpp \
     src/UI/Tracks/TracksMenu.cpp \
     src/UI/Tracks/TracksMenuTopBar.cpp \
+    src/UI/Tracks/TracksRightMenu.cpp \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/MainMenu.cpp \

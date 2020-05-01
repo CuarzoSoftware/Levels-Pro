@@ -1,7 +1,8 @@
 #ifndef COMPACTCONTAINER_H
 #define COMPACTCONTAINER_H
 
-#include <Global/Includes.h>
+#include <QWidget>
+#include <QHBoxLayout>
 
 class CompactContainer : public QWidget
 {

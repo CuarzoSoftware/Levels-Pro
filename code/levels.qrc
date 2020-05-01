@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/Info.plist</file>
-        <file>res/levels.icns</file>
-        <file>res/stylesheet.qss</file>
         <file>res/svg/open-box.svg</file>
         <file>res/svg/inspector.svg</file>
         <file>res/svg/tools.svg</file>
@@ -52,7 +49,6 @@
         <file>res/svg/volume-control-1.svg</file>
         <file>res/svg/volume-control.svg</file>
         <file>res/svg/warning.svg</file>
-        <file>res/icon.icns</file>
         <file>res/svg/scissors.svg</file>
         <file>res/svg/circle.svg</file>
         <file>res/svg/list.svg</file>
@@ -71,5 +67,14 @@
         <file>res/svg/zoom-horizontal.svg</file>
         <file>res/svg/zoom-vertical.svg</file>
         <file>res/fonts/HelveticaNeue.ttc</file>
+        <file>res/icons/icon.icns</file>
+        <file>res/icons/levels.icns</file>
+        <file>res/mac/Info.plist</file>
+        <file>res/svg/duplicate.svg</file>
+        <file>res/svg/plus-circle.svg</file>
+        <file>res/svg/window-down.svg</file>
+        <file>res/svg/window-up.svg</file>
+        <file>res/styles/tracks.qss</file>
+        <file>res/styles/widgets.qss</file>
     </qresource>
 </RCC>

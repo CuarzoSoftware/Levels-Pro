@@ -4,8 +4,8 @@
 #include <Widgets/MenuTopBar.h>
 #include <Widgets/MainMenu.h>
 #include <Widgets/CompactContainer.h>
-#include <Widgets/Select.h>
 #include <Widgets/ToggleButton.h>
+#include <Widgets/Select.h>
 
 class TracksMenuTopBar : public MenuTopBar
 {

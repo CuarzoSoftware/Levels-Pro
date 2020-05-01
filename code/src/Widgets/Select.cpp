@@ -1,4 +1,5 @@
 #include "Select.h"
+#include <QVariant>
 
 Select::Select(const QString &title, uint verticalMargin)
 {

@@ -1,4 +1,5 @@
 #include "Icon.h"
+#include <QIcon>
 
 // Constructor I
 Icon::Icon(const QString &iconURL, const QColor &color)

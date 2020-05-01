@@ -1,7 +1,8 @@
 #ifndef AUDIOIMPORTER_H
 #define AUDIOIMPORTER_H
 
-#include <Global/Includes.h>
+#include <QString>
+#include <chrono>
 
 class AudioImporter
 {

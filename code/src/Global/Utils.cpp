@@ -1,4 +1,6 @@
 #include "Utils.h"
+#include <QVariant>
+#include <QStyle>
 
 // Añade una clase de estilo a un widget
 void Utils::addWidgetClass(QWidget *widget, const QString &className)

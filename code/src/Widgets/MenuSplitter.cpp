@@ -1,4 +1,5 @@
 #include "MenuSplitter.h"
+#include <QVariant>
 
 MenuSplitter::MenuSplitter(Qt::Orientation orientation)
 {

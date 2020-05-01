@@ -1,10 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <Global/Includes.h>
-
+#include <QMainWindow>
 #include <Widgets/MenuSplitter.h>
-
 #include <UI/MainWindow/TopBar.h>
 #include <UI/MainWindow/MainToolBar.h>
 #include <UI/Library/LibraryMenu.h>
@@ -22,9 +20,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QApplication *app);
-
-    QApplication *levels;
+    MainWindow();
 
     QWidget *mainWidget = new QWidget();
     TopBar *topBar = new TopBar();
@@ -60,7 +56,6 @@ public slots:
 
 private:
     void connectButtons();
-    void loadDefaultStyle();
 
 
 };

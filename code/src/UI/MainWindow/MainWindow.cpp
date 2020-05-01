@@ -1,13 +1,11 @@
 #include "MainWindow.h"
+#include <QApplication>
+#include <QScreen>
+#include <Global/Utils.h>
 
 // Constructor
-MainWindow::MainWindow(QApplication *app)
+MainWindow::MainWindow()
 {
-    // Almacena una instancia de la aplicación
-    levels = app;
-
-    // Carga los estilos por defecto
-    loadDefaultStyle();
 
     // Conecta las señales de los botones
     connectButtons();
@@ -54,6 +52,8 @@ MainWindow::MainWindow(QApplication *app)
     horizontalSplitter->addWidget(notesMenu);
     horizontalSplitter->addWidget(loopsMenu);
     horizontalSplitter->addWidget(mediaMenu);
+
+    libraryMenu->show();
 
 
 
@@ -115,15 +115,7 @@ void MainWindow::connectButtons()
     connect(topBar->mediaBtn,&ToggleButton::changed,this,&MainWindow::mediaBtnChanged);
 }
 
-// Carga los estilos por defecto
-void MainWindow::loadDefaultStyle()
-{
-    QFile File(":/res/stylesheet.qss");
-    File.open(QFile::ReadOnly);
-    QString StyleSheet = QLatin1String(File.readAll());
 
-    levels->setStyleSheet(StyleSheet);
-}
 
 MainWindow::~MainWindow()
 {

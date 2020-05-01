@@ -1,8 +1,8 @@
 #ifndef TOGGLEBUTTON_H
 #define TOGGLEBUTTON_H
 
-#include <Global/Includes.h>
 #include <Widgets/Icon.h>
+#include <QHBoxLayout>
 
 
 class ToggleButton : public QWidget

@@ -1,4 +1,5 @@
 #include "MenuTopBar.h"
+#include <QVariant>
 
 MenuTopBar::MenuTopBar()
 {

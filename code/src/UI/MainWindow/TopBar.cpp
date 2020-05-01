@@ -1,4 +1,5 @@
 #include "TopBar.h"
+#include <QVariant>
 
 TopBar::TopBar()
 {

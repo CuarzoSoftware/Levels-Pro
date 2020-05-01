@@ -1,7 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <Global/Includes.h>
+#include <QWidget>
 
 class Utils
 {

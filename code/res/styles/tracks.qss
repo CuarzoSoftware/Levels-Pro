@@ -1,0 +1,38 @@
+TracksMenu QSplitter::handle
+{
+    background-color: #0F0F0F;
+}
+.tracksLeftMenu
+{
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:3px;
+    background-color:#616161;
+}
+TracksLeftMenu .menuTopBar
+{
+    border-radius:0px;
+    border-bottom:1px solid #0F0F0F;
+}
+TracksLeftMenu .scrollArea
+{
+    border:none;
+}
+.tracksControllerContainer
+{
+    background-color:#616161;
+}
+.trackController
+{
+    background-color:#616161;
+    border-bottom:1px solid #414141;
+}
+TracksRightMenu
+{
+    background-color:#2E2E2E;
+}
+TracksLeftMenu .scrollArea QWidget
+{
+    background-color:#616161;
+}

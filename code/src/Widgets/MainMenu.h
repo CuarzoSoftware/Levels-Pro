@@ -1,7 +1,8 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include <Global/Includes.h>
+#include <QFrame>
+#include <QVBoxLayout>
 
 class MainMenu : public QFrame
 {

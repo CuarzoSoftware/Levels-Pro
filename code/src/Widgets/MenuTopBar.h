@@ -1,7 +1,8 @@
 #ifndef MENUTOPBAR_H
 #define MENUTOPBAR_H
 
-#include <Global/Includes.h>
+#include <QWidget>
+#include <QHBoxLayout>
 
 class MenuTopBar : public QWidget
 {

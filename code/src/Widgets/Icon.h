@@ -1,7 +1,8 @@
 #ifndef ICON_H
 #define ICON_H
 
-#include <Global/Includes.h>
+#include <QLabel>
+#include <Global/Color.h>
 
 class Icon : public QLabel
 {

@@ -1,10 +1,16 @@
 #ifndef TEST_H
 #define TEST_H
 
-
-#include <Global/Includes.h>
 #include <Audio/AudioImporter.h>
 #include <Audio/Test.h>
+
+#include <QDebug>
+#include <QtMath>
+#include <QApplication>
+
+#include <cstring>
+#include <thread>
+
 
 
 struct SoundState {

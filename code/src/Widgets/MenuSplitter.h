@@ -1,7 +1,7 @@
 #ifndef MENUSPLITTER_H
 #define MENUSPLITTER_H
 
-#include <Global/Includes.h>
+#include <QSplitter>
 
 class MenuSplitter : public QSplitter
 {

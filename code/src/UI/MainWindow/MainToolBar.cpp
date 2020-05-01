@@ -1,4 +1,5 @@
 #include "MainToolBar.h"
+#include <QVariant>
 
 MainToolBar::MainToolBar()
 {

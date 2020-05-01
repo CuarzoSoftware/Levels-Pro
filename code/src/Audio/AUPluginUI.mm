@@ -25,7 +25,7 @@
 
 - (void)auViewResized:(NSNotification *)notification
 {
-
+    (void) notification;
     if(_auWrap->in_live_resize) return;
 
     NSUInteger old_auto_resize = [_auWrap->view autoresizingMask];

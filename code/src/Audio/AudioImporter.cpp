@@ -1,5 +1,6 @@
 #include "AudioImporter.h"
-#include "../Global/Includes.h"
+#include <QFile>
+#include <QDebug>
 
 AudioImporter::AudioImporter(const QString &url)
 {

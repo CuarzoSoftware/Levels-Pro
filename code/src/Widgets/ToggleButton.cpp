@@ -1,4 +1,6 @@
 #include "ToggleButton.h"
+#include <Global/Utils.h>
+#include <QVariant>
 
 // Constructor I
 ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &fixedSize)

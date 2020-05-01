@@ -1,4 +1,5 @@
 #include "MainMenu.h"
+#include <QVariant>
 
 MainMenu::MainMenu()
 {

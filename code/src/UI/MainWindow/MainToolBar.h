@@ -1,7 +1,7 @@
 #ifndef MAINTOOLBAR_H
 #define MAINTOOLBAR_H
 
-#include <Global/Includes.h>
+#include <QWidget>
 
 class MainToolBar : public QWidget
 {
