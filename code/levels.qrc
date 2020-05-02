@@ -76,5 +76,7 @@
         <file>res/svg/window-up.svg</file>
         <file>res/styles/tracks.qss</file>
         <file>res/styles/widgets.qss</file>
+        <file>res/shaders/ruler/fshader.glsl</file>
+        <file>res/shaders/ruler/vshader.glsl</file>
     </qresource>
 </RCC>

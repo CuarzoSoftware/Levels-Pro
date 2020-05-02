@@ -15,7 +15,7 @@ TracksLeftMenu .menuTopBar
     border-radius:0px;
     border-bottom:1px solid #0F0F0F;
 }
-TracksLeftMenu .scrollArea
+.scrollArea
 {
     border:none;
 }

@@ -1,7 +1,7 @@
 #ifndef TRACKSRIGHTMENU_H
 #define TRACKSRIGHTMENU_H
 
-#include <QScrollArea>
+#include <UI/Tracks/TracksRuler.h>
 #include <QVBoxLayout>
 
 class TracksRightMenu : public QFrame
@@ -10,6 +10,7 @@ class TracksRightMenu : public QFrame
 public:
     explicit TracksRightMenu();
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
+    TracksRuler *ruler = new TracksRuler();
 
 signals:
 

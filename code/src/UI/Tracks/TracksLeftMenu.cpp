@@ -1,5 +1,6 @@
 #include "TracksLeftMenu.h"
 #include <QVariant>
+#include <QScrollBar>
 
 TracksLeftMenu::TracksLeftMenu(TracksMenu *tracksMenu)
 {
@@ -32,6 +33,7 @@ TracksLeftMenu::TracksLeftMenu(TracksMenu *tracksMenu)
     tracksScrollArea->setProperty("class","scrollArea");
     tracksScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     tracksScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    tracksScrollArea->verticalScrollBar()->setSingleStep(1);
 
 
     // Configure tracks vertical layout
