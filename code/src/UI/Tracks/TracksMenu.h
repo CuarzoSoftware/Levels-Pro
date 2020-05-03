@@ -7,11 +7,13 @@
 
 #include <QSplitter>
 
+class Core;
+
 class TracksMenu : public MainMenu
 {
     Q_OBJECT
 public:
-    explicit TracksMenu();
+    explicit TracksMenu(Core *_core);
 
     // Tracks top toolbar
     TracksMenuTopBar *topBar = new TracksMenuTopBar();
@@ -25,7 +27,9 @@ public:
     // Right Menu ( Tracks and regions View )
     TracksRightMenu *rightMenu = new TracksRightMenu();
 
+    void wheelEvent(QWheelEvent*event);
 
+    Core *core;
 
 signals:
 

@@ -15,12 +15,14 @@
 #include <UI/Loops/LoopsMenu.h>
 #include <UI/Media/MediaMenu.h>
 
+class Core;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow();
+    MainWindow(Core *_core);
 
     QWidget *mainWidget = new QWidget();
     TopBar *topBar = new TopBar();
@@ -30,7 +32,7 @@ public:
     InspectorMenu *inspectorMenu = new InspectorMenu();
     MixerMenu *mixerMenu = new MixerMenu();
     EditorMenu *editorMenu = new EditorMenu();
-    TracksMenu *tracksMenu = new TracksMenu();
+    TracksMenu *tracksMenu;
     ListsEditorMenu *listsEditorMenu = new ListsEditorMenu();
     NotesMenu *notesMenu = new NotesMenu();
     LoopsMenu *loopsMenu = new LoopsMenu();
@@ -40,7 +42,7 @@ public:
     MenuSplitter *horizontalSplitter = new MenuSplitter(Qt::Horizontal);
     MenuSplitter *verticalSplitter = new MenuSplitter(Qt::Vertical);
 
-
+    Core *core;
 
     ~MainWindow();
 

@@ -9,31 +9,65 @@ Ruler::Ruler()
 
 void Ruler::initializeGL()
 {
+    f = QOpenGLContext::currentContext()->functions();
     glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
     initShaders();
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, quad);
-    glEnableVertexAttribArray(0);
+    f->glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, quad);
+    f->glEnableVertexAttribArray(0);
     initialized = true;
     setBackgroundColor(backgroundColor);
+    setBeatsPerBar(beatsPerBar);
+    setBarSize(barSize);
 }
 
 void Ruler::resizeGL(int w, int h)
 {
-    glViewport(0, 0, w, h);
+
 }
 
 void Ruler::paintGL()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    makeCurrent();
+    f->glClear(GL_COLOR_BUFFER_BIT);
+    f->glUniform1f(beatsUniform,beatsPerBar);
+    f->glUniform3f(backgroundColorUniform,backgroundColor.redF(),backgroundColor.greenF(),backgroundColor.blueF());
+    f->glUniform1f(barSizeUniform,barSize);
+    f->glUniform1f(xScrollUniform,xScroll);
+    f->glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    doneCurrent();
 }
 
 void Ruler::setBackgroundColor(const QColor &color)
 {
     backgroundColor = color;
     if(initialized)
-        glUniform3f(backgroundColorUniform,backgroundColor.redF(),backgroundColor.greenF(),backgroundColor.blueF());
+        update();
+
 }
+
+void Ruler::setBarSize(GLfloat barSizePixels)
+{
+    barSize = barSizePixels;
+    if(initialized)
+        update();
+
+}
+
+void Ruler::setBeatsPerBar(GLfloat beats)
+{
+    beatsPerBar = beats;
+    if(initialized)
+        update();
+}
+
+void Ruler::setXScroll(GLfloat pos)
+{
+    xScroll = pos;
+    if(initialized)
+        update();
+}
+
+
 
 void Ruler::initShaders()
 {
@@ -56,6 +90,9 @@ void Ruler::initShaders()
     if (!program->bind())
         close();
 
-    backgroundColorUniform = glGetUniformLocation(program->programId(),"backgroundColor");
+    backgroundColorUniform = f->glGetUniformLocation(program->programId(),"backgroundColor");
+    barSizeUniform = f->glGetUniformLocation(program->programId(),"barSize");
+    beatsUniform = f->glGetUniformLocation(program->programId(),"beats");
+    xScrollUniform = f->glGetUniformLocation(program->programId(),"xScroll");
 
 }

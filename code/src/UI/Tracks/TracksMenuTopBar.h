@@ -6,6 +6,7 @@
 #include <Widgets/CompactContainer.h>
 #include <Widgets/ToggleButton.h>
 #include <Widgets/Select.h>
+#include <QSlider>
 
 class TracksMenuTopBar : public MenuTopBar
 {
@@ -34,6 +35,9 @@ public:
     CompactContainer *zoomContainer = new CompactContainer();
     ToggleButton *verticalZoomBtn = new ToggleButton(5,new Icon(":res/svg/zoom-vertical.svg",QSize(16,16)));
     ToggleButton *horizontalZoomBtn = new ToggleButton(5,new Icon(":res/svg/zoom-horizontal.svg",QSize(16,16)));
+
+
+    QSlider *slider = new QSlider(Qt::Horizontal);
 
 signals:
 

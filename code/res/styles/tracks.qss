@@ -2,6 +2,11 @@ TracksMenu QSplitter::handle
 {
     background-color: #0F0F0F;
 }
+TrackBand
+{
+    background-color:transparent;
+    border-bottom:1px solid #222222;
+}
 .tracksLeftMenu
 {
     border-top-left-radius:0px;
@@ -14,10 +19,6 @@ TracksLeftMenu .menuTopBar
 {
     border-radius:0px;
     border-bottom:1px solid #0F0F0F;
-}
-.scrollArea
-{
-    border:none;
 }
 .tracksControllerContainer
 {

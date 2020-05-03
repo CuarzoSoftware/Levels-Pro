@@ -11,6 +11,10 @@ class Ruler : public QOpenGLWidget
 public:
     explicit Ruler();
     void setBackgroundColor(const QColor &color);
+    void setBarSize(GLfloat barSizePixels);
+    void setBeatsPerBar(GLfloat beats);
+    void setXScroll(GLfloat pos);
+
 
 protected:
     void initializeGL() override;
@@ -19,9 +23,13 @@ protected:
 
 private:
     bool initialized = false;
+    GLfloat barSize = 200.0f;
+    GLfloat beatsPerBar = 4.0f;
+    GLfloat xScroll = 0.0f;
     QColor backgroundColor = QColor("#333333");
     QOpenGLShaderProgram *program;
-    GLint backgroundColorUniform;
+    QOpenGLFunctions *f;
+    GLint backgroundColorUniform,barSizeUniform,beatsUniform,xScrollUniform;
     GLfloat quad[8] =
     {
         -1.0f, -1.0f,

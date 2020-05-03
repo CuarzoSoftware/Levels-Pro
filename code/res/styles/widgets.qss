@@ -3,6 +3,10 @@ QLabel
     color:white;
     font-size:12px;
 }
+.scrollArea
+{
+    border:none;
+}
 .mainWindow
 {
     background:#8F8F8F;

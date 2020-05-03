@@ -13,16 +13,17 @@ TracksRuler::TracksRuler()
     // Sets the central widget
     setWidget(scrollWidget);
     setWidgetResizable(true);
+    scrollWidget->setFixedWidth(3000);
 
     // Set the rulers rect
     rulersLayout->setMargin(0);
     rulersLayout->setSpacing(0);
-    rulersLayout->addWidget(topRuler);
-    rulersLayout->addWidget(bottomRuler);
-    topRuler->setFixedWidth(3000);
+
+    topRuler->setParent(scrollWidget);
+    bottomRuler->setParent(scrollWidget);
     topRuler->setFixedHeight(20);
-    bottomRuler->setFixedWidth(3000);
     bottomRuler->setFixedHeight(20);
+    bottomRuler->move(0,20);
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

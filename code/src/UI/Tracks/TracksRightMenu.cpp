@@ -1,4 +1,5 @@
 #include "TracksRightMenu.h"
+#include <QVariant>
 
 TracksRightMenu::TracksRightMenu()
 {
@@ -10,5 +11,22 @@ TracksRightMenu::TracksRightMenu()
     verticalLayout->setSpacing(0);
 
     verticalLayout->addWidget(ruler);
-    verticalLayout->addStretch(1);
+    verticalLayout->addWidget(tracksScroll);
+
+
+
+
+    tracksRuler->setParent(scrollWidget);
+    scrollWidget->setFixedWidth(3000);
+
+    tracksLayout->setMargin(0);
+    tracksLayout->setSpacing(0);
+    tracksLayout->addSpacing(100);
+    tracksLayout->addStretch(1);
+}
+
+
+void TracksRightMenu::addTrack(TrackBand *newTrack)
+{
+    tracksLayout->insertWidget(0,newTrack);
 }

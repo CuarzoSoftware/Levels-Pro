@@ -40,9 +40,6 @@ public:
     ToggleButton *duplicateTrackBtn = new ToggleButton(6,new Icon(":res/svg/duplicate.svg",QSize(13,13)));
     ToggleButton *globalTracksBtn = new ToggleButton(6,new Icon(":res/svg/window-down.svg",QSize(13,13)));
 
-    // Track Controllets List
-    QList<TrackController*>trackControllers;
-
     // Adds a new track
     void addTrack(TrackController *newTrackController);
 

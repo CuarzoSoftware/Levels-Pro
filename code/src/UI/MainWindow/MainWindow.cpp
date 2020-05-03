@@ -2,10 +2,13 @@
 #include <QApplication>
 #include <QScreen>
 #include <Global/Utils.h>
+#include <Audio/Core.h>
 
 // Constructor
-MainWindow::MainWindow()
+MainWindow::MainWindow(Core *_core)
 {
+    core = _core;
+    tracksMenu = new TracksMenu(core);
 
     // Conecta las señales de los botones
     connectButtons();
