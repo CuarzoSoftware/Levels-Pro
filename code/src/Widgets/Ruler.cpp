@@ -1,98 +1,137 @@
 #include "Ruler.h"
-#include <QOpenGLContext>
 
 
-Ruler::Ruler()
+Ruler::Ruler(RulerType type)
 {
-
-}
-
-void Ruler::initializeGL()
-{
-    f = QOpenGLContext::currentContext()->functions();
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-    initShaders();
-    f->glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, quad);
-    f->glEnableVertexAttribArray(0);
-    initialized = true;
-    setBackgroundColor(backgroundColor);
-    setBeatsPerBar(beatsPerBar);
-    setBarSize(barSize);
-}
-
-void Ruler::resizeGL(int w, int h)
-{
-
-}
-
-void Ruler::paintGL()
-{
-    makeCurrent();
-    f->glClear(GL_COLOR_BUFFER_BIT);
-    f->glUniform1f(beatsUniform,beatsPerBar);
-    f->glUniform3f(backgroundColorUniform,backgroundColor.redF(),backgroundColor.greenF(),backgroundColor.blueF());
-    f->glUniform1f(barSizeUniform,barSize);
-    f->glUniform1f(xScrollUniform,xScroll);
-    f->glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-    doneCurrent();
+    rulerType = type;
 }
 
 void Ruler::setBackgroundColor(const QColor &color)
 {
-    backgroundColor = color;
-    if(initialized)
-        update();
-
+    backgroundBrush.setColor(color);
 }
 
-void Ruler::setBarSize(GLfloat barSizePixels)
+void Ruler::setBarSize(uint barSizePixels)
 {
     barSize = barSizePixels;
-    if(initialized)
-        update();
-
 }
 
-void Ruler::setBeatsPerBar(GLfloat beats)
+void Ruler::setBeatsPerBar(uint beats)
 {
     beatsPerBar = beats;
-    if(initialized)
-        update();
 }
 
-void Ruler::setXScroll(GLfloat pos)
+void Ruler::numberRulerPaint()
 {
-    xScroll = pos;
-    if(initialized)
-        update();
+    uint w = width();
+    uint h = height();
+
+    QPainter painter(this);
+
+    // Draw background
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(backgroundBrush);
+    painter.drawRect(0,0,w,h);
+
+    // Draw Bar Lines
+    uint x;
+    uint lines = w/barSize;
+    for(uint i = 0; i < lines; i++)
+    {
+        painter.setPen(barPen);
+        x = i*barSize;
+        painter.drawLine(x, h, x, 0);
+
+        // Draw text
+        painter.drawText(x+8,h-4,QString::number(i+1));
+    }
+
+    // Draw border bottom
+    painter.setPen(borderPen);
+    painter.drawLine(0, h, w, h);
+}
+
+void Ruler::marksRulerPaint()
+{
+    uint w = width();
+    uint h = height();
+
+    QPainter painter(this);
+
+    // Draw background
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(backgroundBrush);
+    painter.drawRect(0,0,w,h);
+
+    // Draw Bar Lines
+    uint x,beatX;
+    uint beatSize = barSize/beatsPerBar;
+    uint lines = w/barSize;
+    for(uint i = 0; i < lines; i++)
+    {
+        painter.setPen(barPen);
+        x = i*barSize;
+        painter.drawLine(x, h, x, 0);
+
+        // Draw beat lines
+        painter.setPen(beatPen);
+        for(uint j = 1;j<beatsPerBar; j++)
+        {
+            beatX = j*beatSize + x;
+            painter.drawLine(beatX, h, beatX, h - h/4);
+        }
+    }
+
+    // Draw border bottom
+    painter.setPen(borderPen);
+    painter.drawLine(0, h, w, h);
+}
+
+void Ruler::tracksRulerPaint()
+{
+    uint w = width();
+    uint h = height();
+
+    QPainter painter(this);
+
+    // Draw background
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(backgroundBrush);
+    painter.drawRect(0,0,w,h);
+
+    // Draw Bar Lines
+    uint x;
+    uint lines = w/barSize;
+    painter.setPen(barPen);
+
+    for(uint i = 0; i < lines; i++)
+    {
+        x = i*barSize;
+        painter.drawLine(x, h, x, 0);
+    }
+
 }
 
 
-
-void Ruler::initShaders()
+void Ruler::paintEvent(QPaintEvent *event)
 {
-    // Creates shader program
-    program = new QOpenGLShaderProgram();
+    Q_UNUSED(event);
 
-    // Compile vertex shader
-    if (!program->addShaderFromSourceFile(QOpenGLShader::Vertex, ":res/shaders/ruler/vshader.glsl"))
-        close();
+    switch(rulerType)
+    {
+        case RulerType::NumberRuler:
+        numberRulerPaint();
+        break;
+        case RulerType::MarksRuler:
+        marksRulerPaint();
+        break;
+        case RulerType::TracksRuler:
+        tracksRulerPaint();
+        break;
+        default:
+        return;
+    }
 
-    // Compile fragment shader
-    if (!program->addShaderFromSourceFile(QOpenGLShader::Fragment, ":res/shaders/ruler/fshader.glsl"))
-        close();
 
-    // Link shader pipeline
-    if (!program->link())
-        close();
-
-    // Bind shader pipeline for use
-    if (!program->bind())
-        close();
-
-    backgroundColorUniform = f->glGetUniformLocation(program->programId(),"backgroundColor");
-    barSizeUniform = f->glGetUniformLocation(program->programId(),"barSize");
-    beatsUniform = f->glGetUniformLocation(program->programId(),"beats");
-    xScrollUniform = f->glGetUniformLocation(program->programId(),"xScroll");
 
 }

@@ -16,8 +16,8 @@ public:
     QVBoxLayout *rulersLayout = new QVBoxLayout(scrollWidget);
 
     // Rulers
-    Ruler *topRuler = new Ruler();
-    Ruler *bottomRuler = new Ruler();
+    Ruler *topRuler = new Ruler(Ruler::RulerType::NumberRuler);
+    Ruler *bottomRuler = new Ruler(Ruler::RulerType::MarksRuler);
 
 signals:
 

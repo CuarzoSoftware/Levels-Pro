@@ -1,43 +1,45 @@
 #ifndef RULER_H
 #define RULER_H
 
-#include <QOpenGLWidget>
-#include <QOpenGLShaderProgram>
-#include <QOpenGLFunctions>
+#include <QWidget>
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
 
-class Ruler : public QOpenGLWidget
+class Ruler : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Ruler();
+    enum RulerType {NumberRuler,MarksRuler,TracksRuler};
+
+    explicit Ruler(RulerType type = RulerType::TracksRuler);
     void setBackgroundColor(const QColor &color);
-    void setBarSize(GLfloat barSizePixels);
-    void setBeatsPerBar(GLfloat beats);
-    void setXScroll(GLfloat pos);
+    void setBarSize(uint barSizePixels);
+    void setBeatsPerBar(uint beats);
+
+
+private:
+    void numberRulerPaint();
+    void marksRulerPaint();
+    void tracksRulerPaint();
+
+    QColor backgroundColor = QColor("#333333");
+    QColor barColor = QColor("#636363");
+    QColor beatColor = QColor("#636363");
+
+    QPen barPen = QPen(QColor("#636363"), 0.5);
+    QPen beatPen = QPen(QColor("#606060"), 0.5);
+    QPen borderPen = QPen(QColor("#171717"), 1.5);
+
+    QBrush backgroundBrush = QBrush(QColor("#333333"));
+    RulerType rulerType;
+
+    uint barSize = 60;
+    uint beatsPerBar = 4;
 
 
 protected:
-    void initializeGL() override;
-    void resizeGL(int w, int h) override;
-    void paintGL() override;
-
-private:
-    bool initialized = false;
-    GLfloat barSize = 200.0f;
-    GLfloat beatsPerBar = 4.0f;
-    GLfloat xScroll = 0.0f;
-    QColor backgroundColor = QColor("#333333");
-    QOpenGLShaderProgram *program;
-    QOpenGLFunctions *f;
-    GLint backgroundColorUniform,barSizeUniform,beatsUniform,xScrollUniform;
-    GLfloat quad[8] =
-    {
-        -1.0f, -1.0f,
-        -1.0f,  1.0f,
-         1.0f,  1.0f,
-         1.0f, -1.0f
-    };
-    void initShaders();
+   virtual void paintEvent(QPaintEvent *event) override;
 
 };
 

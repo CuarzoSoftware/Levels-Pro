@@ -43,7 +43,7 @@ TracksMenuTopBar::TracksMenuTopBar()
     horizontalLayout->addWidget(zoomContainer);
 
     slider->setTickInterval(1);
-    slider->setRange(64,2048);
+    slider->setRange(0,10000);
 
     horizontalLayout->addWidget(slider);
 }

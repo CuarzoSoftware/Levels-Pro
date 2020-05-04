@@ -79,12 +79,12 @@ HEADERS += \
     src/UI/Tracks/TracksMenuTopBar.h \
     src/UI/Tracks/TracksRightMenu.h \
     src/UI/Tracks/TracksRuler.h \
-    src/UI/Tracks/TracksScroll.h \
     src/Widgets/CompactContainer.h \
     src/Widgets/Icon.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
+    src/Widgets/OpenGLRuler.h \
     src/Widgets/Ruler.h \
     src/Widgets/Select.h \
     src/Widgets/ToggleButton.h
@@ -113,12 +113,12 @@ SOURCES += \
     src/UI/Tracks/TracksMenuTopBar.cpp \
     src/UI/Tracks/TracksRightMenu.cpp \
     src/UI/Tracks/TracksRuler.cpp \
-    src/UI/Tracks/TracksScroll.cpp \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
+    src/Widgets/OpenGLRuler.cpp \
     src/Widgets/Ruler.cpp \
     src/Widgets/Select.cpp \
     src/Widgets/ToggleButton.cpp \

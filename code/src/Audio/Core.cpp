@@ -31,7 +31,6 @@ void Core::run()
 
 
     connect(tracksMenu->topBar->slider,&QSlider::valueChanged,this,&Core::zoomChanged);
-    connect(tracksMenu->rightMenu->tracksScroll,&TracksScroll::scrollResized,this,&Core::tracksScrollResized);
     connect(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar(),&QScrollBar::valueChanged,this,&Core::horizontalScrollChanged);
     connect(tracksMenu->rightMenu->tracksScroll->verticalScrollBar(),&QScrollBar::valueChanged,this,&Core::verticalScrollChanged);
 
@@ -63,32 +62,31 @@ void Core::setHorizontalZoom(float zoom)
 
 void Core::zoomChanged(int value)
 {
-    horizontalZoom = (float)value * 0.001f;
-    tracksMenu->rightMenu->ruler->topRuler->setBarSize(value);
-    tracksMenu->rightMenu->ruler->bottomRuler->setBarSize(value);
-    tracksMenu->rightMenu->tracksRuler->setBarSize(value);
+    float normal = (float)value * 0.0001f;
+    float scrollWidth = (float)tracksMenu->rightMenu->tracksScroll->width();
+    float widgetsWidth = scrollWidth + (50000.f)*normal;
+    float barWidth = widgetsWidth/projectLenght;
 
-    /*
-    tracksMenu->rightMenu->ruler->topRuler->setFixedWidth(value*projectLenght);
-    tracksMenu->rightMenu->ruler->bottomRuler->setFixedWidth(value*projectLenght);
-    tracksMenu->rightMenu->tracksRuler->setFixedWidth(value*projectLenght);
-    */
+    tracksMenu->rightMenu->ruler->topRuler->setBarSize(barWidth);
+    tracksMenu->rightMenu->ruler->bottomRuler->setBarSize(barWidth);
+    tracksMenu->rightMenu->tracksRuler->setBarSize(barWidth);
+
+    tracksMenu->rightMenu->ruler->topRuler->setFixedWidth(widgetsWidth);
+    tracksMenu->rightMenu->ruler->bottomRuler->setFixedWidth(widgetsWidth);
+    tracksMenu->rightMenu->tracksRuler->setFixedWidth(widgetsWidth);
+
 }
 
-void Core::tracksScrollResized(uint width, uint height)
-{
-    tracksMenu->rightMenu->tracksRuler->setFixedSize(width,height);
-    tracksMenu->rightMenu->ruler->topRuler->setFixedWidth(width);
-    tracksMenu->rightMenu->ruler->bottomRuler->setFixedWidth(width);
-}
+
 
 void Core::verticalScrollChanged(int pos)
 {
-    tracksMenu->rightMenu->tracksRuler->move(tracksMenu->rightMenu->tracksRuler->x(),pos);
+    //tracksMenu->rightMenu->tracksRuler->move(tracksMenu->rightMenu->tracksRuler->x(),pos);
 }
 
 void Core::horizontalScrollChanged(int pos)
 {
+    /*
     tracksMenu->rightMenu->tracksRuler->setXScroll(pos);
     tracksMenu->rightMenu->ruler->topRuler->setXScroll(pos);
     tracksMenu->rightMenu->ruler->bottomRuler->setXScroll(pos);
@@ -96,6 +94,7 @@ void Core::horizontalScrollChanged(int pos)
     tracksMenu->rightMenu->tracksRuler->move(pos,tracksMenu->rightMenu->tracksRuler->y());
     tracksMenu->rightMenu->ruler->topRuler->move(pos,tracksMenu->rightMenu->ruler->topRuler->y());
     tracksMenu->rightMenu->ruler->bottomRuler->move(pos,tracksMenu->rightMenu->ruler->bottomRuler->y());
+    */
 }
 
 // Carga los estilos por defecto

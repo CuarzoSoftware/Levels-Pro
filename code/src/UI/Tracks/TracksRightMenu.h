@@ -4,7 +4,7 @@
 #include <UI/Tracks/TracksRuler.h>
 #include <UI/Tracks/TrackBand.h>
 #include <QVBoxLayout>
-#include <UI/Tracks/TracksScroll.h>
+#include <QScrollArea>
 #include <Widgets/Ruler.h>
 
 class TracksRightMenu : public QFrame
@@ -14,10 +14,10 @@ public:
     explicit TracksRightMenu();
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
     TracksRuler *ruler = new TracksRuler();
-    QWidget *scrollWidget = new QWidget();
-    TracksScroll *tracksScroll = new TracksScroll(scrollWidget);
-    Ruler *tracksRuler = new Ruler();
-    QVBoxLayout *tracksLayout = new QVBoxLayout(scrollWidget);
+    QScrollArea *tracksScroll = new QScrollArea();
+    Ruler *tracksRuler = new Ruler(Ruler::RulerType::TracksRuler);
+
+    QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);
 
     // Adds a new track
     void addTrack(TrackBand *newTrack);
