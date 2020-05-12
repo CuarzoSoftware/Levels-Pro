@@ -4,6 +4,15 @@
 Ruler::Ruler(RulerType type)
 {
     rulerType = type;
+
+    // If is the number ruler, sets the font
+    if(rulerType == RulerType::NumberRuler)
+    {
+        QFont font("Helvetica Neue");
+        font.setPixelSize(13);
+        font.setWeight(QFont::Weight::Bold);
+        setFont(font);
+    }
 }
 
 void Ruler::setBackgroundColor(const QColor &color)
@@ -43,7 +52,8 @@ void Ruler::numberRulerPaint()
         painter.drawLine(x, h, x, 0);
 
         // Draw text
-        painter.drawText(x+8,h-4,QString::number(i+1));
+        painter.setPen(textPen);
+        painter.drawText(x+6,h-6,QString::number(i+1));
     }
 
     // Draw border bottom

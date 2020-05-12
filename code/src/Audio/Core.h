@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <UI/MainWindow/MainWindow.h>
+#include <Audio/TimeSettings.h>
 #include <Audio/Track.h>
 #include <QApplication>
 #include <QList>
@@ -16,15 +17,8 @@ public:
     void configure();
     void run();
 
-    // Project Variables
-    uint sampleRate = 44100;
-    float bpm = 120.0f;
-    float projectLenght = 60.0; // In bars
-    uint beatsNumber = 4;
-    uint noteValue = 4;
-
-    // UI
-    float horizontalZoom = 0.0f;
+    // Time settings
+    TimeSettings *timeSettings = new TimeSettings();
 
     // Audio
     void createTrack();

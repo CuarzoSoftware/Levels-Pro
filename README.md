@@ -23,3 +23,4 @@ The QT framework was choosen to deliver a standar graphical user interface for e
 [https://manual.audacityteam.org/man/sample_format_bit_depth.html](https://manual.audacityteam.org/man/sample_format_bit_depth.html)<br>
 [https://es.wikipedia.org/wiki/Endianness](https://es.wikipedia.org/wiki/Endianness)<br>
 [https://forum.juce.com/t/opencl-gpu-acceleration/19583](https://forum.juce.com/t/opencl-gpu-acceleration/19583)
+[https://www.fransabsil.nl/archpdf/advquant.pdf](https://www.fransabsil.nl/archpdf/advquant.pdf)

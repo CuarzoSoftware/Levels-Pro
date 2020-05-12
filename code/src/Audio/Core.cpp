@@ -2,6 +2,8 @@
 #include <QFontDatabase>
 #include <QFile>
 #include <QScrollBar>
+#include <QtMath>
+
 
 
 Core::Core(QApplication *_levels)
@@ -26,13 +28,16 @@ void Core::run()
     tracksMenu = mainWindow->tracksMenu;
 
     // Set the track conroller scrollbar
-    tracksMenu->leftMenu->tracksScrollArea->setVerticalScrollBar(tracksMenu->rightMenu->tracksScroll->verticalScrollBar());
-    tracksMenu->rightMenu->ruler->setHorizontalScrollBar(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar());
+    //tracksMenu->leftMenu->tracksScrollArea->setVerticalScrollBar(tracksMenu->rightMenu->tracksScroll->verticalScrollBar());
+    //tracksMenu->rightMenu->ruler->setHorizontalScrollBar(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar());
+
+    // Asignt time settings to other components
+    tracksMenu->rightMenu->timeRuler->setTimeSettings(timeSettings);
 
 
     connect(tracksMenu->topBar->slider,&QSlider::valueChanged,this,&Core::zoomChanged);
-    connect(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar(),&QScrollBar::valueChanged,this,&Core::horizontalScrollChanged);
-    connect(tracksMenu->rightMenu->tracksScroll->verticalScrollBar(),&QScrollBar::valueChanged,this,&Core::verticalScrollChanged);
+    //connect(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar(),&QScrollBar::valueChanged,this,&Core::horizontalScrollChanged);
+    //connect(tracksMenu->rightMenu->tracksScroll->verticalScrollBar(),&QScrollBar::valueChanged,this,&Core::verticalScrollChanged);
 
 
     for(int i = 0; i < 50 ; i++)
@@ -62,18 +67,26 @@ void Core::setHorizontalZoom(float zoom)
 
 void Core::zoomChanged(int value)
 {
-    float normal = (float)value * 0.0001f;
+
+    float normal = qPow((float)value * 0.0000001f,12);
+    tracksMenu->rightMenu->timeRuler->setZoom(normal);
+    /*
     float scrollWidth = (float)tracksMenu->rightMenu->tracksScroll->width();
     float widgetsWidth = scrollWidth + (50000.f)*normal;
-    float barWidth = widgetsWidth/projectLenght;
+    float ticksPerBar = beatsNumber*ticksPerWholeNote/noteValue;
+    float barWidth = widgetsWidth/projectLenght/ticksPerBar;
 
     tracksMenu->rightMenu->ruler->topRuler->setBarSize(barWidth);
+
     tracksMenu->rightMenu->ruler->bottomRuler->setBarSize(barWidth);
     tracksMenu->rightMenu->tracksRuler->setBarSize(barWidth);
 
+
     tracksMenu->rightMenu->ruler->topRuler->setFixedWidth(widgetsWidth);
+
     tracksMenu->rightMenu->ruler->bottomRuler->setFixedWidth(widgetsWidth);
     tracksMenu->rightMenu->tracksRuler->setFixedWidth(widgetsWidth);
+    */
 
 }
 

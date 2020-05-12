@@ -30,6 +30,7 @@ private:
     QPen barPen = QPen(QColor("#636363"), 0.5);
     QPen beatPen = QPen(QColor("#606060"), 0.5);
     QPen borderPen = QPen(QColor("#171717"), 1.5);
+    QPen textPen = QPen(QColor("#D4D4D4"));
 
     QBrush backgroundBrush = QBrush(QColor("#333333"));
     RulerType rulerType;

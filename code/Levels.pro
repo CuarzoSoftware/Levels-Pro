@@ -58,6 +58,7 @@ HEADERS += \
     src/Audio/AUPluginUI.h \
     src/Audio/Core.h \
     src/Audio/Region.h \
+    src/Audio/TimeSettings.h \
     src/Audio/Track.h \
     src/Global/Color.h \
     src/Global/Utils.h \
@@ -78,8 +79,8 @@ HEADERS += \
     src/UI/Tracks/TracksMenu.h \
     src/UI/Tracks/TracksMenuTopBar.h \
     src/UI/Tracks/TracksRightMenu.h \
-    src/UI/Tracks/TracksRuler.h \
     src/Widgets/CompactContainer.h \
+    src/Widgets/HScrollBar.h \
     src/Widgets/Icon.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
@@ -87,6 +88,7 @@ HEADERS += \
     src/Widgets/OpenGLRuler.h \
     src/Widgets/Ruler.h \
     src/Widgets/Select.h \
+    src/Widgets/TimeRuler.h \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
@@ -112,8 +114,8 @@ SOURCES += \
     src/UI/Tracks/TracksMenu.cpp \
     src/UI/Tracks/TracksMenuTopBar.cpp \
     src/UI/Tracks/TracksRightMenu.cpp \
-    src/UI/Tracks/TracksRuler.cpp \
     src/Widgets/CompactContainer.cpp \
+    src/Widgets/HScrollBar.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
@@ -121,6 +123,7 @@ SOURCES += \
     src/Widgets/OpenGLRuler.cpp \
     src/Widgets/Ruler.cpp \
     src/Widgets/Select.cpp \
+    src/Widgets/TimeRuler.cpp \
     src/Widgets/ToggleButton.cpp \
     src/main.cpp
 

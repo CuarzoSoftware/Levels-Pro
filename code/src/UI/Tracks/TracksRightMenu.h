@@ -1,11 +1,12 @@
 #ifndef TRACKSRIGHTMENU_H
 #define TRACKSRIGHTMENU_H
 
-#include <UI/Tracks/TracksRuler.h>
 #include <UI/Tracks/TrackBand.h>
-#include <QVBoxLayout>
-#include <QScrollArea>
 #include <Widgets/Ruler.h>
+#include <Widgets/TimeRuler.h>
+#include <Widgets/HScrollBar.h>
+#include <QVBoxLayout>
+#include <QFrame>
 
 class TracksRightMenu : public QFrame
 {
@@ -13,14 +14,17 @@ class TracksRightMenu : public QFrame
 public:
     explicit TracksRightMenu();
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
-    TracksRuler *ruler = new TracksRuler();
-    QScrollArea *tracksScroll = new QScrollArea();
+
+    TimeRuler *timeRuler = new TimeRuler();
     Ruler *tracksRuler = new Ruler(Ruler::RulerType::TracksRuler);
 
     QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);
 
+    HScrollBar *hScrollBar = new HScrollBar(this);
+
     // Adds a new track
     void addTrack(TrackBand *newTrack);
+
 
 signals:
 

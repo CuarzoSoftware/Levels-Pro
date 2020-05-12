@@ -6,6 +6,7 @@ TracksMenu::TracksMenu(Core *_core)
 {
     setMouseTracking(true);
     core = _core;
+
     // Añade el topbar
     verticalLayout->addWidget(topBar);
 
@@ -21,6 +22,6 @@ TracksMenu::TracksMenu(Core *_core)
 
 void TracksMenu::wheelEvent(QWheelEvent *event)
 {
-   core->setHorizontalZoom( core->horizontalZoom + (float)event->pixelDelta().x()*0.001f);
+   //core->setHorizontalZoom( core->horizontalZoom + (float)event->pixelDelta().x()*0.001f);
 }
 
