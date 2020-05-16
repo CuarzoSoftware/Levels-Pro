@@ -12,6 +12,7 @@ TracksRightMenu::TracksRightMenu()
     verticalLayout->setSpacing(0);
 
     verticalLayout->addWidget(timeRuler);
+    verticalLayout->addStretch(1);
 
     tracksLayout->setMargin(0);
     tracksLayout->setSpacing(0);

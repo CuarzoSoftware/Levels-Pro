@@ -52,7 +52,7 @@ void Icon::setColor(const QColor &color)
         for(int x= 0; x < tmp.width(); x++)
         {
             _iconColor.setAlpha(tmp.pixelColor(x,y).alpha());
-            tmp.setPixelColor(x,y,color);
+            tmp.setPixelColor(x,y,_iconColor);
         }
     }
     setPixmap(QPixmap::fromImage(tmp));

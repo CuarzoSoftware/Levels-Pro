@@ -15,9 +15,7 @@ public:
         // Default settings
         setSampleRate(41100.f);
         setBpm(120.f);
-        setTicksPerBeat(960.f);
         setTimeSignature(4,4);
-        setProjectLengthInTicks(591520.f); // 128 bars
     }
 
     void setProjectLengthInTicks(float length)
@@ -27,14 +25,6 @@ public:
         projectLengthInBeats = projectLenghtInTicks/ticksPerBeat;
         projectLenghtInBars = projectLenghtInTicks/ticksPerBar;
 
-    }
-
-    void setTicksPerBeat(float _ticksPerBeat)
-    {
-        ticksPerBeat = _ticksPerBeat;
-        ticksPerDivition = ticksPerBeat/4.f;
-        ticksPerWholeNote = ticksPerBeat*4.f;
-        ticksPerBar = (ticksPerWholeNote/noteValue)*beatsNumber;
     }
 
     void setSampleRate(float _sampleRate)
@@ -51,20 +41,35 @@ public:
     {
         beatsNumber = _beatsNumber;
         noteValue = _noteValue;
-        ticksPerBar = (ticksPerWholeNote/noteValue)*beatsNumber;
+
+        ticksPerBeat = ticksPerWholeNote/noteValue;
+        ticksPerBar = ticksPerBeat*beatsNumber;
+        divitionsPerBeat = 16.f/noteValue;
+        divitionsPerBar = divitionsPerBeat*beatsNumber;
+        ticksPerDivition = ticksPerBeat/divitionsPerBeat;
+
+        projectLengthInDivitions = projectLenghtInTicks/ticksPerDivition;
+        projectLengthInBeats = projectLenghtInTicks/ticksPerBeat;
+        projectLenghtInBars = projectLenghtInTicks/ticksPerBar;
     }
 
     float sampleRate;
 
     float bpm;
 
+    float divitionsPerBeat;
+    float divitionsPerBar;
 
-    float ticksPerWholeNote;
-    float ticksPerDivition;
+    float ticksPerWholeNote = 3840.f;
     float ticksPerBeat;
+    float ticksPerDivition;
+
+    unsigned int loopBeginTick = 300;
+    unsigned int loopEndTick = 500;
+
     float ticksPerBar;
 
-    float projectLenghtInTicks;
+    float projectLenghtInTicks = 591520.f;
     float projectLenghtInBars;
     float projectLengthInBeats;
     float projectLengthInDivitions;

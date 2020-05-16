@@ -78,5 +78,8 @@
         <file>res/styles/widgets.qss</file>
         <file>res/shaders/ruler/fshader.glsl</file>
         <file>res/shaders/ruler/vshader.glsl</file>
+        <file>res/svg/slider-handle.svg</file>
+        <file>res/svg/vertical-directions.svg</file>
+        <file>res/svg/horizontal-directions.svg</file>
     </qresource>
 </RCC>

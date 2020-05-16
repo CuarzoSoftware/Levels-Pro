@@ -25,7 +25,7 @@ public:
     void setHorizontalZoom(float zoom);
 
 public slots:
-    void zoomChanged(int value);
+    void zoomChanged(float value);
     void verticalScrollChanged(int pos);
     void horizontalScrollChanged(int pos);
 

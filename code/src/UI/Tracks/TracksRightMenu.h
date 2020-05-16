@@ -15,12 +15,14 @@ public:
     explicit TracksRightMenu();
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
 
-    TimeRuler *timeRuler = new TimeRuler();
+    HScrollBar *hScrollBar = new HScrollBar(this);
+
+    TimeRuler *timeRuler = new TimeRuler(hScrollBar);
     Ruler *tracksRuler = new Ruler(Ruler::RulerType::TracksRuler);
 
     QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);
 
-    HScrollBar *hScrollBar = new HScrollBar(this);
+
 
     // Adds a new track
     void addTrack(TrackBand *newTrack);

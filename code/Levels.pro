@@ -82,6 +82,7 @@ HEADERS += \
     src/Widgets/CompactContainer.h \
     src/Widgets/HScrollBar.h \
     src/Widgets/Icon.h \
+    src/Widgets/IconSlider.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
@@ -117,6 +118,7 @@ SOURCES += \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/HScrollBar.cpp \
     src/Widgets/Icon.cpp \
+    src/Widgets/IconSlider.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \

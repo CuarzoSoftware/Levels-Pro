@@ -4,16 +4,25 @@
 #include <QScrollBar>
 #include <QtMath>
 
+// Remove after
+#include <QDebug>
+
 
 
 Core::Core(QApplication *_levels)
 {
     // Stores the app reference
     levels = _levels;
+
 }
 
 void Core::configure()
 {
+    timeSettings->setTimeSignature(4,4);
+    timeSettings->setProjectLengthInTicks(960*4*50);
+
+    qDebug() << timeSettings->divitionsPerBeat;
+
     // Loads default font
     setDefaultFontFamily();
 
@@ -35,7 +44,7 @@ void Core::run()
     tracksMenu->rightMenu->timeRuler->setTimeSettings(timeSettings);
 
 
-    connect(tracksMenu->topBar->slider,&QSlider::valueChanged,this,&Core::zoomChanged);
+    connect(tracksMenu->topBar->hZoomSlider,&IconSlider::valueChanged,this,&Core::zoomChanged);
     //connect(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar(),&QScrollBar::valueChanged,this,&Core::horizontalScrollChanged);
     //connect(tracksMenu->rightMenu->tracksScroll->verticalScrollBar(),&QScrollBar::valueChanged,this,&Core::verticalScrollChanged);
 
@@ -65,11 +74,10 @@ void Core::setHorizontalZoom(float zoom)
     */
 }
 
-void Core::zoomChanged(int value)
+void Core::zoomChanged(float value)
 {
 
-    float normal = qPow((float)value * 0.0000001f,12);
-    tracksMenu->rightMenu->timeRuler->setZoom(normal);
+    tracksMenu->rightMenu->timeRuler->setZoom(qPow(value,5));
     /*
     float scrollWidth = (float)tracksMenu->rightMenu->tracksScroll->width();
     float widgetsWidth = scrollWidth + (50000.f)*normal;

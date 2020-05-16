@@ -2,6 +2,8 @@
 #include <QVariant>
 #include <QEvent>
 #include <QWheelEvent>
+#include <QtMath>
+#include <QDebug>
 
 HScrollBar::HScrollBar(QWidget *parent, Position pos)
 {
@@ -20,7 +22,7 @@ HScrollBar::HScrollBar(QWidget *parent, Position pos)
     // Sets fixed height
     setFixedHeight(14);
     bar->setFixedSize(200,8);
-    bar->move(50,3);
+    bar->move(0,3);
 
     // Refresh the position
     refreshPosition();
@@ -29,7 +31,63 @@ HScrollBar::HScrollBar(QWidget *parent, Position pos)
     parent->installEventFilter(this);
 }
 
+// Range in pixels ( The size of the target widget )
+void HScrollBar::setRange(int _range)
+{
+    range = _range;
 
+    // Sets the bar width
+    float barWidth = width()*width()/(range+width());
+
+    // If it is less than 16 pixels
+    if(barWidth < 16)
+        barWidth = 16;
+
+    bar->setFixedWidth(barWidth);
+
+    // Notify scroll change
+    scrollChanged(x);
+
+}
+
+// Move the scroll position
+void HScrollBar::moveX(int offset)
+{
+    x -=  offset;
+
+    // Check if reched limits
+    validateX();
+
+    // Move the scroll bar
+    int barPos = 0;
+    if(range > 0)
+        barPos = x*(width() - bar->width())/range;
+    bar->move(barPos ,bar->pos().y());
+
+
+    // Notify scroll change
+    scrollChanged(x);
+}
+
+void HScrollBar::setX(int pos)
+{
+    x =  pos;
+
+    // Check if reched limits
+    validateX();
+
+    // Move the scroll bar
+    int barPos = 0;
+    if(range > 0)
+        barPos = x*(width() - bar->width())/range;
+    bar->move(barPos ,bar->pos().y());
+
+
+    // Notify scroll change
+    scrollChanged(x);
+}
+
+// Filter some of the parent's events
 bool HScrollBar::eventFilter(QObject *object, QEvent *event)
 {
 
@@ -44,14 +102,8 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
         else if(event->type() == QEvent::Wheel)
         {
             QWheelEvent *e = static_cast<QWheelEvent *>(event);
-            bar->move(bar->pos().x() + e->pixelDelta().x(),bar->pos().y());
-            if(bar->pos().x() < 0)
-                bar->move(0,bar->pos().y());
+            moveX(e->pixelDelta().x());
 
-            if(bar->pos().x() + bar->width() > width())
-                bar->move(width() - bar->width(),bar->pos().y());
-
-            scrollChanged((float)bar->pos().x()/((float)(width() - bar->width())));
             return true;
         }
 
@@ -78,4 +130,14 @@ void HScrollBar::refreshPosition()
         move(0,0);
         setFixedWidth(parentWidget()->width());
     }
+}
+
+void HScrollBar::validateX()
+{
+    // Check if reched limits
+    if(x < 0)
+        x = 0;
+
+    else if( x > range)
+        x = range;
 }
