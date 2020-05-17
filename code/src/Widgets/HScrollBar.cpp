@@ -24,6 +24,10 @@ HScrollBar::HScrollBar(QWidget *parent, Position pos)
     bar->setFixedSize(200,8);
     bar->move(0,3);
 
+    // Elastic updater
+    elasticTimer->setInterval(0);
+    connect(elasticTimer,&QTimer::timeout,this,&HScrollBar::elasticFix);
+
     // Refresh the position
     refreshPosition();
 
@@ -51,12 +55,12 @@ void HScrollBar::setRange(int _range)
 }
 
 // Move the scroll position
-void HScrollBar::moveX(int offset)
+void HScrollBar::moveX(float offset)
 {
     x -=  offset;
 
     // Check if reched limits
-    validateX();
+    //validateX();
 
     // Move the scroll bar
     int barPos = 0;
@@ -69,12 +73,12 @@ void HScrollBar::moveX(int offset)
     scrollChanged(x);
 }
 
-void HScrollBar::setX(int pos)
+void HScrollBar::setX(float pos)
 {
     x =  pos;
 
     // Check if reched limits
-    validateX();
+    //validateX();
 
     // Move the scroll bar
     int barPos = 0;
@@ -85,6 +89,29 @@ void HScrollBar::setX(int pos)
 
     // Notify scroll change
     scrollChanged(x);
+}
+
+void HScrollBar::elasticFix()
+{
+    if(scrollFinished)
+    {
+        if(elasticIndex > 0.f)
+        {
+            if(x < 0)
+            {
+                elasticIndex-=0.002;
+                setX( -qPow(elasticIndex,2)*elongation);
+                elasticTimer->start();
+            }
+            else if( x > range)
+            {
+                elasticIndex-=0.002;
+                setX( range + qPow(elasticIndex,2)*elongation);
+                elasticTimer->start();
+            }
+
+        }
+    }
 }
 
 // Filter some of the parent's events
@@ -102,7 +129,98 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
         else if(event->type() == QEvent::Wheel)
         {
             QWheelEvent *e = static_cast<QWheelEvent *>(event);
-            moveX(e->pixelDelta().x());
+
+            float delta = (float)e->pixelDelta().x();
+
+            // Mouse Wheel
+            if(e->phase() == Qt::NoScrollPhase)
+            {
+                scrollFinished = true;
+
+                if( x - delta < 0)
+                {
+                    setX(0);
+                    return true;
+                }
+
+                if( x - delta > range)
+                {
+                    setX(range);
+                    return true;
+                }
+
+                moveX(delta);
+
+                return true;
+            }
+            else if(e->phase() == Qt::ScrollUpdate )
+            {
+
+                scrollFinished = false;
+
+                if( x < -2.f )
+                {
+                    delta = delta/(-x/2.f);
+                }
+                else if( x > range + 2.f )
+                {
+                    delta = delta/(x/2.f);
+                }
+
+                moveX(delta);
+
+            }
+            else if(e->phase() == Qt::ScrollMomentum)
+            {
+                if(scrollFinished)
+                    return true;
+
+                if(x < 0)
+                {
+                    doingElasticScroll = true;
+                    scrollFinished = true;
+                    elongation = qAbs(x);
+                    elasticIndex = 1;
+                    elasticFix();
+                    return true;
+                }
+                else if(x > range)
+                {
+                    doingElasticScroll = true;
+                    scrollFinished = true;
+                    elongation = x - range;
+                    elasticIndex = 1;
+                    elasticFix();
+                    return true;
+                }
+
+                moveX(delta);
+
+            }
+            else if(e->phase() == Qt::ScrollBegin)
+            {
+                scrollFinished = false;
+                momentumBlocked = false;
+            }
+            else if(e->phase() == Qt::ScrollEnd)
+            {
+                scrollFinished  = true;
+
+                if( x < 0)
+                {
+                    doingElasticScroll = true;
+                    elongation = qAbs(x);
+                    elasticIndex = 1;
+                    elasticFix();
+                }else if(x > range)
+                {
+                    doingElasticScroll = true;
+                    elongation = x - range;
+                    elasticIndex = 1;
+                    elasticFix();
+                }
+
+            }
 
             return true;
         }
@@ -136,7 +254,7 @@ void HScrollBar::validateX()
 {
     // Check if reched limits
     if(x < 0)
-        x = 0;
+        x = -sqrt(-x);
 
     else if( x > range)
         x = range;

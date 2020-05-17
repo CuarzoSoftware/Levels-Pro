@@ -81,5 +81,6 @@
         <file>res/svg/slider-handle.svg</file>
         <file>res/svg/vertical-directions.svg</file>
         <file>res/svg/horizontal-directions.svg</file>
+        <file>res/png/loop-texture.png</file>
     </qresource>
 </RCC>

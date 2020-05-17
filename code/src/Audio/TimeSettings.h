@@ -64,8 +64,10 @@ public:
     float ticksPerBeat;
     float ticksPerDivition;
 
-    unsigned int loopBeginTick = 300;
-    unsigned int loopEndTick = 500;
+    // Loop
+    bool loop = true;
+    unsigned int loopBeginTick = 0;
+    unsigned int loopEndTick = 960*4*4;
 
     float ticksPerBar;
 
