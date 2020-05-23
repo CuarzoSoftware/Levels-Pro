@@ -17,6 +17,10 @@ Levels Pro uses the best audio libraries avaliable for each platform, in order t
 ## GUI
 The QT framework was choosen to deliver a standar graphical user interface for each platform release.
 
+## Documentation
+
+* [User Manual](https://ehopperdietzel.github.io/Levels-Pro/)
+* [C++ Classes](https://ehopperdietzel.github.io/Levels-Pro/classes)
 
 ## Learn
 
