@@ -82,5 +82,6 @@
         <file>res/svg/vertical-directions.svg</file>
         <file>res/svg/horizontal-directions.svg</file>
         <file>res/png/loop-texture.png</file>
+        <file>res/png/length-handle.png</file>
     </qresource>
 </RCC>

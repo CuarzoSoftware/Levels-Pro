@@ -99,13 +99,13 @@ void HScrollBar::elasticFix()
         {
             if(x < 0)
             {
-                elasticIndex-=0.002;
+                elasticIndex-=0.01;
                 setX( -qPow(elasticIndex,2)*elongation);
                 elasticTimer->start();
             }
             else if( x > range)
             {
-                elasticIndex-=0.002;
+                elasticIndex-=0.01;
                 setX( range + qPow(elasticIndex,2)*elongation);
                 elasticTimer->start();
             }

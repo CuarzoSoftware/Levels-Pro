@@ -2,93 +2,126 @@
 #include <QtMath>
 #include <QDebug>
 
+// Constructor
 TimeRuler::TimeRuler(HScrollBar *sb)
 {
 
+    // Stores the horizontal scroll bar
     hScrollBar = sb;
+
+    // Set the font styles for the ruler numbers
     QFont font("Helvetica Neue");
     font.setPixelSize(13);
     font.setWeight(QFont::Weight::Bold);
     setFont(font);
+
+    // Adjust the size of the dashed background texture
     QMatrix mat = dashesBrush.matrix();
     mat.scale(0.55f,0.55f);
     dashesBrush.setMatrix(mat);
+
+    // Set the shadow gradient of the project end
+    projectEndShadow.setColorAt(0,Qt::black);
+    projectEndShadow.setColorAt(0.1,QColor(0,0,0,50));
+    projectEndShadow.setColorAt(1,QColor(0,0,0,0));
+
+    // Sets a fixed height
     setFixedHeight(20);
 
 }
 
+// Changes the default background color
 void TimeRuler::setBackgroundColor(const QColor &color)
 {
     backgroundBrush.setColor(color);
 }
 
+// Store the time settings reference ( Project settings )
 void TimeRuler::setTimeSettings(TimeSettings *settings)
 {
     timeSettings = settings;
 }
 
+// Changes the zoom
 void TimeRuler::setZoom(float _zoom)
 {
-    //zoom = _zoom;
+    // Stores the newz zoom value
     zoom = _zoom;
+
+    // Calculate useful metrics to prevent re calculating
     updateDimensions();
+
+    // Refresh the view
     repaint();
 }
 
+// Changes the scroll position
 void TimeRuler::scrollChanged(int x)
 {
+    // Stores the new position
     offset = x;
+
+    // Refresh the view
     repaint();
 }
 
+// Paint the time ruler, ( Bars, beats, divs, ticks, etc )
 void TimeRuler::paintRuler()
 {
-    // Visible area
+    // Visible area ( Size of the window )
     w = width();
     h = height();
 
+    // Moves the viewport to the scroll position
     painter->setViewport(-offset,0,w,h);
 
+    // Prevent negative numbers
     if(offset < 0)
         offset = 0;
 
-    // Loop Bar position
+    // Calculates the loopbar initial position ( in pixels )
     loopBeginPos = timeSettings->loopBeginTick*tickWidth;
+
+    // Calculates the loopbar final position ( in pixels )
     loopEndPos = timeSettings->loopEndTick*tickWidth;
+
+    // Tells if the loop bar is visible from the viewport
     isLoopBarVisible = true;
-    //timeSettings->loop = false;
 
-    // Clips and checks if appears on current viewport
-    if( loopBeginPos < offset)
-        loopBeginPos = offset;
+    // LOOP BAR TRIMMING
 
-    if( loopBeginPos > offset + w)
+    // If loop bar doesn't appear in the viewport
+    if( loopBeginPos > offset + w || loopEndPos < offset)
         isLoopBarVisible = false;
+    else
+    {
+        // If loop bar begins before the viewport
+        if( loopBeginPos < offset)
+            loopBeginPos = offset;
 
-    if( loopEndPos > offset + w)
-        loopEndPos = offset +w;
-
-    if( loopEndPos < offset)
-        isLoopBarVisible = false;
-
+        // If loop bar ends after the viewport
+        if( loopEndPos > offset + w)
+            loopEndPos = offset +w;
+    }
 
     // Draw background
     painter->setPen(Qt::NoPen);
 
-    // If loop is ON
+    // If looping is enabled
     if(timeSettings->loop)
     {
-        // Draw normal background
+       // Draw dashed background
        painter->setBrush(dashesBrush);
        painter->drawRect(offset,0,w,h);
     }
+    // If looping is disabled
     else
     {
-        // Draw dashed background
+        // Draw normal background
         painter->setBrush(backgroundBrush);
         painter->drawRect(offset,0,w,h);
 
-        // Draw disabled bar
+        // Draw disabled bar ( gray )
         if(isLoopBarVisible)
         {
             painter->setBrush(loopDisabledBrush);
@@ -98,6 +131,7 @@ void TimeRuler::paintRuler()
 
     }
 
+    // Set the text pen
     textPen.setColor(textWhite);
     barPen.setColor(barWhite);
 
@@ -105,32 +139,32 @@ void TimeRuler::paintRuler()
     painter->setPen(borderPen);
     painter->drawLine(offset, h, offset + w,h);
 
+    // Used later on for begin and end index calculation
     innerOffset = offset;
 
-    // BARS
+    // DRAW BARS
     currentDimension = barWidth;
     drawBars();
 
-
-    // BEATS
+    // DRAW BEATS
     currentDimension = beatWidth;
     drawBeats();
 
 
-    // Only for 1, 2, 4, 8 beat note values
+    // Draw Divitions only for 1, 2, 4 and 8 beat note values
     if(timeSettings->noteValue <= 8)
     {
-        // DIVITIONS
+        // DRAW DIVITIONS
         currentDimension = divWidth;
         drawDivitions();
 
-        // TICKS WITH DIVITIONS
+        // DRAW TICKS WITH DIVITIONS
         currentDimension = tickWidth;
         drawTicks();
     }
     else
     {
-        // TICKS WITHOUT DIVITIONS
+        // DRAW TICKS WITHOUT DIVITIONS
         currentDimension = tickWidth;
         drawTicksWithoutDivitions();
     }
@@ -138,6 +172,7 @@ void TimeRuler::paintRuler()
 
 }
 
+// Calculate useful metrics for later on, and set the scroll range
 void TimeRuler::updateDimensions()
 {
     tickWidth = 200.f*(zoom) + (1.f - zoom)*width()/timeSettings->projectLenghtInTicks;
@@ -147,9 +182,10 @@ void TimeRuler::updateDimensions()
     totalWidth = timeSettings->projectLenghtInTicks*tickWidth;
 
     // Asign the horizontal scroll range
-    hScrollBar->setRange(totalWidth - width());
+    hScrollBar->setRange(totalWidth - width() + 40);
 }
 
+// Draw bar lines and numbers
 void TimeRuler::drawBars()
 {
     // Number of bars skipped
@@ -174,6 +210,7 @@ void TimeRuler::drawBars()
     }
 }
 
+// Draw beat numbers
 void TimeRuler::drawBeats()
 {
     if(barWidth < 200) return;
@@ -196,6 +233,7 @@ void TimeRuler::drawBeats()
     }
 }
 
+// Draw divitions numbers
 void TimeRuler::drawDivitions()
 {
     if(beatWidth < 200) return;
@@ -221,6 +259,7 @@ void TimeRuler::drawDivitions()
     }
 }
 
+// Draw ticks numbers including divitions
 void TimeRuler::drawTicks()
 {
     if(divWidth < 180) return;
@@ -250,6 +289,7 @@ void TimeRuler::drawTicks()
     }
 }
 
+// Draw ticks numbers exccluding divitions
 void TimeRuler::drawTicksWithoutDivitions()
 {
     if(divWidth < 180) return;
@@ -278,6 +318,7 @@ void TimeRuler::drawTicksWithoutDivitions()
     }
 }
 
+// Draws the loop bar ( If is enabled (orange), needs to redraw the numbers in black )
 void TimeRuler::drawLoop()
 {
     if(!timeSettings->loop || !isLoopBarVisible) return;
@@ -329,9 +370,33 @@ void TimeRuler::drawLoop()
 
 }
 
+// Draws the project end and resize handle
+void TimeRuler::drawProjectLengthHandle()
+{
+    w = width();
+
+    if(offset + w < totalWidth) return;
+
+    // Draw dark background ( Outside project length )
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(transparentBlack);
+    painter->setClipping(false);
+    painter->drawRect(totalWidth,0,offset+w,h);
+
+    // Draw shadow
+    projectEndShadow.setStart(totalWidth,0);
+    projectEndShadow.setFinalStop(totalWidth + 10,0);
+    painter->setBrush(projectEndShadow);
+    painter->drawRect(totalWidth,0,10,h);
+
+    // Draw handle
+    painter->drawPixmap(totalWidth+1,2,h-3,h-4,lengthHandle);
+
+}
+
+// Calculates the visible begin and end index for each time divition drawing, and the skipping value
 void TimeRuler::getBeginAndEndIndex()
 {
-
 
     // Filter numbers different from pow of 2
     powSkip = 1;
@@ -339,11 +404,13 @@ void TimeRuler::getBeginAndEndIndex()
         while(powSkip<<1 <= skip)
             powSkip = powSkip<<1;
 
+    // First visible index
     begin = innerOffset / (currentDimension*powSkip);
 
-    // For some reason it works if I multiply here
+    // For some reason the multiplication needs to be done separately
     begin *= powSkip;
 
+    // Last visible index
     end = begin + w/currentDimension + powSkip*2;
 
 }
@@ -351,10 +418,22 @@ void TimeRuler::getBeginAndEndIndex()
 
 void TimeRuler::paintEvent(QPaintEvent *event)
 {
+    // Disable unused warings
     Q_UNUSED(event);
+
+    // Begin painting
     painter->begin(this);
+
+    // Paint Ruler
     paintRuler();
+
+    // Paint Loop Bar
     drawLoop();
+
+    // Paint project end
+    drawProjectLengthHandle();
+
+    // Ends painting
     painter->end();
 }
 
