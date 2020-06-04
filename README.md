@@ -19,8 +19,8 @@ The QT framework was choosen to deliver a standar graphical user interface for e
 
 ## Documentation
 
-* [User Manual](https://ehopperdietzel.github.io/Levels-Pro/)
-* [C++ Classes](https://ehopperdietzel.github.io/Levels-Pro/classes)
+* [User Manual](https://ehopperdietzel.github.io/Levels-Pro/build)
+* [C++ Classes](https://ehopperdietzel.github.io/Levels-Pro/build)
 
 ## Learn
 
