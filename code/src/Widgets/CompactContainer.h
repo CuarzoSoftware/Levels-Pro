@@ -10,10 +10,13 @@ class CompactContainer : public QWidget
 public:
     explicit CompactContainer(QWidget *parent = nullptr);
     void addWidget(QWidget *widget);
+    QHBoxLayout *getLayout();
 
-    QHBoxLayout *layout = new QHBoxLayout(this);
-private:
+protected:
     void fixWidgetStyles();
+
+private:
+    QHBoxLayout *layout = new QHBoxLayout(this);
 
 signals:
 

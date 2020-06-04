@@ -1,0 +1,80 @@
+# Project
+project = "Levels Pro"
+description = "Levels Pro Class Documentation"
+
+# Directories
+sourcedirs += ../code/src/Widgets \
+              ../code/src/UI/Editor \
+              ../code/src/UI/Inspector \
+              ../code/src/UI/Library \
+              ../code/src/UI/Lists \
+              ../code/src/UI/Loops \
+              ../code/src/UI/MainWindow \
+              ../code/src/UI/Media \
+              ../code/src/UI/Mixer \
+              ../code/src/UI/Notes \
+              ../code/src/UI/Tracks \
+              ../code/src/Global \
+              ../code/src/Audio \
+              ./pages
+
+headerdirs = ../code/src/Widgets \
+              ../code/src/UI/Editor \
+              ../code/src/UI/Inspector \
+              ../code/src/UI/Library \
+              ../code/src/UI/Lists \
+              ../code/src/UI/Loops \
+              ../code/src/UI/MainWindow \
+              ../code/src/UI/Media \
+              ../code/src/UI/Mixer \
+              ../code/src/UI/Notes \
+              ../code/src/UI/Tracks \
+              ../code/src/Global \
+              ../code/src/Audio
+              
+imagedirs = ./img
+#exampledirs = <path to examples directory>
+
+# Files to be processed
+sources.fileextensions = "*.cpp *.mm"
+headers.fileextensions = "*.h"
+#depends = *
+
+# Output
+outputdir = ./build/
+outputformats = HTML
+outputencoding = UTF-8
+
+# Navigation
+navigation.hometitle = "Levels Pro"
+#navigation.homepage  = "All C++ Classes"
+#navigation.landingpage    = "Qt Quick"
+#navigation.cppclassespage = "Qt Quick C++ Classes"
+#navigation.qmltypespage   = "Qt Quick QML Types"
+
+# Styles
+HTML.stylesheets = style.css
+HTML.headerstyles = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style/style.css\"/>\n<link href=\'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext\' rel=\'stylesheet\' type=\'text/css\'>\n"
+HTML.postheader = "<div class=\"topBar\"><img class=\"logo\" src=\"images/logo.png\"><div class=\"titleContainer\"><div class=\"levelsTitle\">Levels Pro</div><div class=\"levelsSubTitle\">C++ Classes Documentation</div></div></div><div class=\"main\">"
+HTML.footer = "</div></div><hr/><p class=\"footer\"><small>Levels Pro - Cuarzo Software - 2020</small></p>"
+#HTML.tocdepth = 0 #contents list
+HTML.prologue = "<div class=\"context\">\n"
+
+# Images
+HTML.extraimages = ./img/logo.png
+
+
+
+
+
+# HTML.scripts = template/scripts/script.js
+
+
+# TOPIC COMMANDS
+# https://doc.qt.io/qt-5/13-qdoc-commands-topics.html
+
+# CONTEXT COMMANDS
+# https://doc.qt.io/qt-5/14-qdoc-commands-contextcommands.html
+
+# MARKUP COMMANDS
+# https://doc.qt.io/qt-5/03-qdoc-commands-markup.html

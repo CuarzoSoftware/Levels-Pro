@@ -9,18 +9,18 @@ class HScrollBar : public QWidget
     Q_OBJECT
 public:
     enum Position{Top,Bottom};
-    explicit HScrollBar(QWidget *parent = nullptr, Position pos = Position::Bottom);
+    explicit HScrollBar(QWidget *parent = nullptr, Position handlePosition = Position::Bottom);
     void setRange(int _range);
     void moveX(float offset);
     void setX(float pos);
     QWidget *bar = new QWidget(this);
 
-private slots:
+protected slots:
     void elasticFix();
 
-private:
+protected:
     virtual bool eventFilter(QObject *object, QEvent *event) override;
-    void setPosition(Position pos);
+    void setHandlePosition(Position handlePosition);
     void refreshPosition();
     void validateX();
     QTimer *elasticTimer = new QTimer(this);

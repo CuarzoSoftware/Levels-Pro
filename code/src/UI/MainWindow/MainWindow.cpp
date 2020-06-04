@@ -4,6 +4,17 @@
 #include <Global/Utils.h>
 #include <Audio/Core.h>
 
+/*!
+    \class MainWindow
+    \brief The MainWindow class...
+
+    \inheaderfile UI/MainWindow/MainWindow.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits QMainWindow
+*/
+
 // Constructor
 MainWindow::MainWindow(Core *_core)
 {

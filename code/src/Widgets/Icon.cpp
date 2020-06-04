@@ -1,6 +1,17 @@
 #include "Icon.h"
 #include <QIcon>
 
+/*!
+    \class Icon
+    \brief The Icon class...
+
+    \inheaderfile Widgets/Icon.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QLabel
+*/
+
 // Constructor I
 Icon::Icon(const QString &iconURL, const QColor &color)
 {

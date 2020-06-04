@@ -1,7 +1,17 @@
 #include "CompactContainer.h"
 #include <Global/Utils.h>
 
-// Constructor
+/*!
+    \class CompactContainer
+    \brief The CompactContainer class creates a compact container for widgets ( like the one used with the playback buttons ).
+
+    \inheaderfile Widgets/CompactContainer.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
 CompactContainer::CompactContainer(QWidget *parent)
 {
     // Asigna el padre
@@ -13,7 +23,9 @@ CompactContainer::CompactContainer(QWidget *parent)
     layout->setSizeConstraint(QLayout::SetFixedSize);
 }
 
-// Añade un widget al contenedor
+/*!
+    Inserts the \a widget to the last position of the container from left to right.
+*/
 void CompactContainer::addWidget(QWidget *widget)
 {
     // Añade el widget al layout
@@ -23,7 +35,17 @@ void CompactContainer::addWidget(QWidget *widget)
     fixWidgetStyles();
 }
 
-// Arregla los estilos de los widgets
+/*!
+    Returns the container's layout.
+*/
+QHBoxLayout *CompactContainer::getLayout()
+{
+    return layout;
+}
+
+/*!
+    Assign the correct class style to each widget, in order to make the corners round.
+*/
 void CompactContainer::fixWidgetStyles()
 {
     // Si solo hay un widget

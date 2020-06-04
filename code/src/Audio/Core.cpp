@@ -8,6 +8,16 @@
 #include <QDebug>
 
 
+/*!
+    \class Core
+    \brief The Core class...
+
+    \inheaderfile Audio/Core.h
+    \ingroup Audio
+    \inmodule Audio
+
+    \inherits QObject
+*/
 
 Core::Core(QApplication *_levels)
 {

@@ -2,6 +2,17 @@
 #include <QFile>
 #include <QDebug>
 
+/*!
+    \class AudioImporter
+    \brief The AudioImporter class...
+
+    \inheaderfile Audio/AudioImporter.h
+    \ingroup Audio
+    \inmodule Audio
+
+    \inherits QLabel
+*/
+
 AudioImporter::AudioImporter(const QString &url)
 {
 

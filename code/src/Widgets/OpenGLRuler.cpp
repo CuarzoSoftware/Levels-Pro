@@ -1,6 +1,16 @@
 #include "OpenGLRuler.h"
 #include <QOpenGLContext>
 
+/*!
+    \class OpenGLRuler
+    \brief The OpenGLRuler class...
+
+    \inheaderfile Widgets/OpenGLRuler.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QOpenGLWidget
+*/
 
 OpenGLRuler::OpenGLRuler()
 {

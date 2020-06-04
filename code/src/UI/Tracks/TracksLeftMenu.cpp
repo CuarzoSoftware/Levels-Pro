@@ -2,6 +2,18 @@
 #include <QVariant>
 #include <QScrollBar>
 
+/*!
+    \class TracksLeftMenu
+    \brief The TracksLeftMenu class...
+
+    \inheaderfile UI/Tracks/TracksLeftMenu.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits QFrame
+*/
+
+
 TracksLeftMenu::TracksLeftMenu(TracksMenu *tracksMenu)
 {
     // Stores the tracks menu reference

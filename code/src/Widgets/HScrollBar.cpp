@@ -5,13 +5,42 @@
 #include <QtMath>
 #include <QDebug>
 
-HScrollBar::HScrollBar(QWidget *parent, Position pos)
+
+/*!
+    \class HScrollBar
+    \brief The HScrollBar class simulates the native Apple kinetic scrolling.
+    \since 1.0
+
+    \inheaderfile Widgets/HScrollBar.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
+/*!
+    \enum HScrollBar::Position
+
+    This enum type specifies a the scrollbar position:
+
+    \value Top
+           Displays the scroll bar at the top of the parent.
+    \value Bottom
+           Displays the scroll bar at the bottom of the parent.
+
+*/
+
+/*!
+    The HScrollBar class constructor. It requires a parent \l{QWidget}, and the handle position is opcional.
+    By position by default is the bottom.
+*/
+HScrollBar::HScrollBar(QWidget *parent, Position handlePosition)
 {
     // Assign parent
     setParent(parent);
 
     // Sets the position
-    setPosition(pos);
+    setHandlePosition(handlePosition);
 
     // Allows background color
     setAttribute(Qt::WA_StyledBackground, true);
@@ -35,7 +64,9 @@ HScrollBar::HScrollBar(QWidget *parent, Position pos)
     parent->installEventFilter(this);
 }
 
-// Range in pixels ( The size of the target widget )
+/*!
+    Sets the scroll range in pixels (the inner size of the target Widget).
+*/
 void HScrollBar::setRange(int _range)
 {
     range = _range;
@@ -54,7 +85,9 @@ void HScrollBar::setRange(int _range)
 
 }
 
-// Move the scroll position
+/*!
+    Changes the scroll position by a given offset in pixels.
+*/
 void HScrollBar::moveX(float offset)
 {
     x -=  offset;
@@ -73,6 +106,9 @@ void HScrollBar::moveX(float offset)
     scrollChanged(x);
 }
 
+/*!
+    Changes the scroll position in pixels.
+*/
 void HScrollBar::setX(float pos)
 {
     x =  pos;
@@ -91,6 +127,9 @@ void HScrollBar::setX(float pos)
     scrollChanged(x);
 }
 
+/*!
+    Internally animates the scrolling when it overpass the range limits.
+*/
 void HScrollBar::elasticFix()
 {
     if(scrollFinished)
@@ -231,9 +270,9 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
     return false;
 }
 
-void HScrollBar::setPosition(HScrollBar::Position pos)
+void HScrollBar::setHandlePosition(HScrollBar::Position handlePosition)
 {
-    position = pos;
+    position = handlePosition;
 }
 
 void HScrollBar::refreshPosition()
@@ -259,3 +298,4 @@ void HScrollBar::validateX()
     else if( x > range)
         x = range;
 }
+

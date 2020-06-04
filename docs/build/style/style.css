@@ -1,6 +1,117 @@
+body
+{
+  margin:0;
+  padding-top:80px;
+  padding-left:100px;
+  padding-right:100px;
+  font-family: Lato;
+  color:#444;
+  background-color: #F0F0F0;
+}
+ul
+{
+  list-style: none;
+  padding-left: 0;
+}
+ul li
+{
+  margin-left: 0;
+}
+a
+{
+  color: #19B5FE;
+  text-decoration: none;
+}
+a[name="toc"]
+{
+  color:#444;
+}
+p
+{
+  color:#666;
+}
+.space
+{
+  height:10px;
+}
+table
+{
+  border-collapse: collapse;
+}
+th,td
+{
+  padding:10px;
+}
+table,th,td
+{
+  border:solid 1px #eee;
+}
+.type
+{
+  color: #19B5FE;
+}
 .topBar
 {
+  position:fixed;
+  padding-left: 100px;
+  top:0;
+  left:0;
   width:100vw;
-  height:40px;
-  background: red;
+  height:80px;
+  background: white;
+  box-shadow:0px 0px 3px 0px #AAA;
+  display: flex;
+}
+.topBar .titleContainer
+{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+.topBar .levelsTitle
+{
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 26px;
+}
+.topBar b
+{
+  font-size: 25px;
+}
+.logo
+{
+  margin-top:5px;
+  height:70px;
+}
+.main
+{
+  width:100%;
+  display: flex;
+}
+.main li:first-child
+{
+  display:none;
+}
+.sidebar
+{
+  margin-top: 15px;
+  margin-right: 15px;
+  padding:10px;
+  background: #FFF;
+  width:200px;
+}
+.context
+{
+  flex-grow: 2;
+  margin-top: 15px;
+  padding:15px;
+  background: #FFF;
+}
+.fn
+{
+  margin-top: 60px;
+  border-bottom:2px solid #EEE;
+  padding-bottom: 5px;
 }

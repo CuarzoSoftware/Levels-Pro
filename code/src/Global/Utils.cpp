@@ -2,6 +2,24 @@
 #include <QVariant>
 #include <QStyle>
 
+/*!
+    \class Color
+    \brief The Color class...
+
+    \inheaderfile Global/Color.h
+    \ingroup Global
+    \inmodule Global
+*/
+
+/*!
+    \class Utils
+    \brief The Utils class...
+
+    \inheaderfile Global/Utils.h
+    \ingroup Global
+    \inmodule Global
+*/
+
 // Añade una clase de estilo a un widget
 void Utils::addWidgetClass(QWidget *widget, const QString &className)
 {

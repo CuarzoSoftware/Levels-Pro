@@ -2,6 +2,17 @@
 #include <QtMath>
 #include <QDebug>
 
+/*!
+    \class TimeRuler
+    \brief The TimeRuler class...
+
+    \inheaderfile Widgets/TimeRuler.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
 // Constructor
 TimeRuler::TimeRuler(HScrollBar *sb)
 {

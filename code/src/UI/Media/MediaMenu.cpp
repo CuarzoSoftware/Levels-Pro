@@ -1,5 +1,16 @@
 #include "MediaMenu.h"
 
+/*!
+    \class MediaMenu
+    \brief The MediaMenu class...
+
+    \inheaderfile UI/Media/MediaMenu.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits MainMenu
+*/
+
 MediaMenu::MediaMenu()
 {
     // Asigna un ancho mínimo

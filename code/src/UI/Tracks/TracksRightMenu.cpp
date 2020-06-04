@@ -1,6 +1,17 @@
 #include "TracksRightMenu.h"
 #include <QVariant>
 
+/*!
+    \class TracksRightMenu
+    \brief The TracksRightMenu class...
+
+    \inheaderfile UI/Tracks/TracksRightMenu.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits QFrame
+*/
+
 TracksRightMenu::TracksRightMenu()
 {
 

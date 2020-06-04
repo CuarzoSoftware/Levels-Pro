@@ -1,5 +1,15 @@
 #include "Ruler.h"
 
+/*!
+    \class Ruler
+    \brief The Ruler class...
+
+    \inheaderfile Widgets/Ruler.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
 
 Ruler::Ruler(RulerType type)
 {

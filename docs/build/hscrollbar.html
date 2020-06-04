@@ -4,12 +4,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- HScrollBar.cpp -->
-  <title>HScrollBar Class | index.html</title>
+  <title>HScrollBar Class | Levels Pro</title>
 <link rel="stylesheet" type="text/css" href="style/style.css"/>
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="topBar"><img src="images/logo.png"></div><li>index.html</li>
-<li>HScrollBar</li>
+<div class="topBar"><img class="logo" src="images/logo.png"><div class="titleContainer"><div class="levelsTitle">Levels Pro</div><div class="levelsSubTitle">C++ Classes Documentation</div></div></div><div class="main"><li>HScrollBar</li>
 <div class="sidebar">
 <div class="toc">
 <h3><a name="toc">Contents</a></h3>
@@ -17,17 +17,20 @@
 <li class="level1"><a href="#public-types">Public Types</a></li>
 <li class="level1"><a href="#public-functions">Public Functions</a></li>
 <li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#protected-slots">Protected Slots</a></li>
 <li class="level1"><a href="#details">Detailed Description</a></li>
 </ul>
 </div>
 <div class="sidebar-content" id="sidebar-content"></div></div>
+<div class="context">
 <h1 class="title">HScrollBar Class</h1>
 <!-- $$$HScrollBar-brief -->
-<p>The <a href="hscrollbar.html">HScrollBar</a> class was created to simulate kinetic scrolling. <a href="#details">More...</a></p>
+<p>The <a href="hscrollbar.html">HScrollBar</a> class simulates the native Apple kinetic scrolling. <a href="#details">More...</a></p>
 <!-- @@@HScrollBar -->
 <div class="table"><table class="alignedsummary">
-<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;HScrollBar&gt;</span>
-</td></tr></table></div><ul>
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;Widgets/HScrollBar.h&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Since:</td><td class="memItemRight bottomAlign">  Qt 1.0</td></tr></table></div><ul>
 <li><a href="hscrollbar-members.html">List of all members, including inherited members</a></li>
 </ul>
 <a name="public-types"></a>
@@ -38,7 +41,7 @@
 <a name="public-functions"></a>
 <h2 id="public-functions">Public Functions</h2>
 <div class="table"><table class="alignedsummary">
-<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#HScrollBar">HScrollBar</a></b>(QWidget *<i>parent</i> = nullptr, Position <i>pos</i> = Position::Bottom)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#HScrollBar">HScrollBar</a></b>(QWidget *<i>parent</i> = nullptr, Position <i>handlePosition</i> = Position::Bottom)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#moveX">moveX</a></b>(float <i>offset</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#setRange">setRange</a></b>(int <i>_range</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#setX">setX</a></b>(float <i>pos</i>)</td></tr>
@@ -48,36 +51,74 @@
 <div class="table"><table class="alignedsummary">
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#scrollChanged">scrollChanged</a></b>(int <i>x</i>)</td></tr>
 </table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#eventFilter">eventFilter</a></b>(QObject *<i>object</i>, QEvent *<i>event</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#refreshPosition">refreshPosition</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#setHandlePosition">setHandlePosition</a></b>(Position <i>handlePosition</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#validateX">validateX</a></b>()</td></tr>
+</table></div>
+<a name="protected-slots"></a>
+<h2 id="protected-slots">Protected Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="hscrollbar.html#elasticFix">elasticFix</a></b>()</td></tr>
+</table></div>
 <a name="details"></a>
 <!-- $$$HScrollBar-description -->
 <div class="descr">
 <h2 id="details">Detailed Description</h2>
-<p>The <a href="hscrollbar.html">HScrollBar</a> class was created to simulate kinetic scrolling.</p>
-<p class="centerAlign"><img src="images/logo.png" alt="" /></p></div>
+<p>The <a href="hscrollbar.html">HScrollBar</a> class simulates the native Apple kinetic scrolling.</p>
+</div>
 <!-- @@@HScrollBar -->
 <div class="types">
 <h2>Member Type Documentation</h2>
 <!-- $$$Position$$$Top$$$Bottom -->
 <h3 class="fn" id="Position-enum"><a name="Position-enum"></a>enum HScrollBar::<span class="name">Position</span></h3>
+<p>This enum type specifies a the scrollbar position:</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code>HScrollBar::Top</code></td><td class="topAlign tblval"><code>0</code></td><td class="topAlign">Displays the scroll bar at the top of the parent.</td></tr>
+<tr><td class="topAlign"><code>HScrollBar::Bottom</code></td><td class="topAlign tblval"><code>1</code></td><td class="topAlign">Displays the scroll bar at the bottom of the parent.</td></tr>
+</table></div>
 <!-- @@@Position -->
 </div>
 <div class="func">
 <h2>Member Function Documentation</h2>
 <!-- $$$HScrollBar[overload1]$$$HScrollBarQWidget*Position -->
-<h3 class="fn" id="HScrollBar"><a name="HScrollBar"></a>HScrollBar::<span class="name">HScrollBar</span>(<span class="type">QWidget</span> *<i>parent</i> = nullptr, <span class="type"><a href="hscrollbar.html#Position-enum">Position</a></span> <i>pos</i> = Position::Bottom)</h3>
-<p>Default constructs an instance of HScrollBar.</p><!-- @@@HScrollBar -->
+<h3 class="fn" id="HScrollBar"><a name="HScrollBar"></a>HScrollBar::<span class="name">HScrollBar</span>(<span class="type">QWidget</span> *<i>parent</i> = nullptr, <span class="type"><a href="hscrollbar.html#Position-enum">Position</a></span> <i>handlePosition</i> = Position::Bottom)</h3>
+<p>The <a href="hscrollbar.html">HScrollBar</a> class constructor. It requires a parent QWidget, and the handle position is opcional. By position by default is the bottom.</p>
+<!-- @@@HScrollBar -->
+<!-- $$$elasticFix[overload1]$$$elasticFix -->
+<h3 class="fn" id="elasticFix"><a name="elasticFix"></a><code>[protected slot] </code><span class="type">void</span> HScrollBar::<span class="name">elasticFix</span>()</h3>
+<p>Internally animates the scrolling when it overpass the range limits.</p>
+<!-- @@@elasticFix -->
+<!-- $$$eventFilter[overload1]$$$eventFilterQObject*QEvent* -->
+<h3 class="fn" id="eventFilter"><a name="eventFilter"></a><code>[override virtual protected] </code><span class="type">bool</span> HScrollBar::<span class="name">eventFilter</span>(<span class="type">QObject</span> *<i>object</i>, <span class="type">QEvent</span> *<i>event</i>)</h3>
+<!-- @@@eventFilter -->
 <!-- $$$moveX[overload1]$$$moveXfloat -->
 <h3 class="fn" id="moveX"><a name="moveX"></a><span class="type">void</span> HScrollBar::<span class="name">moveX</span>(<span class="type">float</span> <i>offset</i>)</h3>
+<p>Changes the scroll position by a given offset in pixels.</p>
 <!-- @@@moveX -->
+<!-- $$$refreshPosition[overload1]$$$refreshPosition -->
+<h3 class="fn" id="refreshPosition"><a name="refreshPosition"></a><code>[protected] </code><span class="type">void</span> HScrollBar::<span class="name">refreshPosition</span>()</h3>
+<!-- @@@refreshPosition -->
 <!-- $$$scrollChanged[overload1]$$$scrollChangedint -->
 <h3 class="fn" id="scrollChanged"><a name="scrollChanged"></a><code>[signal] </code><span class="type">void</span> HScrollBar::<span class="name">scrollChanged</span>(<span class="type">int</span> <i>x</i>)</h3>
 <!-- @@@scrollChanged -->
+<!-- $$$setHandlePosition[overload1]$$$setHandlePositionPosition -->
+<h3 class="fn" id="setHandlePosition"><a name="setHandlePosition"></a><code>[protected] </code><span class="type">void</span> HScrollBar::<span class="name">setHandlePosition</span>(<span class="type"><a href="hscrollbar.html#Position-enum">Position</a></span> <i>handlePosition</i>)</h3>
+<!-- @@@setHandlePosition -->
 <!-- $$$setRange[overload1]$$$setRangeint -->
 <h3 class="fn" id="setRange"><a name="setRange"></a><span class="type">void</span> HScrollBar::<span class="name">setRange</span>(<span class="type">int</span> <i>_range</i>)</h3>
+<p>Sets the scroll range in pixels (the inner size of the target Widget).</p>
 <!-- @@@setRange -->
 <!-- $$$setX[overload1]$$$setXfloat -->
 <h3 class="fn" id="setX"><a name="setX"></a><span class="type">void</span> HScrollBar::<span class="name">setX</span>(<span class="type">float</span> <i>pos</i>)</h3>
+<p>Changes the scroll position in pixels.</p>
 <!-- @@@setX -->
+<!-- $$$validateX[overload1]$$$validateX -->
+<h3 class="fn" id="validateX"><a name="validateX"></a><code>[protected] </code><span class="type">void</span> HScrollBar::<span class="name">validateX</span>()</h3>
+<!-- @@@validateX -->
 </div>
-<hr/><p class="footer"><small>[some footer and whatnot information]</small></p></body>
+</div></div><hr/><p class="footer"><small>Levels Pro - Cuarzo Software - 2020</small></p></body>
 </html>

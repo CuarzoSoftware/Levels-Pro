@@ -3,7 +3,16 @@
 #include <QEvent>
 #include <QtMath>
 
+/*!
+    \class IconSlider
+    \brief The IconSlider class...
 
+    \inheaderfile Widgets/IconSlider.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
 
 #include <QDebug>
 

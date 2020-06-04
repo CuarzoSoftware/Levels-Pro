@@ -1,6 +1,17 @@
 #include "TopBar.h"
 #include <QVariant>
 
+/*!
+    \class TopBar
+    \brief The TopBar class...
+
+    \inheaderfile UI/MainWindow/TopBar.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits QWidget
+*/
+
 TopBar::TopBar()
 {
     // Permite aplicar color de fondo

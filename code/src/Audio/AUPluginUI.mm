@@ -3,6 +3,16 @@
 #import <Foundation/NSString.h>
 #import <AppKit/AppKit.h>
 
+/*!
+    \class AudioUnitWrap
+    \brief The AudioUnitWrap class...
+
+    \inheaderfile Audio/AudioUnitWrap.h
+    \ingroup Audio
+    \inmodule Audio
+
+    \inherits QObject
+*/
 
 @interface NotificationObject: NSObject
 {

@@ -1,6 +1,17 @@
 #include "MainToolBar.h"
 #include <QVariant>
 
+/*!
+    \class MainToolBar
+    \brief The MainToolBar class...
+
+    \inheaderfile UI/MainWindow/MainToolBar.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits MainMenu
+*/
+
 MainToolBar::MainToolBar()
 {
     // Permite aplicar color de fondo

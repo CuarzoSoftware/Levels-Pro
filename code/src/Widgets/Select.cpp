@@ -1,6 +1,17 @@
 #include "Select.h"
 #include <QVariant>
 
+/*!
+    \class Select
+    \brief The Select class...
+
+    \inheaderfile Widgets/Select.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
 Select::Select(const QString &title, uint verticalMargin)
 {
     // Asigna margin vertical

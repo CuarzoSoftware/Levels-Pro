@@ -1,6 +1,17 @@
 #include "MainMenu.h"
 #include <QVariant>
 
+/*!
+    \class MainMenu
+    \brief The MainMenu class...
+
+    \inheaderfile Widgets/MainMenu.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QFrame
+*/
+
 MainMenu::MainMenu()
 {
     // Permite aplicar color de fondo

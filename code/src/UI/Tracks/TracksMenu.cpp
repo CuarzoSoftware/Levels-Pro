@@ -2,6 +2,18 @@
 #include <Audio/Core.h>
 #include <QWheelEvent>
 
+/*!
+    \class TracksMenu
+    \brief The TracksMenu class...
+
+    \inheaderfile UI/Tracks/TracksMenu.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits MainMenu
+*/
+
+
 TracksMenu::TracksMenu(Core *_core)
 {
     setMouseTracking(true);

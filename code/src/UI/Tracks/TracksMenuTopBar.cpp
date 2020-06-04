@@ -1,5 +1,16 @@
 #include "TracksMenuTopBar.h"
 
+/*!
+    \class TracksMenuTopBar
+    \brief The TracksMenuTopBar class...
+
+    \inheaderfile UI/Tracks/TracksMenuTopBar.h
+    \ingroup UI
+    \inmodule UI
+
+    \inherits MenuTopBar
+*/
+
 TracksMenuTopBar::TracksMenuTopBar()
 {    
     // Configura el layout del topbar

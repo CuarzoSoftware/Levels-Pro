@@ -1,6 +1,17 @@
 #include "MenuTopBar.h"
 #include <QVariant>
 
+/*!
+    \class MenuTopBar
+    \brief The MenuTopBar class...
+
+    \inheaderfile Widgets/MenuTopBar.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
 MenuTopBar::MenuTopBar()
 {
     // Asigna una altura fija

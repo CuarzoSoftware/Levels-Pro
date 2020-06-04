@@ -2,6 +2,17 @@
 #include <Global/Utils.h>
 #include <QVariant>
 
+/*!
+    \class ToggleButton
+    \brief The ToggleButton class...
+
+    \inheaderfile Widgets/ToggleButton.h
+    \ingroup Widgets
+    \inmodule Widgets
+
+    \inherits QWidget
+*/
+
 // Constructor I
 ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &fixedSize)
 {
