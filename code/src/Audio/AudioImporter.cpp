@@ -9,8 +9,6 @@
     \inheaderfile Audio/AudioImporter.h
     \ingroup Audio
     \inmodule Audio
-
-    \inherits QLabel
 */
 
 AudioImporter::AudioImporter(const QString &url)

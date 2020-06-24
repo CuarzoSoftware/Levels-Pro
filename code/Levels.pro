@@ -54,6 +54,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     levels.qrc
 
+# src/Widgets/OpenGLRuler.h \
+# src/Widgets/OpenGLRuler.cpp \
+
 HEADERS += \
     src/Audio/AUPluginUI.h \
     src/Audio/Core.h \
@@ -86,7 +89,6 @@ HEADERS += \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
-    src/Widgets/OpenGLRuler.h \
     src/Widgets/Ruler.h \
     src/Widgets/Select.h \
     src/Widgets/TimeRuler.h \
@@ -122,7 +124,6 @@ SOURCES += \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
-    src/Widgets/OpenGLRuler.cpp \
     src/Widgets/Ruler.cpp \
     src/Widgets/Select.cpp \
     src/Widgets/TimeRuler.cpp \

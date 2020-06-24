@@ -9,7 +9,7 @@
     \ingroup UI
     \inmodule UI
 
-    \inherits MainMenu
+    \inherits QWidget
 */
 
 MainToolBar::MainToolBar()

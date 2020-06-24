@@ -192,6 +192,7 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
 
                 return true;
             }
+            // Touchpad Scrolling
             else if(e->phase() == Qt::ScrollUpdate )
             {
 
@@ -203,12 +204,13 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
                 }
                 else if( x > range + 2.f )
                 {
-                    delta = delta/(x/2.f);
+                    delta = delta/((x-range)/2.f);
                 }
 
                 moveX(delta);
 
             }
+            // Touchpad scrolling momentum
             else if(e->phase() == Qt::ScrollMomentum)
             {
                 if(scrollFinished)
@@ -236,11 +238,13 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
                 moveX(delta);
 
             }
+            // Begin scrolling
             else if(e->phase() == Qt::ScrollBegin)
             {
                 scrollFinished = false;
                 momentumBlocked = false;
             }
+            // End scrolling
             else if(e->phase() == Qt::ScrollEnd)
             {
                 scrollFinished  = true;
