@@ -21,9 +21,9 @@ TimeRuler::TimeRuler(HScrollBar *sb)
     hScrollBar = sb;
 
     // Set the font styles for the ruler numbers
-    QFont font("Helvetica Neue");
+    QFont font("SF Pro Display");
     font.setPixelSize(13);
-    font.setWeight(QFont::Weight::Bold);
+    font.setWeight(QFont::Weight::Normal);
     setFont(font);
 
     // Adjust the size of the dashed background texture

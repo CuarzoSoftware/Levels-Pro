@@ -71,14 +71,8 @@ void HScrollBar::setRange(int _range)
 {
     range = _range;
 
-    // Sets the bar width
-    float barWidth = width()*width()/(range+width());
 
-    // If it is less than 16 pixels
-    if(barWidth < 16)
-        barWidth = 16;
-
-    bar->setFixedWidth(barWidth);
+    updateBarWidth();
 
     // Notify scroll change
     scrollChanged(x);
@@ -96,11 +90,7 @@ void HScrollBar::moveX(float offset)
     //validateX();
 
     // Move the scroll bar
-    int barPos = 0;
-    if(range > 0)
-        barPos = x*(width() - bar->width())/range;
-    bar->move(barPos ,bar->pos().y());
-
+    updateBarPos();
 
     // Notify scroll change
     scrollChanged(x);
@@ -117,11 +107,7 @@ void HScrollBar::setX(float pos)
     //validateX();
 
     // Move the scroll bar
-    int barPos = 0;
-    if(range > 0)
-        barPos = x*(width() - bar->width())/range;
-    bar->move(barPos ,bar->pos().y());
-
+    updateBarWidth();
 
     // Notify scroll change
     scrollChanged(x);
@@ -174,6 +160,8 @@ bool HScrollBar::eventFilter(QObject *object, QEvent *event)
             // Mouse Wheel
             if(e->phase() == Qt::NoScrollPhase)
             {
+                delta = e->delta();
+
                 scrollFinished = true;
 
                 if( x - delta < 0)
@@ -301,5 +289,57 @@ void HScrollBar::validateX()
 
     else if( x > range)
         x = range;
+}
+
+void HScrollBar::updateBarWidth()
+{
+    // Sets the bar width
+    barWidth = width()*width()/(range+width()) - 6;
+
+    // If it is less than 16 pixels
+    if(barWidth < 16)
+        barWidth = 16;
+
+    updateBarPos();
+}
+
+/*!
+    Updates the scroll bar position, applying a 3px margin to each side.
+*/
+void HScrollBar::updateBarPos()
+{
+
+    // Stores the bar position calculation
+    int barPos = 0;
+
+    // Prevents division by zero
+    if(range > 0)
+        // Calculates the bar position proportional to the scroll one
+        barPos = 3 + x*(width() - barWidth - 6)/range;
+
+    // If the scroll reaches the min range
+    if(barPos < 3)
+    {
+        // Applies the kinetic bar resize
+        bar->setFixedWidth(barWidth - (3 - barPos));
+
+        // Limits the position to 3px of margin
+        barPos = 3;
+    }
+    // If the scroll reaches the max range
+    else if(barPos >= width() - barWidth - 3)
+    {
+        // Applies the kinetic bar resize
+        bar->setFixedWidth(barWidth - (barPos - (width() - barWidth - 3)));
+    }
+    // If it's scrolling in the middle
+    else
+    {
+        // Restores the bar to it's normal size
+        bar->setFixedWidth(barWidth);
+    }
+
+    // Applies the bar position
+    bar->move(barPos ,bar->pos().y());
 }
 

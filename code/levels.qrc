@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/svg/open-box.svg</file>
         <file>res/svg/inspector.svg</file>
         <file>res/svg/tools.svg</file>
         <file>res/svg/back.svg</file>
@@ -66,7 +65,6 @@
         <file>res/svg/pencil.svg</file>
         <file>res/svg/zoom-horizontal.svg</file>
         <file>res/svg/zoom-vertical.svg</file>
-        <file>res/fonts/HelveticaNeue.ttc</file>
         <file>res/icons/icon.icns</file>
         <file>res/icons/levels.icns</file>
         <file>res/mac/Info.plist</file>
@@ -83,5 +81,25 @@
         <file>res/svg/horizontal-directions.svg</file>
         <file>res/png/loop-texture.png</file>
         <file>res/png/length-handle.png</file>
+        <file>res/svg/length-handle.svg</file>
+        <file>res/svg/library-old.svg</file>
+        <file>res/fonts/SF-Pro-Display-Black.otf</file>
+        <file>res/fonts/SF-Pro-Display-BlackItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Bold.otf</file>
+        <file>res/fonts/SF-Pro-Display-BoldItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Heavy.otf</file>
+        <file>res/fonts/SF-Pro-Display-HeavyItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Light.otf</file>
+        <file>res/fonts/SF-Pro-Display-LightItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Medium.otf</file>
+        <file>res/fonts/SF-Pro-Display-MediumItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Regular.otf</file>
+        <file>res/fonts/SF-Pro-Display-RegularItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Semibold.otf</file>
+        <file>res/fonts/SF-Pro-Display-SemiboldItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Thin.otf</file>
+        <file>res/fonts/SF-Pro-Display-ThinItalic.otf</file>
+        <file>res/fonts/SF-Pro-Display-Ultralight.otf</file>
+        <file>res/fonts/SF-Pro-Display-UltralightItalic.otf</file>
     </qresource>
 </RCC>

@@ -20,7 +20,7 @@ public:
     CompactContainer *rightContainer = new CompactContainer();
 
     // Left container Buttons
-    ToggleButton *libraryBtn = new ToggleButton(new Icon(":/res/svg/library.svg"));
+    ToggleButton *libraryBtn = new ToggleButton(new Icon(":/res/svg/library.svg"),10);
     ToggleButton *inspectorBtn = new ToggleButton(new Icon(":/res/svg/inspector.svg"),9);
     ToggleButton *toolsBtn = new ToggleButton(new Icon(":/res/svg/tools.svg"));
 

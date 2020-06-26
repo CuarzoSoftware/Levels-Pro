@@ -146,7 +146,12 @@ void Core::loadDefaultStyle()
 
 void Core::setDefaultFontFamily()
 {
-    int id = QFontDatabase::addApplicationFont(":res/fonts/HelveticaNeue.ttc");
+    QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Bold.otf");
+    QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Medium.otf");
+    QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Light.otf");
+
+
+    int id = QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Regular.otf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont font(family);
     QApplication::setFont(font);

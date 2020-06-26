@@ -23,10 +23,13 @@ protected:
     void setHandlePosition(Position handlePosition);
     void refreshPosition();
     void validateX();
+    void updateBarWidth();
+    void updateBarPos();
     QTimer *elasticTimer = new QTimer(this);
     Position position;
     int range = 0;
     int previusDelta = 0;
+    float barWidth = 0.f;
     float x = 0;
     float elongation = 0.f;
     float elasticIndex = 0.f;

@@ -6,6 +6,10 @@
 class Color
 {
 public:
+    Color()
+    {
+        num = 2;
+    }
     static QColor FOREIGN_CRIMSON(){return QColor("#C91F37");};
     static QColor RED_ORANGE(){return QColor("#DC3023");};
     static QColor COCHINEAL_RED(){return QColor("#9D2933");};
@@ -91,6 +95,8 @@ public:
     static QColor LYNCH(){return QColor("#6C7A89");};
     static QColor CASCADE(){return QColor("#95A5A6");};
     static QColor WHITE(){return QColor("#FFFFFF");};
+private:
+    int num = 0;
 };
 
 #endif // COLOR_H

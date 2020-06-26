@@ -27,11 +27,13 @@ macx {
     LIBS += -framework AppKit
 
     HEADERS += \
-    src/Audio/AudioImporter.h \
-    src/Audio/Test.h \
+        src/Audio/AudioImporter.h \
+        src/Audio/Test.h \
+        src/Audio/AUPluginUI.h \
 
     SOURCES += \
         src/Audio/AudioImporter.cpp \
+        src/Audio/AUPluginUI.mm \
 
     OBJECTIVE_SOURCES += src/Audio/Test.mm \
 }
@@ -58,7 +60,6 @@ RESOURCES += \
 # src/Widgets/OpenGLRuler.cpp \
 
 HEADERS += \
-    src/Audio/AUPluginUI.h \
     src/Audio/Core.h \
     src/Audio/Region.h \
     src/Audio/TimeSettings.h \
@@ -95,7 +96,6 @@ HEADERS += \
     src/Widgets/ToggleButton.h
 
 SOURCES += \
-    src/Audio/AUPluginUI.mm \
     src/Audio/Core.cpp \
     src/Audio/Region.cpp \
     src/Audio/Track.cpp \

@@ -18,9 +18,9 @@ Ruler::Ruler(RulerType type)
     // If is the number ruler, sets the font
     if(rulerType == RulerType::NumberRuler)
     {
-        QFont font("Helvetica Neue");
+        QFont font("SF Pro Display");
         font.setPixelSize(13);
-        font.setWeight(QFont::Weight::Bold);
+        font.setWeight(QFont::Weight::Thin);
         setFont(font);
     }
 }
