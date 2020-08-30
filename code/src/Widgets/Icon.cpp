@@ -68,3 +68,8 @@ void Icon::setColor(const QColor &color)
     }
     setPixmap(QPixmap::fromImage(tmp));
 }
+
+QColor Icon::getColor()
+{
+    return _iconColor;
+}

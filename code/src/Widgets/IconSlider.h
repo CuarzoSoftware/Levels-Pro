@@ -12,8 +12,9 @@ public:
     explicit IconSlider(Icon *icn);
     QWidget *line = new QWidget(this);
     Icon *icon;
-    Icon *handle = new Icon(":/res/svg/slider-handle.svg",QSize(10,10),QColor("#A6A6A6"));
+    Icon *handle = new Icon(":/res/svg/slider-handle.svg",QSize(10,10),QColor("#666666"));
     void setValue(float val);
+    float getValue();
 signals:
     void valueChanged(float val);
 private:

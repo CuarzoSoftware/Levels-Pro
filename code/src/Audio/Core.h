@@ -37,7 +37,6 @@ private:
 
     // UI references
     MainWindow *mainWindow;
-    TracksMenu *tracksMenu;
 
 
     // Audio

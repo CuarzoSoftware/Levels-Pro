@@ -29,9 +29,7 @@ Core::Core(QApplication *_levels)
 void Core::configure()
 {
     timeSettings->setTimeSignature(4,4);
-    timeSettings->setProjectLengthInTicks(960*4*50);
-
-    qDebug() << timeSettings->divitionsPerBeat;
+    timeSettings->setProjectLengthInTicks(960*4*100);
 
     // Loads default font
     setDefaultFontFamily();
@@ -44,24 +42,19 @@ void Core::run()
 {
     // Creates the main window
     mainWindow = new MainWindow(this);
-    tracksMenu = mainWindow->tracksMenu;
-
-    // Set the track conroller scrollbar
-    //tracksMenu->leftMenu->tracksScrollArea->setVerticalScrollBar(tracksMenu->rightMenu->tracksScroll->verticalScrollBar());
-    //tracksMenu->rightMenu->ruler->setHorizontalScrollBar(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar());
 
     // Asignt time settings to other components
-    tracksMenu->rightMenu->timeRuler->setTimeSettings(timeSettings);
+    mainWindow->tracksMenu->rightMenu->timeRuler->setTimeSettings(timeSettings);
 
-
-    connect(tracksMenu->topBar->hZoomSlider,&IconSlider::valueChanged,this,&Core::zoomChanged);
-    //connect(tracksMenu->rightMenu->tracksScroll->horizontalScrollBar(),&QScrollBar::valueChanged,this,&Core::horizontalScrollChanged);
-    //connect(tracksMenu->rightMenu->tracksScroll->verticalScrollBar(),&QScrollBar::valueChanged,this,&Core::verticalScrollChanged);
+    connect(mainWindow->tracksMenu->topBar->hZoomSlider,&IconSlider::valueChanged,this,&Core::zoomChanged);
 
 
     for(int i = 0; i < 50 ; i++)
         createTrack();
+
     mainWindow->show();
+    mainWindow->tracksMenu->topBar->hZoomSlider->setValue(0);
+
 }
 
 void Core::createTrack()
@@ -69,8 +62,8 @@ void Core::createTrack()
     Track *newTrack = new Track();
     tracksList.prepend(newTrack);
 
-    tracksMenu->leftMenu->addTrack(newTrack->controller);
-    tracksMenu->rightMenu->addTrack(newTrack->trackBand);
+    mainWindow->tracksMenu->leftMenu->addTrack(newTrack->controller);
+    mainWindow->tracksMenu->rightMenu->addTrack(newTrack->trackBand);
 }
 
 void Core::setHorizontalZoom(float zoom)
@@ -87,24 +80,8 @@ void Core::setHorizontalZoom(float zoom)
 void Core::zoomChanged(float value)
 {
 
-    tracksMenu->rightMenu->timeRuler->setZoom(qPow(value,5));
-    /*
-    float scrollWidth = (float)tracksMenu->rightMenu->tracksScroll->width();
-    float widgetsWidth = scrollWidth + (50000.f)*normal;
-    float ticksPerBar = beatsNumber*ticksPerWholeNote/noteValue;
-    float barWidth = widgetsWidth/projectLenght/ticksPerBar;
-
-    tracksMenu->rightMenu->ruler->topRuler->setBarSize(barWidth);
-
-    tracksMenu->rightMenu->ruler->bottomRuler->setBarSize(barWidth);
-    tracksMenu->rightMenu->tracksRuler->setBarSize(barWidth);
-
-
-    tracksMenu->rightMenu->ruler->topRuler->setFixedWidth(widgetsWidth);
-
-    tracksMenu->rightMenu->ruler->bottomRuler->setFixedWidth(widgetsWidth);
-    tracksMenu->rightMenu->tracksRuler->setFixedWidth(widgetsWidth);
-    */
+    // Scroll zoom 0-1 with exponential curve
+    mainWindow->tracksMenu->rightMenu->timeRuler->setZoom(qPow(value,5));
 
 }
 
@@ -131,14 +108,9 @@ void Core::horizontalScrollChanged(int pos)
 // Carga los estilos por defecto
 void Core::loadDefaultStyle()
 {
-    QFile File(":/res/styles/widgets.qss");
+    QFile File(QCoreApplication::applicationDirPath()+"/../Resources/theme.qss");
     File.open(QFile::ReadOnly);
     QString StyleSheet = QLatin1String(File.readAll());
-    File.close();
-
-    File.setFileName(":/res/styles/tracks.qss");
-    File.open(QFile::ReadOnly);
-    StyleSheet.append(QLatin1String(File.readAll()));
     File.close();
 
     levels->setStyleSheet(StyleSheet);

@@ -5,6 +5,8 @@
 #include <UI/Tracks/TracksLeftMenu.h>
 #include <UI/Tracks/TracksRightMenu.h>
 
+#include <Widgets/ScrollBar.h>
+
 #include <QSplitter>
 
 class Core;
@@ -27,11 +29,17 @@ public:
     // Right Menu ( Tracks and regions View )
     TracksRightMenu *rightMenu = new TracksRightMenu();
 
-    void wheelEvent(QWheelEvent*event);
+    // Vertical Scroll Bar
+    ScrollBar *verticalScrollBar = new ScrollBar(Qt::Vertical,this);
+
+    // Horizontal Scroll Bar
+    ScrollBar *horizontalScrollBar = new ScrollBar(Qt::Horizontal,this);
 
     Core *core;
 
-signals:
+private:
+    virtual void wheelEvent(QWheelEvent*event) override;
+    virtual bool eventFilter(QObject *object, QEvent *event) override;
 
 };
 

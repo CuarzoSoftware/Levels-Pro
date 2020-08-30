@@ -42,6 +42,10 @@ TracksMenuTopBar::TracksMenuTopBar()
     horizontalLayout->addWidget(cursorModesContainer);
     horizontalLayout->addStretch(1);
 
+    // Snap Mode Label
+    horizontalLayout->addWidget(new QLabel("Snap:"));
+    horizontalLayout->addWidget(snapSelect);
+
     // Select de configuración
     horizontalLayout->addWidget(confSelect);
 
@@ -57,5 +61,14 @@ TracksMenuTopBar::TracksMenuTopBar()
     sliderContainer->addWidget(vZoomSlider);
     sliderContainer->addWidget(hZoomSlider);
     horizontalLayout->addWidget(sliderContainer);
+
+    // Set Active Button Icon Colors
+    automationBtn->setActiveIconColor(Qt::white);
+    flexBtn->setActiveIconColor(Qt::white);
+    headTrackerBtn->setActiveIconColor(Qt::white);
+    wavesZoomBtn->setActiveIconColor(Qt::white);
+    verticalZoomBtn->setActiveIconColor(Qt::white);
+    horizontalZoomBtn->setActiveIconColor(Qt::white);
+
 
 }

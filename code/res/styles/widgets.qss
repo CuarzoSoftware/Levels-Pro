@@ -18,7 +18,7 @@ QLabel
 }
 .mainWindow
 {
-    background:#8F8F8F;
+    background:#FFFFFF;
 }
 .topBar
 {

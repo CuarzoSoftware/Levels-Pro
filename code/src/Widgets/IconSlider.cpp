@@ -14,7 +14,6 @@
     \inherits QWidget
 */
 
-#include <QDebug>
 
 IconSlider::IconSlider(Icon *icn)
 {
@@ -53,19 +52,24 @@ void IconSlider::setValue(float val)
     handle->move(line->x() + (line->width()-handle->width())*value,handle->y());
 }
 
+float IconSlider::getValue()
+{
+    return value;
+}
+
 bool IconSlider::eventFilter(QObject *object, QEvent *event)
 {
     if(object == handle)
     {
         if(event->type() == QEvent::MouseButtonPress)
         {
-            handle->setColor(QColor("#6A6A6A"));
+            handle->setColor(QColor("#444444"));
             pressingHandle = true;
             lastMousePos = QCursor::pos().x();
         }
         if(event->type() == QEvent::MouseButtonRelease)
         {
-            handle->setColor(QColor("#A6A6A6"));
+            handle->setColor(QColor("#666666"));
             pressingHandle = false;
         }
         if(pressingHandle && event->type() == QEvent::MouseMove)

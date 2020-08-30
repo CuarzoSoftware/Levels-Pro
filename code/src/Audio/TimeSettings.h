@@ -66,7 +66,7 @@ public:
 
     // Loop
     bool loop = true;
-    unsigned int loopBeginTick = 0;
+    unsigned int loopBeginTick = 960*4*2;
     unsigned int loopEndTick = 960*4*4;
 
     float ticksPerBar;

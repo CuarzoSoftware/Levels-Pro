@@ -83,17 +83,19 @@ HEADERS += \
     src/UI/Tracks/TracksMenu.h \
     src/UI/Tracks/TracksMenuTopBar.h \
     src/UI/Tracks/TracksRightMenu.h \
+    src/UI/Tracks/TracksView.h \
     src/Widgets/CompactContainer.h \
-    src/Widgets/HScrollBar.h \
     src/Widgets/Icon.h \
     src/Widgets/IconSlider.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
     src/Widgets/Ruler.h \
+    src/Widgets/ScrollBar.h \
     src/Widgets/Select.h \
     src/Widgets/TimeRuler.h \
-    src/Widgets/ToggleButton.h
+    src/Widgets/ToggleButton.h \
+    src/Widgets/ToggleSelect.h
 
 SOURCES += \
     src/Audio/Core.cpp \
@@ -117,17 +119,19 @@ SOURCES += \
     src/UI/Tracks/TracksMenu.cpp \
     src/UI/Tracks/TracksMenuTopBar.cpp \
     src/UI/Tracks/TracksRightMenu.cpp \
+    src/UI/Tracks/TracksView.cpp \
     src/Widgets/CompactContainer.cpp \
-    src/Widgets/HScrollBar.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/IconSlider.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
     src/Widgets/Ruler.cpp \
+    src/Widgets/ScrollBar.cpp \
     src/Widgets/Select.cpp \
     src/Widgets/TimeRuler.cpp \
     src/Widgets/ToggleButton.cpp \
+    src/Widgets/ToggleSelect.cpp \
     src/main.cpp
 
 DISTFILES += \

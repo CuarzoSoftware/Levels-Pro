@@ -5,8 +5,9 @@
 #include <QPainter>
 #include <QPen>
 #include <QBrush>
+#include <QTimer>
 #include <Audio/TimeSettings.h>
-#include <Widgets/HScrollBar.h>
+#include <Widgets/ScrollBar.h>
 
 class TimeRuler : public QWidget
 {
@@ -14,7 +15,7 @@ class TimeRuler : public QWidget
 public:
 
     // Constructor
-    explicit TimeRuler(HScrollBar *sb);
+    explicit TimeRuler();//HScrollBar *sb
 
     // Changes the background color
     void setBackgroundColor(const QColor &color);
@@ -24,6 +25,9 @@ public:
 
     // Set zoom
     void setZoom(float _zoom);
+
+    // Set Horizontal Scroll Bar
+    void setHorizontalScrollBar(ScrollBar *sb);
 
 public slots:
     // Listen to scroll changes
@@ -68,24 +72,33 @@ private:
     float beatWidth = 100.f;
     float divWidth = 100.f;
 
+    // When changing project length
+    float totalWidthOld = 0.0f;
+
     // Stores the current width in use ( In getBeginAndEndIndex() )
     float currentDimension = 1.f;
 
+    // The begining X cord of the cursor while changing the project length
+    int projectLengthDragBegin = 0;
+
     // Tells if the loop bar should be drawn
     bool isLoopBarVisible = false;
+
+    // If the project length resizer is grabed
+    bool changingProjectlength = false;
 
     // The painter
     QPainter *painter = new QPainter();
 
     // Light line color
-    QColor barWhite = QColor("#636363");
+    QColor barWhite = QColor("#DDDDDD");
 
     // Light text color
-    QColor textWhite = QColor("#D4D4D4");
+    QColor textWhite = QColor("#666666");
 
     // Pens
     QPen barPen = QPen(barWhite, 0.5);
-    QPen borderPen = QPen(QColor("#171717"), 1.5);
+    QPen borderPen = QPen(QColor("#DDDDDD"), 1.5);
     QPen textPen = QPen(textWhite);
     QPen loopPen = QPen(Qt::black,0.5);
 
@@ -99,21 +112,31 @@ private:
     QBrush dashesBrush = QBrush(QPixmap(":/res/png/loop-texture.png"));
 
     // Brushes
-    QBrush backgroundBrush = QBrush(QColor("#333333"));
-    QBrush loopDisabledBrush = QBrush(QColor("#4B4B4B"));
-    QBrush loopEnabledBrush = QBrush(QColor("#BF9C2C"));
-    QBrush transparentBlack = QBrush(QColor(0,0,0,100));
+    QBrush backgroundBrush = QBrush(QColor("#FFFFFF"));
+    QBrush loopDisabledBrush = QBrush(QColor("#EEEEEE"));
+    QBrush loopEnabledBrush = QBrush(QColor("#ffa733"));
+    QBrush transparentBlack = QBrush(QColor(0,0,0,40));
 
     // Time settings reference
     TimeSettings *timeSettings;
 
     // Scroll bar reference
-    HScrollBar *hScrollBar;
+    ScrollBar *hScrollBar;
+
+    // Timer for project length resize event
+    QTimer *projectLengthResizeDelay = new QTimer(this);
+    int resizeDirection = 0;
 
 
 protected:
-   // Qt paint event
    virtual void paintEvent(QPaintEvent *event) override;
+   virtual void resizeEvent(QResizeEvent* event) override;
+   virtual void mouseMoveEvent(QMouseEvent *event) override;
+   virtual void mousePressEvent(QMouseEvent *event) override;
+   virtual void mouseReleaseEvent(QMouseEvent *event) override;
+
+private slots:
+    void projectLengthResize();
 
 };
 

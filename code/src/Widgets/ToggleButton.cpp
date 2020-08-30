@@ -36,6 +36,9 @@ ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &f
 
     // Asigna el icono al layout
     layout->addWidget(_icon);
+
+    // Obtiene el color de icono por defecto
+    defaultIconColor = _icon->getColor();
 }
 
 // Constructor II
@@ -59,6 +62,9 @@ ToggleButton::ToggleButton(unsigned int verticalMargin, Icon *icon, const QStrin
 
     // Asigna el icono al layout
     layout->addWidget(_icon);
+
+    // Obtiene el color de icono por defecto
+    defaultIconColor = _icon->getColor();
 }
 
 
@@ -67,9 +73,15 @@ void ToggleButton::setActive(bool mode)
     _active = mode;
 
     if(mode)
+    {
         Utils::addWidgetClass(this,"active");
+        _icon->setColor(activeIconColor);
+    }
     else
+    {
         Utils::removeWidgetClass(this,"active");
+        _icon->setColor(defaultIconColor);
+    }
 
     changed(mode);
 }
@@ -79,12 +91,18 @@ bool ToggleButton::isActive()
     return _active;
 }
 
+void ToggleButton::setActiveIconColor(const QColor &color)
+{
+    activeIconColor = color;
+}
+
 
 void ToggleButton::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
     Utils::removeWidgetClass(this,"active");
     Utils::addWidgetClass(this,"pressing");
+    _icon->setColor(activeIconColor);
 }
 
 void ToggleButton::mouseReleaseEvent(QMouseEvent *event)

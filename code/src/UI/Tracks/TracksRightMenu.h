@@ -2,9 +2,10 @@
 #define TRACKSRIGHTMENU_H
 
 #include <UI/Tracks/TrackBand.h>
+#include <UI/Tracks/TracksView.h>
 #include <Widgets/Ruler.h>
 #include <Widgets/TimeRuler.h>
-#include <Widgets/HScrollBar.h>
+#include <Widgets/ScrollBar.h>
 #include <QVBoxLayout>
 #include <QFrame>
 
@@ -15,9 +16,10 @@ public:
     explicit TracksRightMenu();
     QVBoxLayout *verticalLayout = new QVBoxLayout(this);
 
-    HScrollBar *hScrollBar = new HScrollBar(this);
+    //HScrollBar *hScrollBar = new HScrollBar(this);
 
-    TimeRuler *timeRuler = new TimeRuler(hScrollBar);
+    TracksView *tracksView = new TracksView(this);
+    TimeRuler *timeRuler = new TimeRuler();
     Ruler *tracksRuler = new Ruler(Ruler::RulerType::TracksRuler);
 
     QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);

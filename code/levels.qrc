@@ -101,5 +101,6 @@
         <file>res/fonts/SF-Pro-Display-ThinItalic.otf</file>
         <file>res/fonts/SF-Pro-Display-Ultralight.otf</file>
         <file>res/fonts/SF-Pro-Display-UltralightItalic.otf</file>
+        <file>res/svg/power.svg</file>
     </qresource>
 </RCC>

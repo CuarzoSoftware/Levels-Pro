@@ -33,9 +33,10 @@ TracksLeftMenu::TracksLeftMenu(TracksMenu *tracksMenu)
     topBar->horizontalLayout->addWidget(duplicateTrackBtn);
     topBar->horizontalLayout->addStretch(1);
     topBar->horizontalLayout->addWidget(globalTracksBtn);
+    globalTracksBtn->setActiveIconColor(Qt::white);
 
     // Configure topbar
-    topBar->setFixedHeight(40);
+    topBar->setFixedHeight(36);
     topBar->horizontalLayout->setContentsMargins(6,0,6,0);
     topBar->horizontalLayout->setSpacing(6);
 
