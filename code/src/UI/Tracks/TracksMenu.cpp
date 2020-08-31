@@ -37,9 +37,16 @@ TracksMenu::TracksMenu(Core *_core)
 
     // Replaces the tracks list scrollbar
     leftMenu->tracksScrollArea->setVerticalScrollBar(verticalScrollBar);
+
+    // Include the scrollbars to the tracks view
     verticalScrollBar->setParent(rightMenu->tracksView);
     horizontalScrollBar->setParent(rightMenu->tracksView);
+
+    // Stores the horizontal scrollbar to the rulers
     rightMenu->timeRuler->setHorizontalScrollBar(horizontalScrollBar);
+    rightMenu->linesRuler->setHorizontalScrollBar(horizontalScrollBar);
+
+    // To enable pinch zoom on trackpads
     installEventFilter(this);
 
 }
@@ -50,17 +57,17 @@ void TracksMenu::wheelEvent(QWheelEvent *event)
    horizontalScrollBar->setValue(horizontalScrollBar->value() - event->pixelDelta().x());
    verticalScrollBar->setValue(verticalScrollBar->value() - event->pixelDelta().y());
 }
-#include <QDebug>
+
+
 bool TracksMenu::eventFilter(QObject *object, QEvent *event)
 {
     if(event->type() == QEvent::NativeGesture)
     {
         QNativeGestureEvent *gesture = static_cast<QNativeGestureEvent*>(event);
+
         if(gesture->gestureType() == Qt::ZoomNativeGesture)
-        {
             topBar->hZoomSlider->setValue(topBar->hZoomSlider->getValue() + gesture->value());
-        }
-            //core->setHorizontalZoom( core->horizontalZoom + (float)event->pixelDelta().x()*0.001f)
+
     }
 }
 

@@ -3,7 +3,7 @@
 
 #include <UI/Tracks/TrackBand.h>
 #include <UI/Tracks/TracksView.h>
-#include <Widgets/Ruler.h>
+#include <Widgets/LinesRuler.h>
 #include <Widgets/TimeRuler.h>
 #include <Widgets/ScrollBar.h>
 #include <QVBoxLayout>
@@ -14,15 +14,14 @@ class TracksRightMenu : public QFrame
     Q_OBJECT
 public:
     explicit TracksRightMenu();
-    QVBoxLayout *verticalLayout = new QVBoxLayout(this);
 
-    //HScrollBar *hScrollBar = new HScrollBar(this);
+    QVBoxLayout *verticalLayout = new QVBoxLayout(this);
 
     TracksView *tracksView = new TracksView(this);
     TimeRuler *timeRuler = new TimeRuler();
-    Ruler *tracksRuler = new Ruler(Ruler::RulerType::TracksRuler);
+    LinesRuler *linesRuler = new LinesRuler();
 
-    QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);
+    //QVBoxLayout *tracksLayout = new QVBoxLayout(tracksRuler);
 
 
 

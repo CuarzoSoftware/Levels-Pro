@@ -22,7 +22,7 @@ TracksLeftMenu::TracksLeftMenu(TracksMenu *tracksMenu)
     // Allows background color
     setAttribute(Qt::WA_StyledBackground, true);
     setProperty("class","tracksLeftMenu");
-    setMaximumWidth(400);
+    setMaximumWidth(300);
 
     // Configure vertical layout
     verticalLayout->setMargin(0);

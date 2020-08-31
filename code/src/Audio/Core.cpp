@@ -45,7 +45,9 @@ void Core::run()
 
     // Asignt time settings to other components
     mainWindow->tracksMenu->rightMenu->timeRuler->setTimeSettings(timeSettings);
+    mainWindow->tracksMenu->rightMenu->linesRuler->setTimeSettings(timeSettings);
 
+    // Listen to zoom changes from the zoom slider
     connect(mainWindow->tracksMenu->topBar->hZoomSlider,&IconSlider::valueChanged,this,&Core::zoomChanged);
 
 
@@ -63,7 +65,7 @@ void Core::createTrack()
     tracksList.prepend(newTrack);
 
     mainWindow->tracksMenu->leftMenu->addTrack(newTrack->controller);
-    mainWindow->tracksMenu->rightMenu->addTrack(newTrack->trackBand);
+    //mainWindow->tracksMenu->rightMenu->addTrack(newTrack->trackBand);
 }
 
 void Core::setHorizontalZoom(float zoom)
@@ -81,7 +83,9 @@ void Core::zoomChanged(float value)
 {
 
     // Scroll zoom 0-1 with exponential curve
-    mainWindow->tracksMenu->rightMenu->timeRuler->setZoom(qPow(value,5));
+    float smoothedZoom = qPow(value,5);
+    mainWindow->tracksMenu->rightMenu->timeRuler->setZoom(smoothedZoom);
+    mainWindow->tracksMenu->rightMenu->linesRuler->setZoom(smoothedZoom);
 
 }
 

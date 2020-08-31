@@ -56,6 +56,7 @@ void TimeRuler::setBackgroundColor(const QColor &color)
 void TimeRuler::setTimeSettings(TimeSettings *settings)
 {
     timeSettings = settings;
+    connect(timeSettings,&TimeSettings::projectLengthChanged,this,&TimeRuler::projectLengthChanged);
 }
 
 // Changes the zoom
@@ -87,9 +88,6 @@ void TimeRuler::paintRuler()
     // Visible area ( Size of the window )
     w = width();
     h = height();
-
-    // Moves the viewport to the scroll position
-    painter->setViewport(-offset,0,w,h);
 
     // Prevent negative numbers
     if(offset < 0)
@@ -128,20 +126,20 @@ void TimeRuler::paintRuler()
     {
        // Draw dashed background
        painter->setBrush(dashesBrush);
-       painter->drawRect(offset,0,w,h);
+       painter->drawRect(0,0,w,h);
     }
     // If looping is disabled
     else
     {
         // Draw normal background
         painter->setBrush(backgroundBrush);
-        painter->drawRect(offset,0,w,h);
+        painter->drawRect(0,0,w,h);
 
         // Draw disabled bar ( gray )
         if(isLoopBarVisible)
         {
             painter->setBrush(loopDisabledBrush);
-            painter->drawRect(loopBeginPos,0,loopEndPos-loopBeginPos,h);
+            painter->drawRect(loopBeginPos-offset,0,loopEndPos-loopBeginPos-offset,h);
         }
 
     }
@@ -152,7 +150,7 @@ void TimeRuler::paintRuler()
 
     // Draw border bottom
     painter->setPen(borderPen);
-    painter->drawLine(offset, h, offset + w,h);
+    painter->drawLine(0, h, w,h);
 
     // Used later on for begin and end index calculation
     innerOffset = offset;
@@ -190,7 +188,7 @@ void TimeRuler::paintRuler()
 // Calculate useful metrics for later on, and set the scroll range
 void TimeRuler::updateDimensions()
 {
-    tickWidth = 200.f*(zoom) + (1.f - zoom)*(width() -28)/timeSettings->projectLenghtInTicks;
+    tickWidth = 200.f*(zoom) + (1.f - zoom)*((float)width() -28.f)/timeSettings->projectLenghtInTicks;
     barWidth = tickWidth*timeSettings->ticksPerBar;
     beatWidth = barWidth/timeSettings->beatsNumber;
     divWidth = beatWidth/timeSettings->divitionsPerBeat;
@@ -215,11 +213,11 @@ void TimeRuler::drawBars()
 
         // Paint the bar line
         painter->setPen(barPen);
-        painter->drawLine(x-0.5, h, x-0.5, 3);
+        painter->drawLine(x-0.5-offset, h, x-0.5-offset, 3);
 
         // Draw the bar number
         painter->setPen(textPen);
-        painter->drawText(x+5,h-5,QString::number(i+1));
+        painter->drawText(x+5-offset,h-5,QString::number(i+1));
 
     }
 }
@@ -242,7 +240,7 @@ void TimeRuler::drawBeats()
         {
             x = i*beatWidth;
             bar = i / timeSettings->beatsNumber + 1;
-            painter->drawText(x+5,h-5,QString::number(bar)+" "+QString::number(beat + 1));
+            painter->drawText(x+5-offset,h-5,QString::number(bar)+" "+QString::number(beat + 1));
         }
     }
 }
@@ -266,7 +264,7 @@ void TimeRuler::drawDivitions()
 
             beat =  (i/(uint)timeSettings->divitionsPerBeat)%timeSettings->beatsNumber;
             bar = i / timeSettings->divitionsPerBar + 1;
-            painter->drawText(x+5,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(div + 1));
+            painter->drawText(x+5-offset,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(div + 1));
 
         }
 
@@ -296,7 +294,7 @@ void TimeRuler::drawTicks()
                 div =  (i / (uint)timeSettings->ticksPerDivition) % (uint)timeSettings->divitionsPerBeat;
                 bar = i / timeSettings->ticksPerBar + 1;
 
-                painter->drawText(x+5,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(div + 1)+" "+QString::number(tick + 1));
+                painter->drawText(x+5-offset,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(div + 1)+" "+QString::number(tick + 1));
             }
         }
 
@@ -306,10 +304,10 @@ void TimeRuler::drawTicks()
 // Draw ticks numbers exccluding divitions
 void TimeRuler::drawTicksWithoutDivitions()
 {
-    if(divWidth < 180) return;
+    if(divWidth < 50) return;
 
     // Number of divs skipped
-    skip = 1 + 180 / currentDimension;
+    skip = 1 + 50 / currentDimension;
 
     getBeginAndEndIndex();
 
@@ -325,7 +323,7 @@ void TimeRuler::drawTicksWithoutDivitions()
                 beat =  (i/(uint)timeSettings->ticksPerBeat) % timeSettings->beatsNumber;
                 bar = i / timeSettings->ticksPerBar + 1;
 
-                painter->drawText(x+5,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(tick + 1));
+                painter->drawText(x+5-offset,h-5,QString::number(bar)+" "+QString::number(beat + 1)+" "+QString::number(tick + 1));
             }
         }
 
@@ -341,13 +339,13 @@ void TimeRuler::drawLoop()
     innerOffset = loopBeginPos;
     w = loopEndPos-loopBeginPos;
 
-    painter->setClipRect(loopBeginPos,0,w,h);
+    painter->setClipRect(loopBeginPos - offset,0,w,h);
     painter->setClipping(true);
 
     painter->setPen(Qt::NoPen);
     painter->setBrush(loopEnabledBrush);
 
-    painter->drawRect(loopBeginPos,0,w-0.5,h);
+    painter->drawRect(loopBeginPos - offset,0,w-0.5,h);
 
     textPen.setColor(Qt::white);
     barPen.setColor(Qt::white);
@@ -395,16 +393,16 @@ void TimeRuler::drawProjectLengthHandle()
     painter->setPen(Qt::NoPen);
     painter->setBrush(transparentBlack);
     painter->setClipping(false);
-    painter->drawRect(totalWidth,0,offset+w,h);
+    painter->drawRect(totalWidth-offset,0,w,h);
 
     // Draw shadow
-    projectEndShadow.setStart(totalWidth,0);
-    projectEndShadow.setFinalStop(totalWidth + 20,0);
+    projectEndShadow.setStart(totalWidth - offset,0);
+    projectEndShadow.setFinalStop(totalWidth - offset + 20,0);
     painter->setBrush(projectEndShadow);
-    painter->drawRect(totalWidth,0,20,h);
+    painter->drawRect(totalWidth - offset ,0,20,h);
 
     // Draw handle
-    painter->drawPixmap(totalWidth+1,2,h-3,h-4,lengthHandle);
+    painter->drawPixmap(totalWidth+1-offset,2,h-3,h-4,lengthHandle);
 
 }
 
@@ -543,9 +541,6 @@ void TimeRuler::mouseReleaseEvent(QMouseEvent *event)
             newLength = timeSettings->ticksPerBar*2;
 
         timeSettings->setProjectLengthInTicks(newLength);
-        updateDimensions();
-        setZoom(0.f);
-        hScrollBar->setValue(0);
 
     }
 }
@@ -562,6 +557,13 @@ void TimeRuler::projectLengthResize()
         totalWidth = totalWidthOld + mapFromGlobal(QCursor::pos()).x() - projectLengthDragBegin + offset;
         repaint();
     }
+}
+
+void TimeRuler::projectLengthChanged()
+{
+    updateDimensions();
+    setZoom(0.f);
+    hScrollBar->setValue(0);
 }
 
 

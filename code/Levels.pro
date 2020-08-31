@@ -87,10 +87,10 @@ HEADERS += \
     src/Widgets/CompactContainer.h \
     src/Widgets/Icon.h \
     src/Widgets/IconSlider.h \
+    src/Widgets/LinesRuler.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
-    src/Widgets/Ruler.h \
     src/Widgets/ScrollBar.h \
     src/Widgets/Select.h \
     src/Widgets/TimeRuler.h \
@@ -123,10 +123,10 @@ SOURCES += \
     src/Widgets/CompactContainer.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/IconSlider.cpp \
+    src/Widgets/LinesRuler.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
-    src/Widgets/Ruler.cpp \
     src/Widgets/ScrollBar.cpp \
     src/Widgets/Select.cpp \
     src/Widgets/TimeRuler.cpp \

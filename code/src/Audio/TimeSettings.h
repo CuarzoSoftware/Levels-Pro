@@ -1,14 +1,16 @@
 #ifndef TIMESETTINGS_H
 #define TIMESETTINGS_H
 
+#include <QObject>
 /**************************************
  ** 1 bar = (Depend of time signature)
  ** 1 beat = 4 divs
  ** 1 Div = 240 ticks
  **************************************/
 
-class TimeSettings
+class TimeSettings : public QObject
 {
+    Q_OBJECT
 public:
     explicit TimeSettings()
     {
@@ -24,7 +26,7 @@ public:
         projectLengthInDivitions = projectLenghtInTicks/ticksPerDivition;
         projectLengthInBeats = projectLenghtInTicks/ticksPerBeat;
         projectLenghtInBars = projectLenghtInTicks/ticksPerBar;
-
+        projectLengthChanged();
     }
 
     void setSampleRate(float _sampleRate)
@@ -79,6 +81,10 @@ public:
     // Time signature
     unsigned int beatsNumber = 4;
     unsigned int noteValue = 4;
+
+signals:
+    void projectLengthChanged();
+
 };
 
 #endif // TIMESETTINGS_H
