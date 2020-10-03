@@ -1,0 +1,129 @@
+QLabel
+{
+    color:<QLabelText>;
+    font-size:12px;
+}
+.mainWindow
+{
+    background-color:<MainWindowBackground>;
+}
+.topBar
+{
+    background:<MainWindowTopBarBackground>;
+    border-bottom:1px solid <MainWindowTopBarBorderBottom>;
+}
+.menu
+{
+    background:<MenuBackground>;
+    border:1px solid <MenuBorder>;
+    border-radius:4px;
+}
+.scrollArea
+{
+    border:none;
+}
+.mainToolBar
+{
+    border-top:1px solid #6A6A6A;
+}
+.menuSplitter
+{
+    margin:2px;
+}
+.tracksMenuSplitter
+{
+    margin:0px;
+}
+.menuTopBar
+{
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    background-color:#FFFFFF;
+    border-bottom:1px solid #EEEEEE;
+}
+.verticalMenuSplitter
+{
+    margin:0px;
+}
+.centerMenu
+{
+    margin-top:2px;
+}
+ToggleButton
+{
+    border-radius:4px;
+}
+.select
+{
+    border-radius:4px;
+    background:#EEEEEE;
+}
+QSplitter::handle
+{
+    margin:0px;
+}
+.iconSlider
+{
+    border-radius:4px;
+    margin-bottom:2px;
+    background:#EEEEEE;
+}
+.iconSlider .line
+{
+    background-color:#DDDDDD;
+    border-radius:1px;
+}
+TracksMenu QSplitter::handle
+{
+    background-color: #DDDDDD;
+}
+TrackBand
+{
+    border-bottom:1px solid #DDDDDD;
+}
+.tracksLeftMenu
+{
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:3px;
+}
+TracksLeftMenu .menuTopBar
+{
+    border-radius:0px;
+    border-bottom:1px solid #DDDDDD;
+}
+.trackController
+{
+    border-bottom:1px solid #DDDDDD;
+}
+TracksLeftMenu .scrollArea QWidget
+{
+    background-color:#FFFFFF;
+}
+TracksView
+{
+  background:#FCFCFC;
+}
+.CompactContainerBegin
+{
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:4px;
+    border-top-left-radius:4px;
+    border-right:1px solid #DDDDDD;
+}
+.CompactContainerMiddle
+{
+    border-left:none;
+    border-radius:0px;
+    border-right:1px solid #DDDDDD;
+}
+.CompactContainerLast
+{
+    border-left:none;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:0px;
+    border-top-left-radius:0px;
+}

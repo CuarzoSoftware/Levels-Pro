@@ -15,6 +15,7 @@ public:
 
     // Initial methods
     void configure();
+    void welcome();
     void run();
 
     // Time settings
@@ -22,12 +23,9 @@ public:
 
     // Audio
     void createTrack();
-    void setHorizontalZoom(float zoom);
 
 public slots:
     void zoomChanged(float value);
-    void verticalScrollChanged(int pos);
-    void horizontalScrollChanged(int pos);
 
 
 private:
@@ -37,7 +35,6 @@ private:
 
     // UI references
     MainWindow *mainWindow;
-
 
     // Audio
     QList<Track*>tracksList;

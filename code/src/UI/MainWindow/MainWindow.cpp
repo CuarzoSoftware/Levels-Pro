@@ -3,6 +3,7 @@
 #include <QScreen>
 #include <Global/Utils.h>
 #include <Audio/Core.h>
+#include <Global/Color.h>
 
 /*!
     \class MainWindow

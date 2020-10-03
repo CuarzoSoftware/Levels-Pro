@@ -20,7 +20,13 @@ public:
     Select *visualizationSelect = new Select("Visualization");
 
     CompactContainer *editModesContainer = new CompactContainer();
-    ToggleButton *automationBtn = new ToggleButton(1,new Icon(":res/svg/nodes.svg",QSize(21,21)));
+    ToggleButton *automationBtn = new ToggleButton(
+                1,
+                new Icon(":res/svg/nodes.svg",QSize(21,21)),
+                Color::theme.get("AutomationButtonActiveBackground"),
+                Color::theme.get("AutomationButtonInactiveBackground"),
+                Color::theme.get("AutomationButtonActiveIcon"),
+                Color::theme.get("AutomationButtonInactiveIcon"));
     ToggleButton *flexBtn = new ToggleButton(1,new Icon(":res/svg/stretch.svg",QSize(21,21)));
 
     ToggleButton *headTrackerBtn = new ToggleButton(1,new Icon(":res/svg/head.svg",QSize(21,21)));

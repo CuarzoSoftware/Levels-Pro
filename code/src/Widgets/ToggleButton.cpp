@@ -1,6 +1,6 @@
 #include "ToggleButton.h"
 #include <Global/Utils.h>
-#include <QVariant>
+#include <QStyle>
 
 /*!
     \class ToggleButton
@@ -14,13 +14,17 @@
 */
 
 // Constructor I
-ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &fixedSize)
+ToggleButton::ToggleButton(
+        Icon *icon,
+        unsigned int layoutMargin,
+        const QSize &fixedSize,
+        const QColor activeBackgroundColor,
+        const QColor inactiveBackgroundColor,
+        const QColor activeIconColor,
+        const QColor inactiveIconColor)
 {
-    // Permite aplicar color de fondo
+    // Allow background color
     setAttribute(Qt::WA_StyledBackground, true);
-
-    // Asigna la clase para los estilos
-    setProperty("class","toggleButton");
 
     // Asigna una altura fija
     setFixedSize(fixedSize);
@@ -37,18 +41,25 @@ ToggleButton::ToggleButton(Icon *icon, unsigned int layoutMargin, const QSize &f
     // Asigna el icono al layout
     layout->addWidget(_icon);
 
-    // Obtiene el color de icono por defecto
-    defaultIconColor = _icon->getColor();
+
+    setInactiveBackgroundColor(inactiveBackgroundColor);
+    setActiveBackgroundColor(activeBackgroundColor);
+    setInactiveIconColor(inactiveIconColor);
+    setActiveIconColor(activeIconColor);
+
 }
 
 // Constructor II
-ToggleButton::ToggleButton(unsigned int verticalMargin, Icon *icon, const QString &extraClass)
+ToggleButton::ToggleButton(
+        unsigned int verticalMargin,
+        Icon *icon,
+        const QColor activeBackgroundColor,
+        const QColor inactiveBackgroundColor,
+        const QColor activeIconColor,
+        const QColor inactiveIconColor)
 {
-    // Permite aplicar color de fondo
+    // Allow background color
     setAttribute(Qt::WA_StyledBackground, true);
-
-    // Asigna la clase para los estilos
-    setProperty("class","toggleButton "+extraClass);
 
     // Ajusta el layout
     layout->setContentsMargins(8,verticalMargin,8,verticalMargin);
@@ -63,8 +74,11 @@ ToggleButton::ToggleButton(unsigned int verticalMargin, Icon *icon, const QStrin
     // Asigna el icono al layout
     layout->addWidget(_icon);
 
-    // Obtiene el color de icono por defecto
-    defaultIconColor = _icon->getColor();
+    setInactiveBackgroundColor(inactiveBackgroundColor);
+    setActiveBackgroundColor(activeBackgroundColor);
+    setInactiveIconColor(inactiveIconColor);
+    setActiveIconColor(activeIconColor);
+
 }
 
 
@@ -74,13 +88,13 @@ void ToggleButton::setActive(bool mode)
 
     if(mode)
     {
-        Utils::addWidgetClass(this,"active");
-        _icon->setColor(activeIconColor);
+        _icon->setColor(_activeIconColor);
+        setBackgroundColor(_activeBackgroundColor);
     }
     else
     {
-        Utils::removeWidgetClass(this,"active");
-        _icon->setColor(defaultIconColor);
+        _icon->setColor(_inactiveIconColor);
+        setBackgroundColor(_inactiveBackgroundColor);
     }
 
     changed(mode);
@@ -93,21 +107,51 @@ bool ToggleButton::isActive()
 
 void ToggleButton::setActiveIconColor(const QColor &color)
 {
-    activeIconColor = color;
+    _activeIconColor = color;
+    if(_active)
+        _icon->setColor(_activeIconColor);
+}
+
+void ToggleButton::setActiveBackgroundColor(const QColor &color)
+{
+    _activeBackgroundColor = color;
+    if(_active)
+        setBackgroundColor(_activeBackgroundColor);
+}
+
+void ToggleButton::setInactiveIconColor(const QColor &color)
+{
+    _inactiveIconColor = color;
+    if(!_active)
+        _icon->setColor(_inactiveIconColor);
+}
+
+void ToggleButton::setInactiveBackgroundColor(const QColor &color)
+{
+    _inactiveBackgroundColor = color;
+    if(!_active)
+        setBackgroundColor(_inactiveBackgroundColor);
+}
+
+void ToggleButton::setBackgroundColor(const QColor &color)
+{
+    setStyleSheet("background-color:"+color.name()+";");
 }
 
 
 void ToggleButton::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
-    Utils::removeWidgetClass(this,"active");
-    Utils::addWidgetClass(this,"pressing");
-    _icon->setColor(activeIconColor);
+
+    QColor c = _inactiveBackgroundColor;
+    if(_active)
+        c = _activeBackgroundColor;
+
+    setBackgroundColor(c.darker(110));
 }
 
 void ToggleButton::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
     setActive(!_active);
-    Utils::removeWidgetClass(this,"pressing");
 }

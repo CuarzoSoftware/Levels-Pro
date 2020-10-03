@@ -84,10 +84,13 @@ HEADERS += \
     src/UI/Tracks/TracksMenuTopBar.h \
     src/UI/Tracks/TracksRightMenu.h \
     src/UI/Tracks/TracksView.h \
+    src/UI/Welcome/WelcomeWindow.h \
     src/Widgets/CompactContainer.h \
+    src/Widgets/HLayout.h \
     src/Widgets/Icon.h \
     src/Widgets/IconSlider.h \
     src/Widgets/LinesRuler.h \
+    src/Widgets/ListItem.h \
     src/Widgets/MainMenu.h \
     src/Widgets/MenuSplitter.h \
     src/Widgets/MenuTopBar.h \
@@ -95,12 +98,14 @@ HEADERS += \
     src/Widgets/Select.h \
     src/Widgets/TimeRuler.h \
     src/Widgets/ToggleButton.h \
-    src/Widgets/ToggleSelect.h
+    src/Widgets/ToggleSelect.h \
+    src/Widgets/VLayout.h
 
 SOURCES += \
     src/Audio/Core.cpp \
     src/Audio/Region.cpp \
     src/Audio/Track.cpp \
+    src/Global/Color.cpp \
     src/Global/Utils.cpp \
     src/UI/Editor/EditorMenu.cpp \
     src/UI/Inspector/InspectorMenu.cpp \
@@ -120,10 +125,13 @@ SOURCES += \
     src/UI/Tracks/TracksMenuTopBar.cpp \
     src/UI/Tracks/TracksRightMenu.cpp \
     src/UI/Tracks/TracksView.cpp \
+    src/UI/Welcome/WelcomeWindow.cpp \
     src/Widgets/CompactContainer.cpp \
+    src/Widgets/HLayout.cpp \
     src/Widgets/Icon.cpp \
     src/Widgets/IconSlider.cpp \
     src/Widgets/LinesRuler.cpp \
+    src/Widgets/ListItem.cpp \
     src/Widgets/MainMenu.cpp \
     src/Widgets/MenuSplitter.cpp \
     src/Widgets/MenuTopBar.cpp \
@@ -132,11 +140,9 @@ SOURCES += \
     src/Widgets/TimeRuler.cpp \
     src/Widgets/ToggleButton.cpp \
     src/Widgets/ToggleSelect.cpp \
+    src/Widgets/VLayout.cpp \
     src/main.cpp
 
-DISTFILES += \
-    res/svg/cursor.svg \
-    res/svg/pencil.svg
 
 
 

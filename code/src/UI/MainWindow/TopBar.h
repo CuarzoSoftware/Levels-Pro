@@ -32,8 +32,25 @@ public:
     ToggleButton *rewindBtn = new ToggleButton(new Icon(":/res/svg/rewind.svg"));
     ToggleButton *forwardBtn = new ToggleButton(new Icon(":/res/svg/fast-forward.svg"));
     ToggleButton *backStopBtn = new ToggleButton(new Icon(":/res/svg/back.svg"));
-    ToggleButton *playBtn = new ToggleButton(new Icon(":/res/svg/play-button.svg"));
-    ToggleButton *recordBtn = new ToggleButton(new Icon(":/res/svg/circle.svg",QColor("#C83028")),11);
+
+    ToggleButton *playBtn = new ToggleButton(
+                new Icon(":/res/svg/play-button.svg"),
+                11,
+                QSize(38,38),
+                Color::theme.get("PlaybackButtonActiveBackground"),
+                Color::theme.get("PlaybackButtonInactiveBackground"),
+                Color::theme.get("PlaybackButtonActiveIcon"),
+                Color::theme.get("PlaybackButtonInactiveIcon"));
+
+    ToggleButton *recordBtn = new ToggleButton(
+                new Icon(":/res/svg/circle.svg"),
+                11,
+                QSize(38,38),
+                Color::theme.get("RecordButtonActiveBackground"),
+                Color::theme.get("RecordButtonInactiveBackground"),
+                Color::theme.get("RecordButtonActiveIcon"),
+                Color::theme.get("RecordButtonInactiveIcon"));
+
     ToggleButton *loopBtn = new ToggleButton(new Icon(":/res/svg/repeat.svg"));
 
     // Modes Buttons

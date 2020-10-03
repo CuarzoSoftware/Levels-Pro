@@ -1,4 +1,6 @@
 #include <Audio/Core.h>
+#include <Global/Color.h>
+
 
 // Initial method
 int main(int argc, char *argv[])
@@ -7,13 +9,18 @@ int main(int argc, char *argv[])
     // Creates the Qt application
     QApplication *levels = new QApplication(argc, argv);
 
+
     // Run Levels
     Core *core = new Core(levels);
     core->configure();
-    core->run();
+    core->welcome();
+    //core->run();
+
 
     return levels->exec();
 }
+
+
 
 // Audio
 /*

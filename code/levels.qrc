@@ -72,8 +72,6 @@
         <file>res/svg/plus-circle.svg</file>
         <file>res/svg/window-down.svg</file>
         <file>res/svg/window-up.svg</file>
-        <file>res/styles/tracks.qss</file>
-        <file>res/styles/widgets.qss</file>
         <file>res/shaders/ruler/fshader.glsl</file>
         <file>res/shaders/ruler/vshader.glsl</file>
         <file>res/svg/slider-handle.svg</file>
@@ -102,5 +100,11 @@
         <file>res/fonts/SF-Pro-Display-Ultralight.otf</file>
         <file>res/fonts/SF-Pro-Display-UltralightItalic.otf</file>
         <file>res/svg/power.svg</file>
+        <file>res/styles/default.qss</file>
+        <file>res/styles/default.color</file>
+        <file>res/svg/open-box.svg</file>
+        <file>res/svg/new-project.svg</file>
+        <file>res/svg/recent.svg</file>
+        <file>res/svg/folder.svg</file>
     </qresource>
 </RCC>

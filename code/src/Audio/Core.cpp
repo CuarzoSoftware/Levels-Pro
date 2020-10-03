@@ -1,34 +1,33 @@
 #include "Core.h"
 #include <QFontDatabase>
-#include <QFile>
 #include <QScrollBar>
 #include <QtMath>
+#include <QStandardPaths>
+#include <QFile>
+#include <QDir>
+#include <QRegularExpression>
+#include <Global/Color.h>
+#include <UI/Welcome/WelcomeWindow.h>
 
-// Remove after
-#include <QDebug>
-
-
-/*!
-    \class Core
-    \brief The Core class...
-
-    \inheaderfile Audio/Core.h
-    \ingroup Audio
-    \inmodule Audio
-
-    \inherits QObject
-*/
 
 Core::Core(QApplication *_levels)
 {
     // Stores the app reference
     levels = _levels;
 
+    // Check if the settings and themes directory exist
+    QDir settingsDir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    if(!settingsDir.exists())
+        settingsDir.mkpath(".");
+    if(!settingsDir.exists("./themes"))
+        settingsDir.mkpath("./themes");
+
+
 }
 
 void Core::configure()
 {
-    timeSettings->setTimeSignature(4,4);
+    timeSettings->setTimeSignature(32,4);
     timeSettings->setProjectLengthInTicks(960*4*100);
 
     // Loads default font
@@ -36,6 +35,12 @@ void Core::configure()
 
     // Loads the default style
     loadDefaultStyle();
+}
+
+void Core::welcome()
+{
+    WelcomeWindow *welcomeWindow = new WelcomeWindow();
+    welcomeWindow->show();
 }
 
 void Core::run()
@@ -49,7 +54,6 @@ void Core::run()
 
     // Listen to zoom changes from the zoom slider
     connect(mainWindow->tracksMenu->topBar->hZoomSlider,&IconSlider::valueChanged,this,&Core::zoomChanged);
-
 
     for(int i = 0; i < 50 ; i++)
         createTrack();
@@ -68,16 +72,7 @@ void Core::createTrack()
     //mainWindow->tracksMenu->rightMenu->addTrack(newTrack->trackBand);
 }
 
-void Core::setHorizontalZoom(float zoom)
-{
-    /*
-    if(zoom > 1.0f) horizontalZoom = 1.0f;
-    else if(zoom < 0.0f) horizontalZoom = 0.0f;
-    else horizontalZoom = zoom;
 
-    //float rulerWidth = tracksRightMenu->width() + 10.f * tracksRightMenu->width() * horizontalZoom;
-    */
-}
 
 void Core::zoomChanged(float value)
 {
@@ -91,31 +86,24 @@ void Core::zoomChanged(float value)
 
 
 
-void Core::verticalScrollChanged(int pos)
-{
-    //tracksMenu->rightMenu->tracksRuler->move(tracksMenu->rightMenu->tracksRuler->x(),pos);
-}
-
-void Core::horizontalScrollChanged(int pos)
-{
-    /*
-    tracksMenu->rightMenu->tracksRuler->setXScroll(pos);
-    tracksMenu->rightMenu->ruler->topRuler->setXScroll(pos);
-    tracksMenu->rightMenu->ruler->bottomRuler->setXScroll(pos);
-
-    tracksMenu->rightMenu->tracksRuler->move(pos,tracksMenu->rightMenu->tracksRuler->y());
-    tracksMenu->rightMenu->ruler->topRuler->move(pos,tracksMenu->rightMenu->ruler->topRuler->y());
-    tracksMenu->rightMenu->ruler->bottomRuler->move(pos,tracksMenu->rightMenu->ruler->bottomRuler->y());
-    */
-}
-
-// Carga los estilos por defecto
+// Load default styles
 void Core::loadDefaultStyle()
 {
-    QFile File(QCoreApplication::applicationDirPath()+"/../Resources/theme.qss");
+    QFile File(":/res/styles/default.qss");
     File.open(QFile::ReadOnly);
     QString StyleSheet = QLatin1String(File.readAll());
     File.close();
+
+    // Parse color variables
+    int begin = StyleSheet.indexOf("<");
+    int end = StyleSheet.indexOf(">",begin);
+
+    while(begin != -1)
+    {
+        StyleSheet.replace(begin,end-begin+1,Color::theme.getString(StyleSheet.mid(begin+1,end-begin-1)));
+        begin = StyleSheet.indexOf("<",begin);
+        end = StyleSheet.indexOf(">",begin);
+    }
 
     levels->setStyleSheet(StyleSheet);
 }
@@ -125,7 +113,6 @@ void Core::setDefaultFontFamily()
     QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Bold.otf");
     QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Medium.otf");
     QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Light.otf");
-
 
     int id = QFontDatabase::addApplicationFont(":res/fonts/SF-Pro-Display-Regular.otf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);

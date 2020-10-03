@@ -115,7 +115,7 @@ void TimeRuler::paintRuler()
 
         // If loop bar ends after the viewport
         if( loopEndPos > offset + w)
-            loopEndPos = offset +w;
+            loopEndPos = offset + w;
     }
 
     // Draw background
@@ -211,9 +211,12 @@ void TimeRuler::drawBars()
         // Gets the x position
         x = i*barWidth;
 
-        // Paint the bar line
-        painter->setPen(barPen);
-        painter->drawLine(x-0.5-offset, h, x-0.5-offset, 3);
+        if(i != 0 && x != loopBeginPos && x != loopEndPos)
+        {
+            // Paint the bar line
+            painter->setPen(barPen);
+            painter->drawLine(x-0.5-offset, h, x-0.5-offset, 3);
+        }
 
         // Draw the bar number
         painter->setPen(textPen);
@@ -304,10 +307,10 @@ void TimeRuler::drawTicks()
 // Draw ticks numbers exccluding divitions
 void TimeRuler::drawTicksWithoutDivitions()
 {
-    if(divWidth < 50) return;
+    if(divWidth < 80) return;
 
     // Number of divs skipped
-    skip = 1 + 50 / currentDimension;
+    skip = 1 + 80 / currentDimension;
 
     getBeginAndEndIndex();
 
@@ -339,13 +342,13 @@ void TimeRuler::drawLoop()
     innerOffset = loopBeginPos;
     w = loopEndPos-loopBeginPos;
 
-    painter->setClipRect(loopBeginPos - offset,0,w,h);
+    painter->setClipRect(loopBeginPos - offset -1,0,w+1,h);
     painter->setClipping(true);
 
     painter->setPen(Qt::NoPen);
     painter->setBrush(loopEnabledBrush);
 
-    painter->drawRect(loopBeginPos - offset,0,w-0.5,h);
+    painter->drawRect(loopBeginPos - offset-1,0,w+1,h);
 
     textPen.setColor(Qt::white);
     barPen.setColor(Qt::white);

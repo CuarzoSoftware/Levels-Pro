@@ -91,14 +91,14 @@ private:
     QPainter *painter = new QPainter();
 
     // Light line color
-    QColor barWhite = QColor("#AAAAAA");
+    QColor barWhite = QColor("#BBBBBB");
 
     // Light text color
     QColor textWhite = QColor("#666666");
 
     // Pens
     QPen barPen = QPen(barWhite, 0.5);
-    QPen borderPen = QPen(QColor("#AAAAAA"), 1.5);
+    QPen borderPen = QPen(QColor("#BBBBBB"), 1.5);
     QPen textPen = QPen(textWhite);
     QPen loopPen = QPen(Qt::black,0.5);
 

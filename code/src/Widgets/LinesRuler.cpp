@@ -74,6 +74,11 @@ void LinesRuler::getBeginAndEndIndex()
 
     // Last visible index
     end = begin + w/currentDimension + powSkip*2;
+
+    // Prevent first line
+    if(begin == 0)
+        begin = powSkip;
+
 }
 
 void LinesRuler::updateDimensions()
@@ -83,13 +88,14 @@ void LinesRuler::updateDimensions()
     beatWidth = barWidth/timeSettings->beatsNumber;
     divWidth = beatWidth/timeSettings->divitionsPerBeat;
     totalWidth = timeSettings->projectLenghtInTicks*tickWidth;
+    repaint();
 }
 
 // Draw bar lines
 void LinesRuler::drawBars()
 {
     // Number of bars skipped
-    skip = 1 + 40/currentDimension;
+    skip = 1 + 20/currentDimension;
 
     getBeginAndEndIndex();
 
@@ -110,7 +116,7 @@ void LinesRuler::drawBars()
 // Draw beat lines
 void LinesRuler::drawBeats()
 {
-    if(barWidth < 5) return;
+    if(barWidth < 10) return;
 
     // Number of beats skipped
     skip = 1 + 10/currentDimension;
@@ -209,17 +215,12 @@ void LinesRuler::paintRuler()
         // DRAW DIVITIONS
         currentDimension = divWidth;
         drawDivitions();
+    }
 
-        // DRAW TICKS WITH DIVITIONS
-        currentDimension = tickWidth;
-        drawTicks();
-    }
-    else
-    {
-        // DRAW TICKS WITHOUT DIVITIONS
-        currentDimension = tickWidth;
-        //drawTicksWithoutDivitions();
-    }
+    // DRAW TICKS
+    currentDimension = tickWidth;
+    drawTicks();
+
 
 
 }

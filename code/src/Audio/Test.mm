@@ -83,15 +83,17 @@ void CreateMyAUGraph(MyAUGraphPlayer *player)
     AUNode outputNode;
     AUGraphAddNode(player->graph,&outputcd,&outputNode);
 
-
-
-
     AUNode eqNode;
     AUGraphAddNode(player->graph,&eqDesc,&eqNode);
 
-
     //
     AudioComponentDescription fileplayercd = {};
+    AudioComponentDescription desc;
+    desc.componentType = kAudioUnitType_Output;
+    desc.componentSubType = kAudioUnitSubType_HALOutput;
+    desc.componentManufacturer = kAudioUnitManufacturer_Apple;
+    desc.componentFlags = 0;
+    desc.componentFlagsMask = 0;
     fileplayercd.componentType = kAudioUnitType_Generator;
     fileplayercd.componentSubType = kAudioUnitSubType_AudioFilePlayer;
     fileplayercd.componentManufacturer = kAudioUnitManufacturer_Apple;
@@ -103,10 +105,7 @@ void CreateMyAUGraph(MyAUGraphPlayer *player)
     AUGraphConnectNodeInput(player->graph,fileNode, 0, eqNode, 0);
     AUGraphConnectNodeInput(player->graph,eqNode, 0, outputNode, 0);
 
-
-
     AUGraphInitialize(player->graph);
-
 
 }
 
@@ -162,9 +161,6 @@ void setup()
     qDebug() << "mChannelsPerFrame:"<< auDesc.mChannelsPerFrame;
     qDebug() << "mBitsPerChannel:"<< auDesc.mBitsPerChannel;
 
-
-
-
     // Referencia a la cola
     AudioQueueRef auQueue = nullptr;
     AudioQueueBufferRef auBuffers[1] {};
@@ -174,12 +170,8 @@ void setup()
     soundState.index = 0;
     soundState.volume = 1.0f;
 
-
-
     // most of the 0 and nullptr params here are for compressed sound formats etc.
     AudioQueueNewOutput(&auDesc, &auCallback, &soundState, nullptr, nullptr, 0, &auQueue);
-
-
 
     AudioQueueAllocateBuffer(auQueue, 88200, &(auBuffers[0]));
 

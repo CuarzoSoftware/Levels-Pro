@@ -36,7 +36,7 @@ void Utils::addWidgetClass(QWidget *widget, const QString &className)
     }
 
     // Si no la tiene, la agrega
-    widget->setProperty("class",classString.append(" ").append(className));
+    widget->setProperty("class",classString.append( " " + className));
 
     // Actualiza los estilos
     widget->style()->unpolish(widget);

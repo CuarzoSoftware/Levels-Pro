@@ -57,8 +57,8 @@ private:
     float currentDimension = 1.f;
 
     // Pens
-    QPen linePen = QPen(QColor("#AAAAAA"), 0.5);
-    QPen borderPen = QPen(QColor("#AAAAAA"), 1.5);
+    QPen linePen = QPen(QColor("#BBBBBB"), 0.5);
+    QPen borderPen = QPen(QColor("#BBBBBB"), 1.5);
 
     // Brushes
     QBrush backgroundBrush = QBrush(QColor("#FFFFFF"));
